@@ -1,0 +1,15 @@
+{
+  "name": "@startrunning/design-tokens",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Design tokens do Start Running (Design System v1.0) — cores, tipografia, espaçamento, raio, elevação, motion e temas claro/escuro.",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "files": ["src", "tokens.css"],
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.0"
+  }
+}

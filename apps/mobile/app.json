@@ -1,0 +1,24 @@
+{
+  "expo": {
+    "name": "Start Running",
+    "slug": "start-running",
+    "version": "0.1.0",
+    "scheme": "startrunning",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "backgroundColor": "#0B0F14"
+    },
+    "ios": {
+      "bundleIdentifier": "com.variance.startrunning",
+      "supportsTablet": false
+    },
+    "android": {
+      "package": "com.variance.startrunning",
+      "adaptiveIcon": {
+        "backgroundColor": "#FF3A5E"
+      }
+    },
+    "plugins": ["expo-router", "expo-font", "expo-notifications"]
+  }
+}

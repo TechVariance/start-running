@@ -1,0 +1,13 @@
+{
+  "name": "startrunning",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Start Running — coaching de corrida por IA (powered by Variance). Monorepo: docs de arquitetura, design tokens, domínio canônico, app mobile e serviços.",
+  "engines": {
+    "node": ">=20",
+    "pnpm": ">=9"
+  },
+  "scripts": {
+    "typecheck": "pnpm -r typecheck"
+  }
+}

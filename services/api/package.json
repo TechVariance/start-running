@@ -1,0 +1,26 @@
+{
+  "name": "@startrunning/api",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Backend do Start Running — monólito modular NestJS com módulos alinhados aos épicos do SRS (ADR-0003).",
+  "scripts": {
+    "start:dev": "nest start --watch",
+    "build": "nest build",
+    "typecheck": "tsc --noEmit",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@nestjs/common": "^10.3.0",
+    "@nestjs/core": "^10.3.0",
+    "@nestjs/platform-express": "^10.3.0",
+    "@startrunning/domain": "workspace:*",
+    "bullmq": "^5.8.0",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.1"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^10.3.0",
+    "@types/node": "^20.14.0",
+    "typescript": "^5.5.0"
+  }
+}

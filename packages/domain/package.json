@@ -1,0 +1,14 @@
+{
+  "name": "@startrunning/domain",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Modelo de domínio canônico do Start Running — camadas 0–4 do SRS, zonas configuráveis, métricas versionadas e plano de treino.",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.0"
+  }
+}

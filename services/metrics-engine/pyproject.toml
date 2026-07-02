@@ -1,0 +1,26 @@
+[project]
+name = "metrics-engine"
+version = "0.1.0"
+description = "Motor de métricas canônico do Start Running — parse FIT/TCX/GPX, qualidade de dado (PC-5) e cálculo das Camadas 1–3 com metodologia única e versionada."
+requires-python = ">=3.12"
+dependencies = [
+    "fitdecode>=0.10",
+    "numpy>=1.26",
+    "pandas>=2.2",
+    "psycopg[binary]>=3.1",
+    "redis>=5.0",
+    "boto3>=1.34",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "ruff>=0.5"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/metrics_engine"]
+
+[tool.ruff]
+line-length = 100
