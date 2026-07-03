@@ -19,6 +19,11 @@
         "backgroundColor": "#FF3A5E"
       }
     },
-    "plugins": ["expo-router", "expo-font", "expo-notifications"]
+    "plugins": ["expo-router", "expo-font", "expo-notifications"],
+    "extra": {
+      "eas": {
+        "projectId": "e717a8a7-0cd0-47df-a3a9-8c8175eb7fcd"
+      }
+    }
   }
 }
