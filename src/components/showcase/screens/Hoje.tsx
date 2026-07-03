@@ -1,4 +1,6 @@
+import { useState } from "react";
 import { AlertTriangle, ArrowRight, Heart, Moon, Activity } from "lucide-react";
+import { BottomSheet } from "@/components/app/BottomSheet";
 
 function ReadinessArc({ score }: { score: number }) {
   const r = 78;
@@ -30,9 +32,12 @@ function ReadinessArc({ score }: { score: number }) {
 }
 
 export function Hoje() {
+  const [acwrOpen, setAcwrOpen] = useState(false);
+  const [workoutOpen, setWorkoutOpen] = useState(false);
+
   return (
-    <div className="space-y-4 px-5 pb-4">
-      <header className="pt-2">
+    <div className="space-y-4 px-5 pb-6">
+      <header className="pt-4">
         <p className="label-cap text-muted-foreground">Sexta · 3 jul</p>
         <h1 className="font-display text-[32px] font-black leading-tight text-foreground">
           Bora, Luiz.
@@ -69,7 +74,10 @@ export function Hoje() {
           <p className="mt-0.5 text-[13px] text-muted-foreground">
             ACWR 1,4. Vamos segurar o volume esta semana pra te manter inteiro.
           </p>
-          <button className="mt-2 inline-flex items-center gap-1 text-[13px] font-bold text-warning">
+          <button
+            onClick={() => setAcwrOpen(true)}
+            className="mt-2 inline-flex items-center gap-1 text-[13px] font-bold text-warning"
+          >
             Ver ajuste <ArrowRight size={14} />
           </button>
         </div>
@@ -95,14 +103,61 @@ export function Hoje() {
             </span>
           </div>
         </div>
-        <button className="btn-ignite mx-5 mb-5 flex w-[calc(100%-40px)] items-center justify-center gap-2 py-4 text-[15px]">
+        <button
+          onClick={() => setWorkoutOpen(true)}
+          className="btn-ignite mx-5 mb-5 flex w-[calc(100%-40px)] items-center justify-center gap-2 py-4 text-[15px]"
+        >
           Bora pro treino de hoje <ArrowRight size={18} />
         </button>
       </div>
 
-      <p className="pt-1 text-center text-[11px] text-muted-foreground">
-        powered by <span className="font-bold text-foreground">Variance</span>
-      </p>
+      <BottomSheet open={acwrOpen} onClose={() => setAcwrOpen(false)} title="Por que segurar esta semana">
+        <div className="space-y-3 text-[14px] text-foreground">
+          <p>Seu <b>ACWR</b> (carga aguda ÷ crônica) subiu pra <b className="tabular">1,4</b>. Acima de 1,3 a chance de lesão sobe de forma não-linear.</p>
+          <div className="rounded-xl bg-background p-3">
+            <p className="label-cap text-muted-foreground">Como cheguei aí</p>
+            <ul className="mt-2 space-y-1 text-[13px]">
+              <li>· Últimos 7 dias: <b className="tabular">312 TSS</b></li>
+              <li>· Últimos 28 dias (média): <b className="tabular">223 TSS/sem</b></li>
+              <li>· Razão: <b className="tabular">1,40</b></li>
+            </ul>
+          </div>
+          <p className="text-muted-foreground">Ajuste: <b className="text-foreground">-20% de volume</b> nos próximos 5 dias, mantendo o longão de domingo em Z2. Semana que vem retomamos o Build.</p>
+          <p className="text-[12px] text-muted-foreground">Não é para descansar por medo — é pra chegar inteiro no bloco Peak.</p>
+        </div>
+      </BottomSheet>
+
+      <BottomSheet open={workoutOpen} onClose={() => setWorkoutOpen(false)} title="Rodado moderado · 8 km">
+        <div className="space-y-4 text-[14px] text-foreground">
+          <div className="grid grid-cols-3 gap-2">
+            <Stat label="Distância" value="8" unit="km" />
+            <Stat label="Pace alvo" value="5:30" unit="/km" />
+            <Stat label="Duração" value="~45" unit="min" />
+          </div>
+          <Block phase="Aquecimento" time="10 min" desc="Trote leve Z1, subir gradualmente até o alvo. Sem pressa." color="#3FA9F5" />
+          <Block phase="Bloco principal" time="30 min" desc="Constante em Z2, FC 132–148. Se a respiração ficar curta, alivia — hoje é volume, não intensidade." color="#17B26A" />
+          <Block phase="Desaquecimento" time="5 min" desc="Trote muito leve + caminhada. Mobilidade rápida no fim." color="#8A99AB" />
+          <div className="rounded-xl border border-border bg-background p-3 text-[13px]">
+            <p className="label-cap text-muted-foreground">Sinal pra abortar</p>
+            <p className="mt-1">FC subindo sem esforço extra, ou pace caindo &gt;15s/km sem motivo. Aí a gente para e conversa amanhã.</p>
+          </div>
+        </div>
+      </BottomSheet>
+    </div>
+  );
+}
+
+function Block({ phase, time, desc, color }: { phase: string; time: string; desc: string; color: string }) {
+  return (
+    <div className="flex gap-3 rounded-xl border border-border bg-background p-3">
+      <div className="w-1 shrink-0 rounded-full" style={{ background: color }} />
+      <div className="min-w-0 flex-1">
+        <div className="flex items-baseline justify-between">
+          <p className="text-[14px] font-bold text-foreground">{phase}</p>
+          <span className="text-[11px] font-bold tabular text-muted-foreground">{time}</span>
+        </div>
+        <p className="mt-1 text-[13px] text-muted-foreground">{desc}</p>
+      </div>
     </div>
   );
 }

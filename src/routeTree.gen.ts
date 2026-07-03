@@ -9,38 +9,105 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as AppRouteImport } from './routes/_app'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AppTreinosRouteImport } from './routes/_app.treinos'
+import { Route as AppPlanoRouteImport } from './routes/_app.plano'
+import { Route as AppPerfilRouteImport } from './routes/_app.perfil'
+import { Route as AppHojeRouteImport } from './routes/_app.hoje'
+import { Route as AppCoachRouteImport } from './routes/_app.coach'
 
+const AppRoute = AppRouteImport.update({
+  id: '/_app',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppTreinosRoute = AppTreinosRouteImport.update({
+  id: '/treinos',
+  path: '/treinos',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppPlanoRoute = AppPlanoRouteImport.update({
+  id: '/plano',
+  path: '/plano',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppPerfilRoute = AppPerfilRouteImport.update({
+  id: '/perfil',
+  path: '/perfil',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppHojeRoute = AppHojeRouteImport.update({
+  id: '/hoje',
+  path: '/hoje',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppCoachRoute = AppCoachRouteImport.update({
+  id: '/coach',
+  path: '/coach',
+  getParentRoute: () => AppRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/coach': typeof AppCoachRoute
+  '/hoje': typeof AppHojeRoute
+  '/perfil': typeof AppPerfilRoute
+  '/plano': typeof AppPlanoRoute
+  '/treinos': typeof AppTreinosRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/coach': typeof AppCoachRoute
+  '/hoje': typeof AppHojeRoute
+  '/perfil': typeof AppPerfilRoute
+  '/plano': typeof AppPlanoRoute
+  '/treinos': typeof AppTreinosRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_app': typeof AppRouteWithChildren
+  '/_app/coach': typeof AppCoachRoute
+  '/_app/hoje': typeof AppHojeRoute
+  '/_app/perfil': typeof AppPerfilRoute
+  '/_app/plano': typeof AppPlanoRoute
+  '/_app/treinos': typeof AppTreinosRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/coach' | '/hoje' | '/perfil' | '/plano' | '/treinos'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/coach' | '/hoje' | '/perfil' | '/plano' | '/treinos'
+  id:
+    | '__root__'
+    | '/'
+    | '/_app'
+    | '/_app/coach'
+    | '/_app/hoje'
+    | '/_app/perfil'
+    | '/_app/plano'
+    | '/_app/treinos'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AppRoute: typeof AppRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/_app': {
+      id: '/_app'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AppRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +115,65 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_app/treinos': {
+      id: '/_app/treinos'
+      path: '/treinos'
+      fullPath: '/treinos'
+      preLoaderRoute: typeof AppTreinosRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/plano': {
+      id: '/_app/plano'
+      path: '/plano'
+      fullPath: '/plano'
+      preLoaderRoute: typeof AppPlanoRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/perfil': {
+      id: '/_app/perfil'
+      path: '/perfil'
+      fullPath: '/perfil'
+      preLoaderRoute: typeof AppPerfilRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/hoje': {
+      id: '/_app/hoje'
+      path: '/hoje'
+      fullPath: '/hoje'
+      preLoaderRoute: typeof AppHojeRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/coach': {
+      id: '/_app/coach'
+      path: '/coach'
+      fullPath: '/coach'
+      preLoaderRoute: typeof AppCoachRouteImport
+      parentRoute: typeof AppRoute
+    }
   }
 }
 
+interface AppRouteChildren {
+  AppCoachRoute: typeof AppCoachRoute
+  AppHojeRoute: typeof AppHojeRoute
+  AppPerfilRoute: typeof AppPerfilRoute
+  AppPlanoRoute: typeof AppPlanoRoute
+  AppTreinosRoute: typeof AppTreinosRoute
+}
+
+const AppRouteChildren: AppRouteChildren = {
+  AppCoachRoute: AppCoachRoute,
+  AppHojeRoute: AppHojeRoute,
+  AppPerfilRoute: AppPerfilRoute,
+  AppPlanoRoute: AppPlanoRoute,
+  AppTreinosRoute: AppTreinosRoute,
+}
+
+const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AppRoute: AppRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
