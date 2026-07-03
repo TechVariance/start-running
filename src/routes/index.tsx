@@ -140,11 +140,8 @@ function Showcase() {
 function PhoneWithBar({ screen, onChange }: { screen: ScreenId; onChange: (id: ScreenId) => void }) {
   return (
     <div className="relative">
-      <PhoneFrame>
-        <div className="relative min-h-full">
-          <ScreenSwitch screen={screen} />
-          <TabBar active={screen} onChange={onChange} />
-        </div>
+      <PhoneFrame bottomBar={<TabBar active={screen} onChange={onChange} />}>
+        <ScreenSwitch screen={screen} />
       </PhoneFrame>
     </div>
   );
