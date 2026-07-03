@@ -24,3 +24,6 @@ packages = ["src/metrics_engine"]
 
 [tool.ruff]
 line-length = 100
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

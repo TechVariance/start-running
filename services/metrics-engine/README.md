@@ -4,15 +4,27 @@ Motor de métricas canônico (Python 3.12) — o núcleo do diferencial competit
 
 ```
 src/metrics_engine/
-  pipeline.py        # orquestração por sessão + METHODOLOGY_VERSION
-  parsers/           # fit.py, tcx.py, gpx.py -> série canônica
-  quality/           # limpeza e confiança (PC-5)
-  metrics/           # layer1 (splits/GAP/tempo-em-zona), load (TRIMP/CTL/ATL/TSB/ACWR),
+  pipeline.py        # orquestração por sessão + METHODOLOGY_VERSION       [Fase 1 ✓]
+  models.py          # série canônica + perfil — espelha packages/domain   [Fase 1 ✓]
+  parsers/           # fit.py, tcx.py, gpx.py -> série canônica            [Fase 1 ✓]
+  quality/           # limpeza e confiança (PC-5)                          [Fase 1 ✓]
+  metrics/           # layer1 (splits/GAP/elevação)                        [Fase 1 ✓]
+                     # load (TRIMP/rTSS/hrTSS/sRPE + CTL/ATL/TSB/ACWR)     [Fase 1 ✓]
                      # efficiency (Fase 2), dynamics (Fase 3)
-  zones/             # 3/5/7 zonas, 5 âncoras (PC-4)
+  zones/             # 3/5/7 zonas, 5 âncoras (PC-4)                       [Fase 1 ✓]
   recalibration/     # LTHR/pace de limiar a partir do executado (Fase 2)
-  tests/fixtures/    # mesmo treino em devices distintos — suite canônica
+tests/               # suite da Fase 1 (parsers, PC-5, zonas, camada 1, carga, pipeline)
 ```
+
+```sh
+python3.12 -m venv .venv && .venv/bin/pip install -e ".[dev]"
+.venv/bin/pytest            # suite completa
+.venv/bin/ruff check src tests
+```
+
+O núcleo é **puro e determinístico** (bytes → derivadas): S3, Postgres e fila
+entram apenas pelo worker (a ser plugado no módulo `ingestion` do API), o que
+mantém o cálculo recomputável e testável sem infraestrutura (RNF-2.3).
 
 Regras invioláveis:
 
