@@ -11,7 +11,7 @@ const tabs: { id: ScreenId; label: string; Icon: typeof Home }[] = [
 
 export function TabBar({ active, onChange }: { active: ScreenId; onChange: (id: ScreenId) => void }) {
   return (
-    <div className="border-t border-border bg-surface-alt/90 backdrop-blur-xl">
+    <div className="border-t border-border backdrop-blur-xl" style={{ background: "color-mix(in oklab, var(--color-surface-alt) 92%, transparent)" }}>
       <div className="flex items-end justify-around px-2 pb-5 pt-2">
         {tabs.map(({ id, label, Icon }) => {
           const isActive = active === id;
