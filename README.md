@@ -9,6 +9,7 @@ Plataforma de **coaching de corrida por IA**: ingere a série temporal bruta de 
 | [Especificação de Requisitos (SRS) v1.0](docs/requisitos/especificacao-de-requisitos.md) | Visão de produto, princípios PC-1–PC-5, 18 módulos de requisitos, RNFs, roadmap em 3 fases |
 | [Design System v1.0](docs/design/design-system.md) | Identidade Bold & Energético: Ignite/Pulse/Volt, Archivo+Inter, componentes, voz e tom |
 | [**Arquitetura Técnica v1.0**](docs/arquitetura/README.md) | Este repositório: stack, modelo de dados, APIs, pipeline, ADRs |
+| [Glossário de termos e KPIs](docs/glossario/README.md) | Cada termo/índice: o que é, como calculamos (`engine-2026.07`) e comparativo com TP/Strava/Garmin/Polar/COROS/intervals.icu |
 
 ## Estrutura do monorepo
 
