@@ -9,6 +9,8 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as OnboardingRouteImport } from './routes/onboarding'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AppRouteImport } from './routes/_app'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppTreinosRouteImport } from './routes/_app.treinos'
@@ -17,6 +19,16 @@ import { Route as AppPerfilRouteImport } from './routes/_app.perfil'
 import { Route as AppHojeRouteImport } from './routes/_app.hoje'
 import { Route as AppCoachRouteImport } from './routes/_app.coach'
 
+const OnboardingRoute = OnboardingRouteImport.update({
+  id: '/onboarding',
+  path: '/onboarding',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AppRoute = AppRouteImport.update({
   id: '/_app',
   getParentRoute: () => rootRouteImport,
@@ -54,6 +66,8 @@ const AppCoachRoute = AppCoachRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/onboarding': typeof OnboardingRoute
   '/coach': typeof AppCoachRoute
   '/hoje': typeof AppHojeRoute
   '/perfil': typeof AppPerfilRoute
@@ -62,6 +76,8 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/onboarding': typeof OnboardingRoute
   '/coach': typeof AppCoachRoute
   '/hoje': typeof AppHojeRoute
   '/perfil': typeof AppPerfilRoute
@@ -72,6 +88,8 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_app': typeof AppRouteWithChildren
+  '/auth': typeof AuthRoute
+  '/onboarding': typeof OnboardingRoute
   '/_app/coach': typeof AppCoachRoute
   '/_app/hoje': typeof AppHojeRoute
   '/_app/perfil': typeof AppPerfilRoute
@@ -80,13 +98,31 @@ export interface FileRoutesById {
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/coach' | '/hoje' | '/perfil' | '/plano' | '/treinos'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/onboarding'
+    | '/coach'
+    | '/hoje'
+    | '/perfil'
+    | '/plano'
+    | '/treinos'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/coach' | '/hoje' | '/perfil' | '/plano' | '/treinos'
+  to:
+    | '/'
+    | '/auth'
+    | '/onboarding'
+    | '/coach'
+    | '/hoje'
+    | '/perfil'
+    | '/plano'
+    | '/treinos'
   id:
     | '__root__'
     | '/'
     | '/_app'
+    | '/auth'
+    | '/onboarding'
     | '/_app/coach'
     | '/_app/hoje'
     | '/_app/perfil'
@@ -97,10 +133,26 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AppRoute: typeof AppRouteWithChildren
+  AuthRoute: typeof AuthRoute
+  OnboardingRoute: typeof OnboardingRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/onboarding': {
+      id: '/onboarding'
+      path: '/onboarding'
+      fullPath: '/onboarding'
+      preLoaderRoute: typeof OnboardingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_app': {
       id: '/_app'
       path: ''
@@ -174,6 +226,8 @@ const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AppRoute: AppRouteWithChildren,
+  AuthRoute: AuthRoute,
+  OnboardingRoute: OnboardingRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

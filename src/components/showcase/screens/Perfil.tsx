@@ -1,250 +1,211 @@
-import { useState } from "react";
-import { Check, ChevronRight, Crown, Shield, Watch, Download, Trash2 } from "lucide-react";
-
-// LTHR = 168 bpm, FCmax = 189
-const LTHR = 168;
-
-type Zone = { z: string; label: string; range: string; color: string };
-
-const zoneModels: Record<3 | 5 | 7, Zone[]> = {
-  3: [
-    { z: "Fácil", label: "Aeróbico leve", range: "< 145 bpm", color: "#17B26A" },
-    { z: "Moderado", label: "Aeróbico forte", range: "145–162", color: "#F5C518" },
-    { z: "Duro", label: "Limiar e acima", range: "> 162", color: "#E02749" },
-  ],
-  5: [
-    { z: "Z1", label: "Recuperação", range: "< 138 bpm", color: "#3FA9F5" },
-    { z: "Z2", label: "Endurance", range: "138–151", color: "#17B26A" },
-    { z: "Z3", label: "Tempo", range: "152–160", color: "#F5C518" },
-    { z: "Z4", label: "Limiar", range: "161–168", color: "#FF7A1F" },
-    { z: "Z5", label: "Anaeróbico", range: "> 168", color: "#E02749" },
-  ],
-  7: [
-    { z: "Z1", label: "Recuperação", range: "< 130", color: "#3FA9F5" },
-    { z: "Z2", label: "Endurance base", range: "130–142", color: "#5FBF6A" },
-    { z: "Z3", label: "Endurance forte", range: "143–152", color: "#17B26A" },
-    { z: "Z4", label: "Tempo", range: "153–160", color: "#F5C518" },
-    { z: "Z5a", label: "Limiar", range: "161–168", color: "#FF7A1F" },
-    { z: "Z5b", label: "VO2max", range: "169–178", color: "#E02749" },
-    { z: "Z5c", label: "Anaeróbico", range: "> 178", color: "#B01838" },
-  ],
-};
-
-const consentInit = [
-  { key: "hr", label: "Frequência cardíaca", hint: "Necessário pra calcular zonas e carga." },
-  { key: "gps", label: "GPS e rota", hint: "Splits, pace e mapa das sessões." },
-  { key: "sleep", label: "Sono", hint: "Entra no score de prontidão diário." },
-  { key: "notif", label: "Notificações", hint: "Lembretes de treino e alertas de carga." },
-  { key: "marketing", label: "Comunicações de marketing", hint: "Novidades e conteúdo. Pode desligar sem perder acesso." },
-];
+import { useState, useEffect } from "react";
+import { Loader2, Database, LogOut, Trash2 } from "lucide-react";
+import { useAuth } from "@/lib/auth";
+import { supabase } from "@/integrations/supabase/client";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { computeZones, type ZoneAnchor } from "@/lib/metodologia";
+import { seedDemoData, clearDemoData } from "@/lib/demoData";
+import { useNavigate } from "@tanstack/react-router";
 
 export function Perfil() {
-  const [model, setModel] = useState<3 | 5 | 7>(5);
-  const [consents, setConsents] = useState<Record<string, boolean>>({
-    hr: true, gps: true, sleep: true, notif: true, marketing: false,
+  const { session } = useAuth();
+  const uid = session!.user.id;
+  const qc = useQueryClient();
+  const navigate = useNavigate();
+
+  const { data: profile, isLoading } = useQuery({
+    queryKey: ["profile", uid],
+    queryFn: async () => {
+      const { data } = await supabase.from("profiles").select("*").eq("user_id", uid).maybeSingle();
+      return data;
+    },
   });
 
-  const zones = zoneModels[model];
+  const [form, setForm] = useState<{
+    display_name: string;
+    hr_max: string;
+    hr_rest: string;
+    lthr: string;
+    zone_model: 3 | 5 | 7;
+    zone_anchor: ZoneAnchor;
+    consent_analytics: boolean;
+    consent_marketing: boolean;
+    consent_share_anon: boolean;
+  } | null>(null);
+
+  useEffect(() => {
+    if (profile && !form) {
+      setForm({
+        display_name: profile.display_name ?? "",
+        hr_max: String(profile.hr_max ?? 190),
+        hr_rest: String(profile.hr_rest ?? 55),
+        lthr: String(profile.lthr ?? 168),
+        zone_model: (profile.zone_model as 3 | 5 | 7) ?? 5,
+        zone_anchor: (profile.zone_anchor as ZoneAnchor) ?? "pct_lthr",
+        consent_analytics: profile.consent_analytics,
+        consent_marketing: profile.consent_marketing,
+        consent_share_anon: profile.consent_share_anon,
+      });
+    }
+  }, [profile, form]);
+
+  const save = useMutation({
+    mutationFn: async () => {
+      if (!form) return;
+      await supabase.from("profiles").update({
+        display_name: form.display_name || null,
+        hr_max: Number(form.hr_max),
+        hr_rest: Number(form.hr_rest),
+        lthr: Number(form.lthr),
+        zone_model: form.zone_model,
+        zone_anchor: form.zone_anchor,
+        consent_analytics: form.consent_analytics,
+        consent_marketing: form.consent_marketing,
+        consent_share_anon: form.consent_share_anon,
+      }).eq("user_id", uid);
+    },
+    onSuccess: () => qc.invalidateQueries({ queryKey: ["profile", uid] }),
+  });
+
+  const seed = useMutation({
+    mutationFn: async () => {
+      if (!profile) return;
+      await seedDemoData(uid, profile);
+    },
+    onSuccess: () => qc.invalidateQueries(),
+  });
+
+  const clearDemo = useMutation({
+    mutationFn: async () => clearDemoData(uid),
+    onSuccess: () => qc.invalidateQueries(),
+  });
+
+  const signOut = async () => {
+    await supabase.auth.signOut();
+    navigate({ to: "/auth", replace: true });
+  };
+
+  if (isLoading || !form) return <div className="grid place-items-center py-20"><Loader2 className="animate-spin text-muted-foreground" /></div>;
+
+  const zones = computeZones(form.zone_model, form.zone_anchor, Number(form.hr_max), Number(form.lthr), Number(form.hr_rest));
 
   return (
-    <div className="space-y-4 px-5 pb-6">
-      <header className="pt-4">
-        <div className="flex items-center gap-4">
-          <div className="grid h-16 w-16 shrink-0 place-items-center rounded-full font-display text-[24px] font-black text-white"
-               style={{ background: "linear-gradient(135deg, #FF3A5E, #1E5BFF)" }}>
-            LP
-          </div>
-          <div className="min-w-0 flex-1">
-            <h1 className="truncate font-display text-[22px] font-black leading-tight text-foreground">Luiz Pereira</h1>
-            <p className="text-[13px] text-muted-foreground">Intermediário · 42 km/sem</p>
-          </div>
-          <span className="inline-flex items-center gap-1 rounded-full bg-volt/20 px-2.5 py-1 text-[11px] font-bold text-volt-ink">
-            <Crown size={12} /> Premium
-          </span>
-        </div>
-
-        <div className="mt-4 grid grid-cols-3 gap-2">
-          <MiniStat label="Semanal" value="42" unit="km" />
-          <MiniStat label="VO2max" value="52" />
-          <MiniStat label="LTHR" value={String(LTHR)} unit="bpm" />
-        </div>
+    <div className="space-y-4 px-5 pb-6 pt-4">
+      <header>
+        <p className="label-cap text-muted-foreground">Perfil</p>
+        <h1 className="font-display text-[26px] font-black text-foreground">{form.display_name || session!.user.email}</h1>
+        <p className="text-[12px] text-muted-foreground">{session!.user.email}</p>
       </header>
 
-      {/* Zonas com seletor */}
-      <div className="card-surface p-5">
-        <div className="flex items-center justify-between">
-          <div>
-            <span className="label-cap text-muted-foreground">Zonas de FC</span>
-            <p className="text-[13px] font-bold text-foreground">Ancorado em LTHR {LTHR} bpm</p>
-          </div>
+      <Section title="Limiares fisiológicos">
+        <div className="grid grid-cols-2 gap-3">
+          <TextField label="Nome" value={form.display_name} onChange={(v) => setForm({ ...form, display_name: v })} />
+          <TextField label="FC máx (bpm)" value={form.hr_max} onChange={(v) => setForm({ ...form, hr_max: v })} num />
+          <TextField label="FC repouso" value={form.hr_rest} onChange={(v) => setForm({ ...form, hr_rest: v })} num />
+          <TextField label="LTHR" value={form.lthr} onChange={(v) => setForm({ ...form, lthr: v })} num />
         </div>
+      </Section>
 
-        {/* Seletor de modelo */}
-        <div className="mt-3 inline-flex rounded-full border border-border bg-background p-1">
-          {([3, 5, 7] as const).map((m) => (
+      <Section title="Zonas de FC">
+        <div className="mb-3 grid grid-cols-3 gap-2">
+          {[3, 5, 7].map((n) => (
             <button
-              key={m}
-              onClick={() => setModel(m)}
-              className="rounded-full px-3.5 py-1.5 text-[12px] font-bold transition"
-              style={{
-                background: model === m ? "var(--color-ignite)" : "transparent",
-                color: model === m ? "#FFFFFF" : "var(--color-muted-foreground)",
-                boxShadow: model === m ? "var(--shadow-glow-ignite)" : "none",
-              }}
+              key={n}
+              onClick={() => setForm({ ...form, zone_model: n as 3 | 5 | 7 })}
+              className={`rounded-lg border py-2 text-[12px] font-bold transition ${form.zone_model === n ? "border-ignite bg-ignite/10 text-ignite" : "border-border text-muted-foreground"}`}
             >
-              {m} zonas
+              {n} zonas
             </button>
           ))}
         </div>
-
-        {/* Preview ao vivo */}
-        <div className="mt-4 flex h-2 overflow-hidden rounded-full transition-all duration-200">
-          {zones.map((z) => (
-            <div key={z.z} className="flex-1" style={{ background: z.color }} />
+        <div className="mb-3 grid grid-cols-3 gap-2">
+          {[
+            { v: "pct_lthr", l: "%LTHR" },
+            { v: "pct_hrmax", l: "%FCmáx" },
+            { v: "karvonen", l: "Karvonen" },
+          ].map((o) => (
+            <button
+              key={o.v}
+              onClick={() => setForm({ ...form, zone_anchor: o.v as ZoneAnchor })}
+              className={`rounded-lg border py-2 text-[11px] font-bold transition ${form.zone_anchor === o.v ? "border-pulse bg-pulse/10 text-pulse" : "border-border text-muted-foreground"}`}
+            >
+              {o.l}
+            </button>
           ))}
         </div>
-
-        <div className="mt-3 space-y-1.5">
+        <div className="space-y-1.5">
           {zones.map((z) => (
-            <div key={z.z} className="flex items-center gap-2 text-[12px]">
-              <span className="h-2.5 w-2.5 rounded-sm" style={{ background: z.color }} />
-              <span className="font-bold text-foreground">{z.z}</span>
-              <span className="text-muted-foreground">{z.label}</span>
-              <span className="ml-auto tabular font-semibold text-muted-foreground">{z.range}</span>
+            <div key={z.label} className="flex items-center gap-2 rounded-lg bg-background px-3 py-2">
+              <span className="h-3 w-3 rounded-full" style={{ background: z.color }} />
+              <span className="w-16 text-[12px] font-bold text-foreground">{z.label}</span>
+              <span className="tabular text-[12px] text-muted-foreground">{z.low}–{z.high} bpm</span>
             </div>
           ))}
         </div>
-      </div>
+      </Section>
 
-      {/* Limiares */}
-      <div className="card-surface p-5">
-        <span className="label-cap text-muted-foreground">Limiares</span>
-        <div className="mt-3 grid grid-cols-2 gap-3">
-          <Threshold label="LTHR" value="168" unit="bpm" />
-          <Threshold label="Pace limiar" value="4:52" unit="/km" />
-          <Threshold label="FCmáx" value="189" unit="bpm" />
-          <Threshold label="VO2max" value="52" unit="ml/kg" />
+      <Section title="Privacidade e dados (LGPD)">
+        <ToggleRow label="Análise de uso" desc="Nos ajuda a melhorar o app." value={form.consent_analytics} onChange={(v) => setForm({ ...form, consent_analytics: v })} />
+        <ToggleRow label="Comunicações" desc="Novidades e conteúdo sobre treinos." value={form.consent_marketing} onChange={(v) => setForm({ ...form, consent_marketing: v })} />
+        <ToggleRow label="Dados anônimos para pesquisa" desc="Melhora a metodologia para todos." value={form.consent_share_anon} onChange={(v) => setForm({ ...form, consent_share_anon: v })} />
+      </Section>
+
+      <button onClick={() => save.mutate()} disabled={save.isPending} className="btn-ignite flex w-full items-center justify-center gap-2 py-3 text-[14px] disabled:opacity-60">
+        {save.isPending && <Loader2 size={14} className="animate-spin" />} {save.isSuccess ? "Salvo ✓" : "Salvar perfil"}
+      </button>
+
+      <Section title="Dados de demonstração">
+        <p className="mb-3 text-[12px] text-muted-foreground">Popula 6 semanas de treinos variados + wellness. Idempotente — apaga demos anteriores antes.</p>
+        <div className="grid grid-cols-2 gap-2">
+          <button onClick={() => seed.mutate()} disabled={seed.isPending} className="inline-flex items-center justify-center gap-2 rounded-full bg-pulse px-4 py-2.5 text-[12px] font-bold text-white disabled:opacity-60">
+            {seed.isPending ? <Loader2 size={12} className="animate-spin" /> : <Database size={12} />} Carregar
+          </button>
+          <button onClick={() => clearDemo.mutate()} disabled={clearDemo.isPending} className="inline-flex items-center justify-center gap-2 rounded-full border border-border px-4 py-2.5 text-[12px] font-bold text-muted-foreground disabled:opacity-60">
+            {clearDemo.isPending ? <Loader2 size={12} className="animate-spin" /> : <Trash2 size={12} />} Limpar demo
+          </button>
         </div>
-      </div>
+      </Section>
 
-      {/* Integrações */}
-      <div className="card-surface overflow-hidden">
-        <div className="px-5 pb-2 pt-5">
-          <span className="label-cap text-muted-foreground">Integrações</span>
-        </div>
-        <Integration name="Garmin Connect" status="connected" Icon={Watch} />
-        <Integration name="Strava" status="connected" Icon={Watch} />
-        <Integration name="Apple Health" status="disconnected" Icon={Watch} />
-      </div>
-
-      {/* LGPD */}
-      <div className="card-surface overflow-hidden">
-        <div className="px-5 pb-2 pt-5">
-          <div className="flex items-center gap-2">
-            <Shield size={14} className="text-pulse" />
-            <span className="label-cap text-muted-foreground">Privacidade e dados · LGPD</span>
-          </div>
-        </div>
-        {consentInit.map((c) => (
-          <ConsentRow
-            key={c.key}
-            label={c.label}
-            hint={c.hint}
-            on={consents[c.key]}
-            onToggle={() => setConsents((s) => ({ ...s, [c.key]: !s[c.key] }))}
-          />
-        ))}
-        <ActionRow label="Exportar meus dados" Icon={Download} />
-        <ActionRow label="Excluir minha conta" Icon={Trash2} danger />
-      </div>
-
-      <p className="pt-2 text-center text-[11px] text-muted-foreground">
-        v1.0 · powered by <span className="font-bold text-foreground">Variance</span>
-      </p>
-    </div>
-  );
-}
-
-function ConsentRow({ label, hint, on, onToggle }: { label: string; hint: string; on: boolean; onToggle: () => void }) {
-  return (
-    <div className="flex items-start gap-3 border-t border-border px-5 py-3.5">
-      <div className="min-w-0 flex-1">
-        <p className="text-[14px] font-semibold text-foreground">{label}</p>
-        <p className="text-[12px] text-muted-foreground">{hint}</p>
-      </div>
-      <button
-        role="switch"
-        aria-checked={on}
-        aria-label={label}
-        onClick={onToggle}
-        className="relative mt-1 h-6 w-11 shrink-0 rounded-full border transition-colors"
-        style={{
-          background: on ? "var(--color-ignite)" : "var(--color-border)",
-          borderColor: on ? "var(--color-ignite)" : "var(--color-border)",
-        }}
-      >
-        <span
-          className="absolute top-0.5 h-4 w-4 rounded-full bg-white shadow transition-transform duration-200"
-          style={{ transform: on ? "translateX(22px)" : "translateX(2px)" }}
-        />
+      <button onClick={signOut} className="mt-4 flex w-full items-center justify-center gap-2 rounded-full border border-border py-3 text-[13px] font-semibold text-muted-foreground hover:text-danger">
+        <LogOut size={14} /> Sair
       </button>
     </div>
   );
 }
 
-function MiniStat({ label, value, unit }: { label: string; value: string; unit?: string }) {
+function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div className="rounded-xl border border-border bg-surface-alt p-3">
-      <p className="label-cap text-muted-foreground" style={{ fontSize: 10 }}>{label}</p>
-      <p className="font-display text-[20px] font-black text-foreground">
-        {value}{unit && <span className="text-[11px] font-semibold text-muted-foreground"> {unit}</span>}
-      </p>
+    <div className="card-surface p-4">
+      <p className="label-cap mb-3 text-muted-foreground">{title}</p>
+      {children}
     </div>
   );
 }
 
-function Threshold({ label, value, unit }: { label: string; value: string; unit: string }) {
+function TextField({ label, value, onChange, num }: { label: string; value: string; onChange: (v: string) => void; num?: boolean }) {
   return (
-    <div className="rounded-xl border border-border bg-background p-3">
-      <p className="label-cap text-muted-foreground" style={{ fontSize: 10 }}>{label}</p>
-      <p className="font-display text-[22px] font-black text-foreground tabular">
-        {value}<span className="text-[11px] font-semibold text-muted-foreground"> {unit}</span>
-      </p>
-    </div>
+    <label className="block">
+      <span className="label-cap text-muted-foreground">{label}</span>
+      <input
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        inputMode={num ? "numeric" : undefined}
+        className={`mt-1 w-full rounded-lg border border-border bg-background px-3 py-2 text-[14px] text-foreground focus:border-ignite focus:outline-none ${num ? "tabular" : ""}`}
+      />
+    </label>
   );
 }
 
-function Integration({ name, status, Icon }: { name: string; status: "connected" | "disconnected"; Icon: typeof Watch }) {
-  const connected = status === "connected";
+function ToggleRow({ label, desc, value, onChange }: { label: string; desc: string; value: boolean; onChange: (v: boolean) => void }) {
   return (
-    <div className="flex items-center gap-3 border-t border-border px-5 py-3.5">
-      <div className="grid h-9 w-9 place-items-center rounded-full bg-background">
-        <Icon size={16} className="text-foreground" />
-      </div>
-      <span className="flex-1 text-[14px] font-semibold text-foreground">{name}</span>
-      {connected ? (
-        <span className="inline-flex items-center gap-1 text-[12px] font-bold text-success">
-          <Check size={14} /> Conectado
-        </span>
-      ) : (
-        <button className="rounded-full border border-pulse px-3 py-1 text-[12px] font-bold text-pulse">
-          Conectar
-        </button>
-      )}
-    </div>
-  );
-}
-
-function ActionRow({ label, Icon, danger }: { label: string; Icon: typeof Download; danger?: boolean }) {
-  return (
-    <button className="flex w-full items-center gap-3 border-t border-border px-5 py-3.5 text-left">
-      <div className="grid h-8 w-8 place-items-center rounded-full bg-background">
-        <Icon size={14} className={danger ? "text-danger" : "text-foreground"} />
-      </div>
+    <button onClick={() => onChange(!value)} className="flex w-full items-center gap-3 py-2.5 text-left">
       <div className="min-w-0 flex-1">
-        <p className={`text-[14px] font-semibold ${danger ? "text-danger" : "text-foreground"}`}>{label}</p>
+        <p className="text-[13px] font-bold text-foreground">{label}</p>
+        <p className="text-[11px] text-muted-foreground">{desc}</p>
       </div>
-      <ChevronRight size={16} className="text-muted-foreground" />
+      <span className={`relative h-6 w-11 shrink-0 rounded-full transition ${value ? "bg-ignite" : "bg-border"}`}>
+        <span className={`absolute top-0.5 h-5 w-5 rounded-full bg-white shadow transition ${value ? "left-[22px]" : "left-0.5"}`} />
+      </span>
     </button>
   );
 }
