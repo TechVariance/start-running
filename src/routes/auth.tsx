@@ -4,14 +4,21 @@ import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/lib/auth";
 import { Loader2 } from "lucide-react";
 
+function safeNext(v: unknown): string | undefined {
+  if (typeof v !== "string" || !v.startsWith("/") || v.startsWith("//")) return undefined;
+  return v;
+}
+
 export const Route = createFileRoute("/auth")({
   ssr: false,
+  validateSearch: (s: Record<string, unknown>) => ({ next: safeNext(s.next) }),
   component: AuthPage,
 });
 
 function AuthPage() {
   const { session, loading } = useAuth();
   const navigate = useNavigate();
+  const { next } = Route.useSearch();
   const [mode, setMode] = useState<"login" | "signup">("login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -19,9 +26,15 @@ function AuthPage() {
   const [err, setErr] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
 
+  const goNext = () => {
+    if (next) window.location.href = next;
+    else navigate({ to: "/hoje", replace: true });
+  };
+
   useEffect(() => {
-    if (!loading && session) navigate({ to: "/hoje", replace: true });
-  }, [loading, session, navigate]);
+    if (!loading && session) goNext();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loading, session]);
 
   useEffect(() => {
     document.documentElement.classList.add("dark");
@@ -37,19 +50,20 @@ function AuthPage() {
           email,
           password,
           options: {
-            emailRedirectTo: `${window.location.origin}/hoje`,
+            emailRedirectTo: `${window.location.origin}${next ?? "/hoje"}`,
             data: { display_name: displayName || email.split("@")[0] },
           },
         });
         if (error) throw error;
-        // Autologin caso confirmação de e-mail esteja off
         const { data } = await supabase.auth.getSession();
-        if (data.session) navigate({ to: "/onboarding", replace: true });
-        else setErr("Confira seu e-mail para confirmar a conta.");
+        if (data.session) {
+          if (next) window.location.href = next;
+          else navigate({ to: "/onboarding", replace: true });
+        } else setErr("Confira seu e-mail para confirmar a conta.");
       } else {
         const { error } = await supabase.auth.signInWithPassword({ email, password });
         if (error) throw error;
-        navigate({ to: "/hoje", replace: true });
+        goNext();
       }
     } catch (e: unknown) {
       setErr(e instanceof Error ? e.message : "Falha ao autenticar");
