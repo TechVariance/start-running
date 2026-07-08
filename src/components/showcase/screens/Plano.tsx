@@ -1,208 +1,157 @@
 import { useState } from "react";
-import { Trophy, Sparkles, ChevronDown } from "lucide-react";
-
-const phases = [
-  { name: "Base", weeks: 4, status: "done" as const },
-  { name: "Build", weeks: 4, status: "current" as const, progress: "3/4" },
-  { name: "Peak", weeks: 2, status: "todo" as const },
-  { name: "Taper", weeks: 1, status: "todo" as const },
-];
-
-type Day = {
-  day: string;
-  type: string;
-  detail: string;
-  tone: "ignite" | "success" | "warning" | "pulse" | "muted";
-  done?: boolean;
-  today?: boolean;
-  swapped?: boolean;
-  plan: { phase: string; time: string; desc: string; color: string }[];
-};
-
-const week: Day[] = [
-  {
-    day: "SEG", type: "Descanso", detail: "Mobilidade opcional", tone: "muted", done: true,
-    plan: [{ phase: "Recuperação", time: "livre", desc: "Caminhada leve ou mobilidade 20min. Foco em quadril e panturrilha.", color: "#8A99AB" }],
-  },
-  {
-    day: "TER", type: "Tiros", detail: "6×800m @ 4:40 · R 90s", tone: "ignite", done: true,
-    plan: [
-      { phase: "Aquecimento", time: "15 min", desc: "Trote Z1 + 4 educativos + 3×30s progressivo.", color: "#3FA9F5" },
-      { phase: "Série", time: "6×800m", desc: "Pace 4:40/km, recuperação 90s trote muito leve.", color: "#FF3A5E" },
-      { phase: "Desaquecimento", time: "10 min", desc: "Trote Z1 até FC baixar.", color: "#8A99AB" },
-    ],
-  },
-  {
-    day: "QUA", type: "Rodado", detail: "6 km fácil · Z2", tone: "success", done: true,
-    plan: [{ phase: "Bloco único", time: "35 min", desc: "6 km constante em Z2. Conversa fluindo, sem ofegar.", color: "#17B26A" }],
-  },
-  {
-    day: "QUI", type: "Força", detail: "Full body · 40min", tone: "pulse", swapped: true,
-    plan: [
-      { phase: "Ativação", time: "5 min", desc: "Prancha, ponte, banda de quadril.", color: "#1E5BFF" },
-      { phase: "Força", time: "30 min", desc: "Agachamento, RDL, remada, apoio. 3×8, cargas confortáveis.", color: "#1E5BFF" },
-      { phase: "Mobilidade", time: "5 min", desc: "Tornozelo, quadril, coluna torácica.", color: "#8A99AB" },
-    ],
-  },
-  {
-    day: "SEX", type: "Rodado", detail: "8 km moderado · Z2", tone: "success", today: true,
-    plan: [
-      { phase: "Aquecimento", time: "10 min", desc: "Trote leve até chegar em Z2.", color: "#3FA9F5" },
-      { phase: "Principal", time: "30 min", desc: "8 km em Z2, pace alvo 5:30/km. FC 132–148.", color: "#17B26A" },
-      { phase: "Desaquecimento", time: "5 min", desc: "Trote muito leve + caminhada.", color: "#8A99AB" },
-    ],
-  },
-  {
-    day: "SÁB", type: "Descanso", detail: "Recuperação total", tone: "muted",
-    plan: [{ phase: "Off", time: "—", desc: "Descanso completo. Se quiser, caminhada leve.", color: "#8A99AB" }],
-  },
-  {
-    day: "DOM", type: "Longão", detail: "18 km · Z2 progressivo", tone: "warning",
-    plan: [
-      { phase: "Aquecimento", time: "10 min", desc: "Trote leve, entrada gradual.", color: "#3FA9F5" },
-      { phase: "Longão", time: "90 min", desc: "18 km em Z2. Últimos 5 km progressivos até final de Z2/começo de Z3.", color: "#17B26A" },
-      { phase: "Volta à calma", time: "10 min", desc: "Trote lento + alongamento.", color: "#8A99AB" },
-    ],
-  },
-];
+import { Loader2, Plus, Check, ChevronDown } from "lucide-react";
+import { useAuth } from "@/lib/auth";
+import { supabase } from "@/integrations/supabase/client";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 export function Plano() {
-  const [expanded, setExpanded] = useState<string | null>("SEX");
+  const { session } = useAuth();
+  const uid = session!.user.id;
+  const qc = useQueryClient();
+  const [openDay, setOpenDay] = useState<string | null>(null);
+
+  const { data: plan } = useQuery({
+    queryKey: ["plan", uid],
+    queryFn: async () => {
+      const { data } = await supabase.from("plans").select("*").eq("user_id", uid).order("created_at", { ascending: false }).limit(1).maybeSingle();
+      return data;
+    },
+  });
+
+  const { data: workouts } = useQuery({
+    queryKey: ["planned", uid, plan?.id],
+    enabled: !!plan,
+    queryFn: async () => {
+      const { data } = await supabase.from("planned_workouts").select("*").eq("plan_id", plan!.id).order("day");
+      return data ?? [];
+    },
+  });
+
+  const { data: recentActivities } = useQuery({
+    queryKey: ["recent-activities", uid],
+    queryFn: async () => {
+      const { data } = await supabase.from("activities").select("id, started_at").eq("user_id", uid).order("started_at", { ascending: false }).limit(30);
+      return data ?? [];
+    },
+  });
+
+  const create10k = useMutation({
+    mutationFn: async () => {
+      const start = new Date();
+      const race = new Date(start); race.setDate(race.getDate() + 70);
+      const { data: p } = await supabase.from("plans").insert({
+        user_id: uid,
+        race_name: "10K",
+        race_distance_m: 10000,
+        race_date: race.toISOString().slice(0, 10),
+        phase: "Base",
+        week: 1,
+        total_weeks: 10,
+      }).select().single();
+      if (!p) return;
+
+      const templates = [
+        { dow: 1, type: "easy", title: "Rodado leve", duration: 40, dist: 6, zone: "Z2", desc: "Constante, respiração cômoda." },
+        { dow: 2, type: "tempo", title: "Tempo run", duration: 45, dist: 7, zone: "Z3", desc: "20 min em Z3, no limite do confortável." },
+        { dow: 3, type: "easy", title: "Regenerativo", duration: 30, dist: 5, zone: "Z1-Z2", desc: "Trote leve, foco em recuperar." },
+        { dow: 4, type: "interval", title: "Intervalos", duration: 55, dist: 8, zone: "Z4", desc: "6 × 800m no ritmo de 5K." },
+        { dow: 6, type: "long", title: "Longão", duration: 90, dist: 15, zone: "Z2", desc: "Ritmo constante, hidrate a cada 20 min." },
+      ];
+      const rows = [];
+      for (let w = 0; w < 10; w++) {
+        for (const t of templates) {
+          const d = new Date(start); d.setDate(d.getDate() + w * 7 + (t.dow - ((start.getDay() + 6) % 7)));
+          rows.push({
+            plan_id: p.id, user_id: uid, day: d.toISOString().slice(0, 10),
+            type: t.type, title: t.title, description: t.desc,
+            target_zone: t.zone, distance_m: t.dist * 1000, duration_s: t.duration * 60, status: "planejado",
+          });
+        }
+      }
+      await supabase.from("planned_workouts").insert(rows);
+    },
+    onSuccess: () => qc.invalidateQueries({ queryKey: ["plan", uid] }),
+  });
+
+  const markDone = useMutation({
+    mutationFn: async ({ id, day }: { id: string; day: string }) => {
+      const match = recentActivities?.find((a) => a.started_at.slice(0, 10) === day);
+      await supabase.from("planned_workouts").update({
+        status: "executado",
+        matched_activity_id: match?.id ?? null,
+      }).eq("id", id);
+    },
+    onSuccess: () => qc.invalidateQueries({ queryKey: ["planned", uid, plan?.id] }),
+  });
+
+  const executed = workouts?.filter((w) => w.status === "executado").length ?? 0;
+  const total = workouts?.length ?? 0;
+  const adherence = total > 0 ? Math.round((executed / total) * 100) : 0;
 
   return (
-    <div className="space-y-4 px-5 pb-6">
+    <div className="px-5 pb-6">
       <header className="pt-4">
-        <p className="label-cap text-muted-foreground">Meu plano</p>
-        <div className="flex items-start justify-between gap-3">
-          <h1 className="font-display text-[28px] font-black leading-tight text-foreground">
-            Meia do Rio · 21k
-          </h1>
-          <span className="grid h-11 w-11 place-items-center rounded-full bg-volt/20">
-            <Trophy size={20} className="text-volt-ink" />
-          </span>
-        </div>
-        <div className="mt-1 flex items-center gap-3 text-[13px] text-muted-foreground">
-          <span>10 semanas restantes</span>
-          <span className="h-1 w-1 rounded-full bg-muted-foreground/50" />
-          <span>Meta <span className="font-bold text-foreground tabular">1h52</span></span>
-        </div>
+        <p className="label-cap text-muted-foreground">Periodização</p>
+        <h1 className="font-display text-[28px] font-black text-foreground">Seu plano</h1>
       </header>
 
-      <div className="card-surface p-4">
-        <span className="label-cap text-muted-foreground">Fases</span>
-        <div className="mt-3 flex items-center gap-1">
-          {phases.map((p) => (
-            <div key={p.name} className="flex-1">
-              <div
-                className="h-2 rounded-full"
-                style={{
-                  background:
-                    p.status === "done" ? "var(--color-success)" :
-                    p.status === "current" ? "var(--color-ignite)" :
-                    "var(--color-border)",
-                }}
-              />
-              <div className="mt-2 flex items-baseline justify-between">
-                <span className={`text-[12px] font-bold ${p.status === "current" ? "text-ignite" : "text-foreground"}`}>{p.name}</span>
-                <span className="text-[10px] tabular text-muted-foreground">{p.status === "current" ? p.progress : `${p.weeks}s`}</span>
+      {!plan && (
+        <div className="card-surface mt-6 p-6 text-center">
+          <p className="text-[14px] text-muted-foreground">Nenhum plano ativo.</p>
+          <button onClick={() => create10k.mutate()} disabled={create10k.isPending} className="btn-ignite mx-auto mt-4 inline-flex items-center gap-2 px-5 py-2.5 text-[13px]">
+            {create10k.isPending ? <Loader2 size={14} className="animate-spin" /> : <Plus size={14} />} Criar plano 10K (10 semanas)
+          </button>
+        </div>
+      )}
+
+      {plan && (
+        <>
+          <div className="card-surface mt-4 p-4">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="font-display text-[18px] font-black text-foreground">{plan.race_name} · {(plan.race_distance_m! / 1000).toFixed(0)}K</p>
+                <p className="text-[12px] text-muted-foreground">Prova em {new Date(plan.race_date!).toLocaleDateString("pt-BR", { day: "numeric", month: "short" })} · {plan.total_weeks} semanas</p>
+              </div>
+              <div className="text-right">
+                <p className="label-cap text-muted-foreground">Aderência</p>
+                <p className="font-display text-[24px] font-black text-ignite tabular">{adherence}%</p>
               </div>
             </div>
-          ))}
-        </div>
-      </div>
-
-      <div>
-        <div className="mb-2 flex items-center justify-between px-1">
-          <span className="label-cap text-muted-foreground">Semana 3 · Build</span>
-          <span className="text-[12px] font-bold text-success">92% aderência</span>
-        </div>
-        <div className="space-y-2">
-          {week.map((d) => (
-            <DayCard
-              key={d.day}
-              day={d}
-              expanded={expanded === d.day}
-              onToggle={() => setExpanded(expanded === d.day ? null : d.day)}
-            />
-          ))}
-        </div>
-      </div>
-
-      <div
-        className="rounded-2xl border p-4"
-        style={{
-          background: "color-mix(in oklab, var(--color-pulse) 10%, transparent)",
-          borderColor: "color-mix(in oklab, var(--color-pulse) 40%, transparent)",
-        }}
-      >
-        <div className="flex items-center gap-2">
-          <span className="grid h-8 w-8 place-items-center rounded-full bg-pulse">
-            <Sparkles size={16} className="text-white" />
-          </span>
-          <div>
-            <p className="label-cap text-pulse">Ajuste da IA · hoje</p>
-            <p className="text-[13px] font-bold text-foreground">Troquei o tiro por rodado</p>
           </div>
-        </div>
-        <p className="mt-3 text-[13px] leading-relaxed text-foreground">
-          Sua variabilidade caiu e o sono foi curto. Hoje pega leve — troquei o tiro por um rodado tranquilo pra você chegar redondo no longão de domingo.
-        </p>
-      </div>
-    </div>
-  );
-}
 
-const toneMap = {
-  ignite: "var(--color-ignite)",
-  success: "var(--color-success)",
-  warning: "var(--color-warning)",
-  pulse: "var(--color-pulse)",
-  muted: "var(--color-muted-foreground)",
-};
-
-function DayCard({ day: d, expanded, onToggle }: { day: Day; expanded: boolean; onToggle: () => void }) {
-  return (
-    <div
-      className="overflow-hidden rounded-xl border transition-colors"
-      style={{
-        background: d.today ? "color-mix(in oklab, var(--color-ignite) 8%, var(--color-surface-alt))" : "var(--color-surface-alt)",
-        borderColor: d.today || expanded ? "var(--color-ignite)" : "var(--color-border)",
-      }}
-    >
-      <button onClick={onToggle} className="flex w-full items-center gap-3 p-3 text-left">
-        <div className="flex w-10 flex-col items-center">
-          <span className="label-cap" style={{ color: d.today ? "var(--color-ignite)" : "var(--color-muted-foreground)" }}>{d.day}</span>
-          <span
-            className="mt-1 h-1.5 w-1.5 rounded-full"
-            style={{ background: d.done ? "var(--color-success)" : d.today ? "var(--color-ignite)" : "var(--color-border)" }}
-          />
-        </div>
-        <div className="w-1 self-stretch rounded-full" style={{ background: toneMap[d.tone] }} />
-        <div className="min-w-0 flex-1">
-          <p className="text-[14px] font-bold text-foreground">
-            {d.type}
-            {d.swapped && <span className="ml-2 rounded-full bg-pulse/20 px-1.5 py-0.5 text-[10px] font-bold text-pulse">AJUSTADO</span>}
-            {d.today && <span className="ml-2 rounded-full bg-ignite px-1.5 py-0.5 text-[10px] font-bold text-white">HOJE</span>}
-          </p>
-          <p className="text-[12px] text-muted-foreground">{d.detail}</p>
-        </div>
-        <ChevronDown size={16} className={`shrink-0 text-muted-foreground transition-transform duration-200 ${expanded ? "rotate-180" : ""}`} />
-      </button>
-      {expanded && (
-        <div className="space-y-2 border-t border-border bg-background/40 p-3">
-          {d.plan.map((b, i) => (
-            <div key={i} className="flex gap-3 rounded-lg border border-border bg-background p-2.5">
-              <div className="w-1 shrink-0 rounded-full" style={{ background: b.color }} />
-              <div className="min-w-0 flex-1">
-                <div className="flex items-baseline justify-between">
-                  <p className="text-[13px] font-bold text-foreground">{b.phase}</p>
-                  <span className="text-[10px] font-bold tabular text-muted-foreground">{b.time}</span>
+          <div className="mt-4 space-y-2">
+            {workouts?.map((w) => {
+              const isOpen = openDay === w.id;
+              const dayFmt = new Date(w.day).toLocaleDateString("pt-BR", { weekday: "short", day: "numeric", month: "short" });
+              return (
+                <div key={w.id} className="card-surface">
+                  <button onClick={() => setOpenDay(isOpen ? null : w.id)} className="flex w-full items-center gap-3 p-3 text-left">
+                    <div className={`h-2 w-2 shrink-0 rounded-full ${w.status === "executado" ? "bg-success" : w.status === "perdido" ? "bg-danger" : "bg-muted-foreground"}`} />
+                    <div className="min-w-0 flex-1">
+                      <p className="text-[11px] tabular text-muted-foreground">{dayFmt}</p>
+                      <p className="font-display text-[14px] font-extrabold text-foreground">{w.title}</p>
+                    </div>
+                    <span className="text-[11px] tabular text-muted-foreground">{w.duration_s ? Math.round(w.duration_s / 60) : "—"}min · {w.target_zone}</span>
+                    <ChevronDown size={16} className={`shrink-0 text-muted-foreground transition-transform ${isOpen ? "rotate-180" : ""}`} />
+                  </button>
+                  {isOpen && (
+                    <div className="space-y-2 border-t border-border p-3">
+                      <p className="text-[13px] text-muted-foreground">{w.description}</p>
+                      {w.status !== "executado" && (
+                        <button onClick={() => markDone.mutate({ id: w.id, day: w.day })} disabled={markDone.isPending} className="inline-flex items-center gap-1.5 rounded-full bg-success/15 px-3 py-1.5 text-[12px] font-bold text-success hover:bg-success/25">
+                          <Check size={12} /> Marcar como executado
+                        </button>
+                      )}
+                      {w.status === "executado" && (
+                        <p className="text-[12px] font-bold text-success">✓ Executado{w.matched_activity_id ? " · vinculado ao treino do dia" : ""}</p>
+                      )}
+                    </div>
+                  )}
                 </div>
-                <p className="mt-0.5 text-[12px] text-muted-foreground">{b.desc}</p>
-              </div>
-            </div>
-          ))}
-        </div>
+              );
+            })}
+          </div>
+        </>
       )}
     </div>
   );
