@@ -166,6 +166,22 @@ export function Perfil() {
         </div>
       </Section>
 
+      <Section title="Integrações">
+        <Link
+          to="/connect"
+          className="flex w-full items-center gap-3 rounded-xl border border-border bg-background p-3 transition hover:border-ignite"
+        >
+          <div className="grid h-10 w-10 place-items-center rounded-full bg-ignite/10 text-ignite">
+            <Bot size={20} />
+          </div>
+          <div className="min-w-0 flex-1">
+            <p className="text-[13px] font-bold text-foreground">Assistente de IA</p>
+            <p className="text-[11px] text-muted-foreground">Conecte ChatGPT, Claude ou outro cliente MCP.</p>
+          </div>
+          <ChevronRight size={18} className="text-muted-foreground" />
+        </Link>
+      </Section>
+
       <button onClick={signOut} className="mt-4 flex w-full items-center justify-center gap-2 rounded-full border border-border py-3 text-[13px] font-semibold text-muted-foreground hover:text-danger">
         <LogOut size={14} /> Sair
       </button>
