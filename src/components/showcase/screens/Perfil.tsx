@@ -5,7 +5,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { computeZones, type ZoneAnchor } from "@/lib/metodologia";
 import { seedDemoData, clearDemoData } from "@/lib/demoData";
-import { useNavigate } from "@tanstack/react-router";
+import { Link, useNavigate } from "@tanstack/react-router";
 
 export function Perfil() {
   const { session } = useAuth();
