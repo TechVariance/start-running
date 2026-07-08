@@ -151,11 +151,6 @@ function AuthPage() {
   );
 }
 
-Route.options.beforeLoad = async () => {
-  // no-op, ssr:false handles it
-  return {};
-};
-
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <label className="block">
@@ -165,5 +160,3 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
   );
 }
 
-// keep import unused warning quiet
-void redirect;
