@@ -18,6 +18,7 @@ import { Route as AppTreinosRouteImport } from './routes/_app.treinos'
 import { Route as AppPlanoRouteImport } from './routes/_app.plano'
 import { Route as AppPerfilRouteImport } from './routes/_app.perfil'
 import { Route as AppHojeRouteImport } from './routes/_app.hoje'
+import { Route as AppConnectRouteImport } from './routes/_app.connect'
 import { Route as AppCoachRouteImport } from './routes/_app.coach'
 import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
 import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
@@ -68,6 +69,11 @@ const AppHojeRoute = AppHojeRouteImport.update({
   path: '/hoje',
   getParentRoute: () => AppRoute,
 } as any)
+const AppConnectRoute = AppConnectRouteImport.update({
+  id: '/connect',
+  path: '/connect',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppCoachRoute = AppCoachRouteImport.update({
   id: '/coach',
   path: '/coach',
@@ -105,6 +111,7 @@ export interface FileRoutesByFullPath {
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/coach': typeof AppCoachRoute
+  '/connect': typeof AppConnectRoute
   '/hoje': typeof AppHojeRoute
   '/perfil': typeof AppPerfilRoute
   '/plano': typeof AppPlanoRoute
@@ -120,6 +127,7 @@ export interface FileRoutesByTo {
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/coach': typeof AppCoachRoute
+  '/connect': typeof AppConnectRoute
   '/hoje': typeof AppHojeRoute
   '/perfil': typeof AppPerfilRoute
   '/plano': typeof AppPlanoRoute
@@ -137,6 +145,7 @@ export interface FileRoutesById {
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/_app/coach': typeof AppCoachRoute
+  '/_app/connect': typeof AppConnectRoute
   '/_app/hoje': typeof AppHojeRoute
   '/_app/perfil': typeof AppPerfilRoute
   '/_app/plano': typeof AppPlanoRoute
@@ -154,6 +163,7 @@ export interface FileRouteTypes {
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/coach'
+    | '/connect'
     | '/hoje'
     | '/perfil'
     | '/plano'
@@ -169,6 +179,7 @@ export interface FileRouteTypes {
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/coach'
+    | '/connect'
     | '/hoje'
     | '/perfil'
     | '/plano'
@@ -185,6 +196,7 @@ export interface FileRouteTypes {
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/_app/coach'
+    | '/_app/connect'
     | '/_app/hoje'
     | '/_app/perfil'
     | '/_app/plano'
@@ -270,6 +282,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppHojeRouteImport
       parentRoute: typeof AppRoute
     }
+    '/_app/connect': {
+      id: '/_app/connect'
+      path: '/connect'
+      fullPath: '/connect'
+      preLoaderRoute: typeof AppConnectRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/_app/coach': {
       id: '/_app/coach'
       path: '/coach'
@@ -310,6 +329,7 @@ declare module '@tanstack/react-router' {
 
 interface AppRouteChildren {
   AppCoachRoute: typeof AppCoachRoute
+  AppConnectRoute: typeof AppConnectRoute
   AppHojeRoute: typeof AppHojeRoute
   AppPerfilRoute: typeof AppPerfilRoute
   AppPlanoRoute: typeof AppPlanoRoute
@@ -318,6 +338,7 @@ interface AppRouteChildren {
 
 const AppRouteChildren: AppRouteChildren = {
   AppCoachRoute: AppCoachRoute,
+  AppConnectRoute: AppConnectRoute,
   AppHojeRoute: AppHojeRoute,
   AppPerfilRoute: AppPerfilRoute,
   AppPlanoRoute: AppPlanoRoute,
