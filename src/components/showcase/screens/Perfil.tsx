@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Loader2, Database, LogOut, Trash2 } from "lucide-react";
+import { Loader2, Database, LogOut, Trash2, Bot, ChevronRight } from "lucide-react";
 import { useAuth } from "@/lib/auth";
 import { supabase } from "@/integrations/supabase/client";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
