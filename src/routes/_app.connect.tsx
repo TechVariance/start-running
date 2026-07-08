@@ -1,5 +1,5 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
-import { Link, createFileRoute } from "@tanstack/react-router";
 import { ArrowLeft, Bot, Check, Copy, ExternalLink } from "lucide-react";
 
 export const Route = createFileRoute("/_app/connect")({
@@ -83,7 +83,7 @@ function ConnectInstructions() {
           </li>
           <li>No compositor de mensagens, toque em “+” e ligue o modo Desenvolvedor.</li>
           <li>Escolha “Adicionar fontes” e depois “Conectar mais”.</li>
-            <li>Dê um nome ao conector e cole a URL do servidor MCP copiada acima.</li>
+          <li>Dê um nome ao conector e cole a URL do servidor MCP copiada acima.</li>
           <li>Pronto. Pergunte ao ChatGPT sobre seus treinos, carga ou plano.</li>
         </ol>
       </section>
