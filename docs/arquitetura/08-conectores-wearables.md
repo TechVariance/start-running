@@ -34,13 +34,33 @@ sequenceDiagram
 - **Webhook push**: responde 200 imediato; falha em um item não derruba o lote (Garmin reenvia por até 24 h). `deregistrations` revoga tokens (LGPD).
 - **hr_sensor**: chega como `optical`; o engine promove para `chest_strap` quando a mensagem `device_info` do FIT indica cinta (confiança 1.0 — RN-2.2).
 
+### Escopo contratado — as 5 APIs do programa
+
+Decisão registrada em 2026-07-11: a Variance vai integrar **as cinco APIs**
+do Garmin Connect Developer Program. O consentimento OAuth deve solicitar
+os escopos de todas desde o primeiro connect (re-consent posterior derruba
+conversão), e cada API alimenta uma parte específica do SRS:
+
+| API Garmin | O que entrega | Uso no Start Running |
+|---|---|---|
+| **Activity API** | Push de atividades + FIT original | **Implementada** — webhook + download do bruto (PC-3); base das Camadas 1–3 |
+| **Health API** | Série diária: FC repouso, HRV, sono, estresse, passos | Prontidão e ajuste diário (RF-3.7, RF-6.2) — consumir a série bruta, nunca o score Firstbeat (PC-2) |
+| **Women's Health API** | Ciclo menstrual, sintomas | Camada 4/contexto do motor de treino; dado sensível ⇒ consentimento granular próprio (RNF-3.x) |
+| **Training API** | Envio de treinos estruturados PARA o relógio | Plano do Start Running executável no pulso (RF-4.x/RF-5.1 — match planejado×executado fecha o ciclo) |
+| **Courses API** | Envio de percursos/rotas para o dispositivo | Estratégia de prova e treinos com rota (RF-10.x, Fase 3) |
+
+Ordem de implementação sugerida: Activity (feita) → Health → Training →
+Women's Health → Courses. Cada uma entra como submódulo em
+`integrations/garmin/` reutilizando a mesma conexão OAuth e as mesmas portas.
+
 ### O que falta para produção
 
 | Item | Status |
 |---|---|
-| Aprovação no [Garmin Connect Developer Program](https://developer.garmin.com/gc-developer-program/) | **pendente — ação de negócio** |
+| Aprovação no [Garmin Connect Developer Program](https://developer.garmin.com/gc-developer-program/) | **solicitação enviada em 2026-07-11 (Variance) — aguardando aprovação** |
 | `GARMIN_CLIENT_ID` / `GARMIN_CLIENT_SECRET` / `GARMIN_REDIRECT_URI` | env vars; sem elas o conector sobe desativado (503 no /connect) |
-| Registro da URL do webhook no portal Garmin | após aprovação |
+| Registro da URL do webhook no portal Garmin (Activity + Health + Women's Health) | após aprovação |
+| Escopos OAuth das 5 APIs no fluxo de consentimento | ajustar `buildAuthorizeUrl` quando o portal confirmar os identificadores de escopo |
 | Adapters Postgres/S3/BullMQ nos tokens `CONNECTION_STORE`/`RAW_FILE_STORE`/`INGEST_QUEUE` | in-memory em dev; troca na composição do módulo |
 | Backfill histórico (Activity Backfill API) | Fase 2 |
 
@@ -74,8 +94,9 @@ sequenceDiagram
 
 | Item | Status |
 |---|---|
+| Conta no Apple Developer Program (Variance) | **ainda não criada (2026-07-11)** — bloqueia entitlement e distribuição |
 | Dependência nativa `react-native-health` + dev build (não funciona no Expo Go) | implementar `RNHealthAdapter` sobre a interface `HealthKitAdapter` |
-| Entitlement `com.apple.developer.healthkit` + `NSHealthShareUsageDescription` | via EAS/prebuild; exige Apple Developer Program |
+| Entitlement `com.apple.developer.healthkit` + `NSHealthShareUsageDescription` | via EAS/prebuild; exige a conta acima |
 | Background delivery (HKObserverQuery) para sync automático | Fase 2; MVP sincroniza ao abrir o app |
 
 ## 3. Contratos e decisões
