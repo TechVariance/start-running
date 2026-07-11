@@ -24,7 +24,11 @@ def detect_format(raw: bytes) -> str:
             return "tcx"
         if b"<gpx" in head:
             return "gpx"
-    raise ValueError("Formato de arquivo bruto não reconhecido (esperado FIT, TCX ou GPX)")
+    if head.startswith(b"{") and b'"workout"' in head and b'"samples"' in raw:
+        return "healthkit_json"
+    raise ValueError(
+        "Formato de arquivo bruto não reconhecido (esperado FIT, TCX, GPX ou HealthKit JSON)"
+    )
 
 
 def parse(raw: bytes, fmt: str | None = None) -> CanonicalSeries:
@@ -42,4 +46,8 @@ def parse(raw: bytes, fmt: str | None = None) -> CanonicalSeries:
         from . import gpx
 
         return gpx.parse(raw)
+    if fmt == "healthkit_json":
+        from . import healthkit
+
+        return healthkit.parse(raw)
     raise ValueError(f"Formato não suportado: {fmt!r}")

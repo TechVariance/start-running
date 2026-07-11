@@ -4,8 +4,10 @@
  * opcionais e dependem do sensor — nunca presuma presença.
  */
 
-export type ActivitySource = 'strava' | 'garmin' | 'upload' | 'manual';
-export type RawFormat = 'fit' | 'tcx' | 'gpx';
+export type ActivitySource = 'strava' | 'garmin' | 'apple_health' | 'upload' | 'manual';
+/** `healthkit_json` é o bruto exportado do HealthKit pelo app (Apple Watch
+ *  não expõe FIT); riqueza equivale a TCX (FC + distância, sem dinâmica). */
+export type RawFormat = 'fit' | 'tcx' | 'gpx' | 'healthkit_json';
 /** Ponderação de confiança da FC pela origem do sensor (RN-2.2). */
 export type HrSensor = 'chest_strap' | 'optical' | 'none';
 export type ActivityStatus = 'ingested' | 'processing' | 'ready' | 'rejected';

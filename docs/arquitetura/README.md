@@ -17,6 +17,7 @@ Este é o documento de arquitetura técnica referido na Seção 6 do SRS: detalh
 | [05 — Apps cliente e design system](05-apps-cliente-e-design-system.md) | Arquitetura do app mobile/web, navegação, estado, integração dos design tokens |
 | [06 — Segurança, privacidade e LGPD](06-seguranca-privacidade-lgpd.md) | Consentimento, criptografia, cofre de tokens, direitos do titular, limites clínicos |
 | [07 — Observabilidade e operação](07-observabilidade-e-operacao.md) | Telemetria do motor, SLOs, ambientes, CI/CD |
+| [08 — Conectores de wearables](08-conectores-wearables.md) | Garmin (OAuth2+PKCE, webhook, FIT) e Apple Watch (HealthKit → healthkit_json), portas e pendências de produção |
 
 ## Decisões de arquitetura (ADRs)
 

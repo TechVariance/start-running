@@ -28,8 +28,10 @@ SERIES_COLUMNS = [
     "quality_flags",
 ]
 
-#: FIT(3) > TCX(2) > GPX(1) > resumo(0) — decide dedup e reprocessamento (RF-2.6/2.7).
-RICHNESS_RANK = {"fit": 3, "tcx": 2, "gpx": 1}
+#: FIT(3) > TCX(2) ≈ HealthKit(2) > GPX(1) > resumo(0) — decide dedup e
+#: reprocessamento (RF-2.6/2.7). HealthKit traz FC + distância (como TCX),
+#: mas nunca dinâmica de corrida.
+RICHNESS_RANK = {"fit": 3, "tcx": 2, "healthkit_json": 2, "gpx": 1}
 
 #: Confiança base da FC pela origem do sensor (RN-2.2 / doc 04 §2.1).
 HR_SENSOR_CONFIDENCE = {"chest_strap": 1.0, "optical": 0.8, "none": 0.0}
