@@ -89,3 +89,7 @@ pipeline.py                              → orquestração + methodology_versio
 ## 4. Escala (RNF-2.1)
 
 Workers do engine são stateless e escalam por profundidade de fila (picos pós-prova de domingo de manhã). Backpressure: a API nunca processa inline; tudo que passa do estágio "bruto no S3 + job enfileirado" é elástico. Leitura (dashboard) é servida do Postgres já materializado — pico de escrita não degrada leitura.
+
+## 5. Multiesporte no pipeline (ADR-0007)
+
+Natação entra pelo MESMO fluxo (webhook/HealthKit → bruto imutável → fila → engine): o parser FIT lê as mensagens `length`/`lap` de piscina e o estágio de métricas usa `metrics/swim.py` (pace/100 m, SWOLF, sTSS por CSS). FC óptica na água tem teto de confiança 0,6 (RN-19.2). Musculação não passa pelo parser: o registro estruturado chega pronto do módulo `strength` e vai direto ao estágio de derivadas (`metrics/strength.py` — tonelagem, 1RM Epley, strength-load sRPE, flag `heavy_lower_body` para a restrição de interferência do motor de treino). Tudo desemboca no MESMO `daily_load` (PC-6).

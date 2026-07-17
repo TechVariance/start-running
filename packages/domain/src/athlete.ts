@@ -21,6 +21,8 @@ export interface AthleteProfile {
   /** Lactate Threshold Heart Rate — âncora preferida do atleta sério. */
   lthr?: number;
   thresholdPaceSPerKm?: number;
+  /** Critical Swim Speed em s/100 m — limiar do nado (RF-19.4, ADR-0007). */
+  cssSPer100m?: number;
   vo2max?: number;
   criticalSpeedMS?: number;
   criticalPowerW?: number;
@@ -53,7 +55,7 @@ export interface RaceGoal {
 
 /** Estimativa de limiar com procedência e confiança (RF-3.10). */
 export interface ThresholdEstimate {
-  kind: 'lthr' | 'threshold_pace' | 'cs' | 'cp' | 'hr_max';
+  kind: 'lthr' | 'threshold_pace' | 'cs' | 'cp' | 'hr_max' | 'css';
   value: number;
   source: 'onboarding' | 'field_test' | 'auto_recalibration';
   confidence: number; // 0..1

@@ -11,7 +11,9 @@ export type ZoneAnchor =
   | 'karvonen_pct_hrr'   // Karvonen — % FC de reserva
   | 'pct_lthr'           // % LTHR (padrão atleta sério)
   | 'pct_threshold_pace' // % pace de limiar
-  | 'pct_critical_power';
+  | 'pct_critical_power'
+  /** Pace de nado por 100 m ancorado no CSS (RF-19.4, ADR-0007). */
+  | 'pct_css';
 
 export interface ZoneBoundary {
   zone: number;      // 1..model

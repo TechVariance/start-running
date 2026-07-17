@@ -93,6 +93,8 @@ class AthleteProfile:
     hr_max: int | None = None
     lthr: int | None = None
     threshold_pace_s_per_km: float | None = None
+    #: Critical Swim Speed em s/100 m — limiar do nado (RF-19.4, ADR-0007).
+    css_s_per_100m: float | None = None
     critical_power_w: float | None = None
     weight_kg: float | None = None
 

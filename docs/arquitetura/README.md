@@ -29,6 +29,7 @@ Este é o documento de arquitetura técnica referido na Seção 6 do SRS: detalh
 | [0004](adr/0004-motor-de-metricas-python.md) | Motor de métricas em Python (worker separado) |
 | [0005](adr/0005-postgres-timescale-s3.md) | PostgreSQL + TimescaleDB + object storage S3 |
 | [0006](adr/0006-serie-bruta-fonte-da-verdade.md) | Série bruta como fonte da verdade; métricas derivadas recomputáveis e versionadas |
+| [0007](adr/0007-carga-unificada-multiesporte.md) | Carga unificada multiesporte (PC-6): uma moeda TSS para corrida, natação e musculação |
 
 ## Mapa do repositório
 

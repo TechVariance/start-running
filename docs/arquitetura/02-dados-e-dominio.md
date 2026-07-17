@@ -269,3 +269,10 @@ CREATE TABLE strength_exercise (               -- Módulo 11
 - **Reprocessamento (RNF-2.3):** jobs idempotentes por `sha256` do arquivo; upsert de `activity_metrics` por `(activity_id, methodology_version)`; `daily_load` é recomputado de forma determinística a partir das sessões do período.
 - **Degradação elegante (SRS §3.2):** toda coluna de Camada 2–3 é anulável; a UI e o motor de treino consultam a *presença* do dado, nunca presumem.
 - **Confiança em todo lugar (RNF-7.1):** `confidence` acompanha qualquer derivada, do banco ao componente de UI (hachura/opacidade — DS §7.6).
+
+## Multiesporte (PC-6 / ADR-0007)
+
+- **`sport` é dimensão de primeira classe** (`run | swim | strength`) em `activities` e em toda derivada; o modelo canônico ganhou `swim.ts` (piscinas, SWOLF, CSS) e `strength.ts` (sessão estruturada, tonelagem, 1RM) — espelhados em `metrics_engine.metrics.swim/strength`.
+- **Natação:** série canônica ganha o canal `pace_s_per_100m`; agregados por piscina (`SwimLength`) vêm das mensagens `length` do FIT. Pace/SWOLF são por comprimento de piscina (RN-19.1). Limiar do nado = `css_s_per_100m` na Camada 0, âncora `pct_css` no motor de zonas.
+- **Musculação:** NÃO tem série temporal obrigatória — o registro estruturado (exercícios/séries/reps/carga) é o bruto, serializado canonicamente e hasheado (RNF-2.3), como o payload HealthKit.
+- **Carga unificada:** `daily_load` é do TOTAL do dia com decomposição `by_sport` (jsonb); CTL/ATL/TSB/ACWR não mudam de forma — mudou só a origem das contribuições.

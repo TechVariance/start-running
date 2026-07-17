@@ -13,6 +13,7 @@ import { ActivitiesModule } from './modules/activities/activities.module';
 import { ZonesModule } from './modules/zones/zones.module';
 import { TrainingModule } from './modules/training/training.module';
 import { StrengthModule } from './modules/strength/strength.module';
+import { SwimmingModule } from './modules/swimming/swimming.module';
 import { FeedbackModule } from './modules/feedback/feedback.module';
 import { NotificationsModule } from './modules/notifications/notifications.module';
 import { BillingModule } from './modules/billing/billing.module';
@@ -29,6 +30,7 @@ import { AdminModule } from './modules/admin/admin.module';
     ZonesModule,
     TrainingModule,
     StrengthModule,
+    SwimmingModule,
     FeedbackModule,
     NotificationsModule,
     BillingModule,

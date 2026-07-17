@@ -4,6 +4,9 @@
  * opcionais e dependem do sensor — nunca presuma presença.
  */
 
+/** Modalidades do sistema único de carga (PC-6). */
+export type Sport = 'run' | 'swim' | 'strength';
+
 export type ActivitySource = 'strava' | 'garmin' | 'apple_health' | 'upload' | 'manual';
 /** `healthkit_json` é o bruto exportado do HealthKit pelo app (Apple Watch
  *  não expõe FIT); riqueza equivale a TCX (FC + distância, sem dinâmica). */
@@ -17,7 +20,8 @@ export interface Activity {
   athleteId: string;
   startedAt: string;
   timezone?: string;
-  sport: 'run';
+  /** Dimensão de primeira classe do modelo de carga unificado (PC-6/ADR-0007). */
+  sport: Sport;
   source: ActivitySource;
   sourceActivityId?: string;
   device?: string;

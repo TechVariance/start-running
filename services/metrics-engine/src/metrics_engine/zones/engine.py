@@ -59,7 +59,8 @@ _LABELS: dict[int, list[str]] = {
 }
 
 _HR_ANCHORS = {"pct_hrmax", "karvonen_pct_hrr", "pct_lthr"}
-_PACE_ANCHORS = {"pct_threshold_pace"}
+#: Âncoras de pace: intensidade cresce quando o valor cai (semântica invertida).
+_PACE_ANCHORS = {"pct_threshold_pace", "pct_css"}
 _POWER_ANCHORS = {"pct_critical_power"}
 
 
@@ -73,6 +74,8 @@ def _anchor_points(anchor: str, profile: AthleteProfile) -> list[tuple[str, floa
         return [("lthr", profile.lthr)]
     if anchor == "pct_threshold_pace":
         return [("threshold_pace_s_per_km", profile.threshold_pace_s_per_km)]
+    if anchor == "pct_css":
+        return [("css_s_per_100m", profile.css_s_per_100m)]
     if anchor == "pct_critical_power":
         return [("critical_power_w", profile.critical_power_w)]
     raise ValueError(f"Âncora de zona desconhecida: {anchor!r}")
@@ -106,6 +109,8 @@ def resolve_boundaries(model: int, anchor: str, profile: AthleteProfile) -> list
         if anchor == "pct_threshold_pace":
             # Intensidade em fração da VELOCIDADE de limiar; pace = limiar/fração.
             return profile.threshold_pace_s_per_km / fraction
+        if anchor == "pct_css":
+            return profile.css_s_per_100m / fraction
         return profile.critical_power_w * fraction
 
     edges = [round(scale(f), 1) for f in fractions]
@@ -119,6 +124,8 @@ def resolve_boundaries(model: int, anchor: str, profile: AthleteProfile) -> list
 def _zone_channel(anchor: str) -> str:
     if anchor in _HR_ANCHORS:
         return "hr"
+    if anchor == "pct_css":
+        return "pace_s_per_100m"  # canal canônico do nado (metrics/swim.py)
     if anchor in _PACE_ANCHORS:
         return "pace_s_per_km"
     if anchor in _POWER_ANCHORS:
