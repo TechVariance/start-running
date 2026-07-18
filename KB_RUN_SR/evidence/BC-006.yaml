@@ -1,0 +1,19 @@
+id: BC-006
+title: Taper com redução de volume e preservação de qualidade
+claim: O taper tende a melhorar desempenho quando reduz de forma relevante o volume e preserva intensidade; duração e magnitude devem ser individualizadas.
+distances: [5K, 10K, 21K, 42K, general]
+profiles: [recreational, trained, elite]
+topics: [taper, periodization, competition]
+outcomes: [performance, fatigue_reduction]
+evidence_level: A
+confidence: high
+applicability: direct
+practical_application: Reduzir volume antes da prova sem eliminar todos os estímulos de qualidade; considerar maior dissipação de fadiga para provas longas.
+limitations:
+  - A melhor duração depende da carga anterior, distância e indivíduo.
+  - Dados agrupam modalidades e níveis diferentes de endurance.
+source_ids: [SRC-0008]
+status: active
+last_reviewed: 2026-07-18
+review_due: 2027-01-18
+

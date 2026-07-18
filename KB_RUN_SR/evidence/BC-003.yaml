@@ -1,0 +1,19 @@
+id: BC-003
+title: Trabalho de limiar como componente específico
+claim: A velocidade no limiar relaciona-se ao desempenho de fundo e sessões próximas ao limiar são úteis, mas intensidade moderada em excesso não demonstra superioridade consistente.
+distances: [5K, 10K, 21K, 42K, general]
+profiles: [recreational, trained]
+topics: [threshold_training, intensity_distribution]
+outcomes: [threshold_velocity, performance, fatigue_management]
+evidence_level: B
+confidence: moderate
+applicability: direct
+practical_application: Usar trabalho de limiar como sessão específica e evitar que ele se torne o ritmo padrão de todos os treinos.
+limitations:
+  - Métodos de determinação do limiar não são intercambiáveis.
+  - A dose ideal por distância e perfil ainda não é universal.
+source_ids: [SRC-0003, SRC-0005]
+status: active
+last_reviewed: 2026-07-18
+review_due: 2027-01-18
+

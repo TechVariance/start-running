@@ -1,0 +1,19 @@
+id: BC-007
+title: Monitoramento combinado de carga externa e interna
+claim: Distância, duração e velocidade descrevem o trabalho executado, enquanto percepção de esforço e respostas fisiológicas ajudam a estimar seu custo individual.
+distances: [5K, 10K, 21K, 42K, general]
+profiles: [beginner, recreational, trained, elite]
+topics: [monitoring, training_load, recovery]
+outcomes: [fatigue, adaptation, load_management]
+evidence_level: B
+confidence: moderate
+applicability: direct
+practical_application: Registrar por sessão duração ou distância, tipo, RPE global, dor, sono e ambiente; interpretar tendências em vez de um valor isolado.
+limitations:
+  - Métricas diferentes não são diretamente intercambiáveis.
+  - Respostas individuais e qualidade do sensor alteram a interpretação.
+source_ids: [SRC-0009]
+status: active
+last_reviewed: 2026-07-18
+review_due: 2027-01-18
+

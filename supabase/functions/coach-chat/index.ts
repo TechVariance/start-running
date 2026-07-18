@@ -1,5 +1,6 @@
-// Coach IA — usa Lovable AI Gateway. Contexto real do atleta.
+// Coach IA — usa Lovable AI Gateway. Contexto real do atleta + KB_RUN_SR (RAG restrito à base de corrida).
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.4";
+import { buildKbContext } from "./kb.ts";
 
 const cors = {
   "Access-Control-Allow-Origin": "*",
@@ -28,26 +29,36 @@ Deno.serve(async (req) => {
     if (!message.trim()) return json({ error: "empty message" }, 400);
 
     // Contexto do atleta
-    const [{ data: profile }, { data: daily }, { data: acts }, { data: history }] = await Promise.all([
-      supabase.from("profiles").select("display_name, hr_max, hr_rest, lthr, weekly_volume_km, threshold_pace_s_per_km").eq("user_id", uid).maybeSingle(),
+    const [{ data: profile }, { data: daily }, { data: acts }, { data: history }, { data: plan }] = await Promise.all([
+      supabase.from("profiles").select("display_name, birth_date, self_level, hr_max, hr_rest, lthr, weekly_volume_km, threshold_pace_s_per_km").eq("user_id", uid).maybeSingle(),
       supabase.from("daily_load").select("day, ctl, atl, tsb, acwr, acwr_alert").eq("user_id", uid).order("day", { ascending: false }).limit(1).maybeSingle(),
-      supabase.from("activities").select("started_at, distance_m, elapsed_s, avg_hr, avg_pace_s_per_km, activity_metrics(session_load, hrtss, rtss, trimp)").eq("user_id", uid).order("started_at", { ascending: false }).limit(5),
+      supabase.from("activities").select("started_at, modality, distance_m, elapsed_s, avg_hr, avg_pace_s_per_km, activity_metrics(session_load, hrtss, rtss, trimp)").eq("user_id", uid).order("started_at", { ascending: false }).limit(5),
       supabase.from("coach_messages").select("role, content").eq("user_id", uid).order("created_at", { ascending: false }).limit(10),
+      supabase.from("plans").select("race_name, race_distance_m, race_date, phase, week, total_weeks").eq("user_id", uid).order("created_at", { ascending: false }).limit(1).maybeSingle(),
     ]);
 
     const name = profile?.display_name ?? "atleta";
+    const age = profile?.birth_date
+      ? Math.floor((Date.now() - new Date(profile.birth_date).getTime()) / (365.25 * 24 * 3600 * 1000))
+      : null;
     const ctx = [
-      profile ? `Perfil: nome ${name}, FCmáx ${profile.hr_max ?? "?"}, FCrep ${profile.hr_rest ?? "?"}, LTHR ${profile.lthr ?? "?"}, volume ${profile.weekly_volume_km ?? "?"} km/sem.` : "Perfil ainda incompleto.",
+      profile
+        ? `Perfil: nome ${name}, idade ${age ?? "?"}, nível ${profile.self_level ?? "não informado"}, FCmáx ${profile.hr_max ?? "?"}, FCrep ${profile.hr_rest ?? "?"}, LTHR ${profile.lthr ?? "?"}, volume ${profile.weekly_volume_km ?? "?"} km/sem.`
+        : "Perfil ainda incompleto.",
+      plan
+        ? `Plano ativo: ${plan.race_name ?? "prova"} de ${plan.race_distance_m ? (plan.race_distance_m / 1000).toFixed(0) + "K" : "distância não definida"}, prova em ${plan.race_date ?? "data não definida"}, fase ${plan.phase ?? "?"} (semana ${plan.week ?? "?"}/${plan.total_weeks ?? "?"}).`
+        : "Sem plano/prova-alvo definido ainda.",
       daily ? `Carga atual: CTL ${daily.ctl?.toFixed(0)}, ATL ${daily.atl?.toFixed(0)}, TSB ${daily.tsb?.toFixed(0)}, ACWR ${daily.acwr ?? "n/d"}${daily.acwr_alert ? " (fora da zona 0.8–1.3)" : ""}.` : "Sem dados de carga acumulados ainda.",
       acts && acts.length > 0
-        ? "Últimos treinos:\n" + acts.map((a: Record<string, unknown>) => {
+        ? "Últimos treinos (qualquer modalidade):\n" + acts.map((a: Record<string, unknown>) => {
           const d = new Date(a.started_at as string).toLocaleDateString("pt-BR");
+          const mod = (a.modality as string) ?? "run";
           const km = a.distance_m ? ((a.distance_m as number) / 1000).toFixed(1) + "km" : "";
           const min = Math.round((a.elapsed_s as number) / 60) + "min";
           const hr = a.avg_hr ? `FC${a.avg_hr}` : "";
           const m = (a.activity_metrics as Array<{ session_load: number }> | undefined)?.[0];
-          const tss = m?.session_load ? `${m.session_load.toFixed(0)}TSS` : "";
-          return `  - ${d}: ${km} ${min} ${hr} ${tss}`.trim();
+          const tss = m?.session_load ? `${m.session_load.toFixed(0)}carga` : "";
+          return `  - ${d} [${mod}]: ${km} ${min} ${hr} ${tss}`.trim();
         }).join("\n")
         : "Nenhum treino registrado ainda.",
     ].join("\n");
@@ -55,7 +66,9 @@ Deno.serve(async (req) => {
     const systemPrompt = `Você é o coach de corrida do ${name} no app Start Running. Persona: técnico que respeita o atleta — direto, prático, sem jargão despejado. Celebra evolução real. Nunca inventa números; se um dado não existe, diga. Português do Brasil. Frases curtas. Nada de listas gigantes: máximo 3 bullets curtos ou parágrafo direto. Não recomenda medicação. Sempre baseia conselho nos dados abaixo.
 
 DADOS ATUAIS DO ATLETA:
-${ctx}`;
+${ctx}
+
+${buildKbContext(plan?.race_distance_m)}`;
 
     const priorMessages = (history ?? []).reverse().map((m: { role: string; content: string }) => ({
       role: m.role === "coach" ? "assistant" : "user",

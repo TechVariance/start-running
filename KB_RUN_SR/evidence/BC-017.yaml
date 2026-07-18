@@ -1,0 +1,19 @@
+id: BC-017
+title: Baixa disponibilidade energética e risco sistêmico
+claim: Ingestão energética persistentemente incompatível com a carga pode prejudicar saúde óssea, endócrina, reprodutiva, imune e desempenho em pessoas de diferentes sexos.
+distances: [5K, 10K, 21K, 42K, general]
+profiles: [recreational, trained, elite, female, male, adolescent]
+topics: [energy_availability, nutrition, red_s, bone_health]
+outcomes: [health, performance, injury]
+evidence_level: A
+confidence: high
+applicability: direct
+practical_application: Não associar melhora de desempenho a restrição ou perda de peso; diante de sinais de risco, orientar avaliação multidisciplinar.
+limitations:
+  - Estimativas de disponibilidade energética em campo são imprecisas.
+  - Ferramentas de triagem não substituem diagnóstico profissional.
+source_ids: [SRC-0020, SRC-0025]
+status: active
+last_reviewed: 2026-07-18
+review_due: 2027-01-18
+

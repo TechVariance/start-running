@@ -1,0 +1,19 @@
+id: BC-020
+title: Tecnologia avançada de calçados e economia de corrida
+claim: Calçados com placas e espumas avançadas reduzem o custo metabólico em média, mas a resposta é individual e o benefício não prova prevenção de lesões.
+distances: [5K, 10K, 21K, 42K, general]
+profiles: [recreational, trained, elite]
+topics: [footwear, running_economy, technology]
+outcomes: [running_economy, performance, injury]
+evidence_level: A
+confidence: high
+applicability: direct
+practical_application: Testar conforto e resposta antes da prova, respeitar regras esportivas e evitar mudança abrupta de equipamento.
+limitations:
+  - A magnitude varia entre corredores e velocidades.
+  - Evidência de prevenção de lesão é insuficiente.
+source_ids: [SRC-0023]
+status: active
+last_reviewed: 2026-07-18
+review_due: 2027-01-18
+

@@ -1,0 +1,19 @@
+id: BC-002
+title: Uso contextual do treinamento intervalado de alta intensidade
+claim: Treinos intervalados de alta intensidade podem melhorar VO2max, economia e desempenho, mas o protocolo ideal depende do nível, objetivo e tolerância do corredor.
+distances: [5K, 10K, 21K, 42K, general]
+profiles: [recreational, trained]
+topics: [interval_training, high_intensity]
+outcomes: [vo2max, running_economy, performance]
+evidence_level: A
+confidence: moderate
+applicability: direct
+practical_application: Selecionar duração, recuperação e intensidade pela adaptação-alvo e capacidade de recuperação, não pela ideia de que mais intenso é sempre melhor.
+limitations:
+  - Protocolos e populações são heterogêneos.
+  - Muitos estudos têm amostras pequenas e intervenções curtas.
+source_ids: [SRC-0003, SRC-0004]
+status: active
+last_reviewed: 2026-07-18
+review_due: 2027-01-18
+

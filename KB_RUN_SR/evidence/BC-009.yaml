@@ -1,0 +1,19 @@
+id: BC-009
+title: Fundamentos da recuperação em atletas de endurance
+claim: Não há uma modalidade isolada de recuperação com superioridade consistente; carga adequada, sono, nutrição e periodização são os fundamentos.
+distances: [5K, 10K, 21K, 42K, general]
+profiles: [recreational, trained, elite]
+topics: [recovery, sleep, nutrition, periodization]
+outcomes: [recovery, soreness, performance]
+evidence_level: A
+confidence: moderate
+applicability: direct
+practical_application: Usar massagem, frio, compressão e tecnologias como complementos definidos por objetivo, preferência, custo e timing.
+limitations:
+  - Modalidades podem alterar dor percebida sem melhorar adaptação ou desempenho.
+  - Protocolos e medidas de recuperação são heterogêneos.
+source_ids: [SRC-0018, SRC-0019]
+status: active
+last_reviewed: 2026-07-18
+review_due: 2027-01-18
+

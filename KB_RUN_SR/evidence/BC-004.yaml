@@ -1,0 +1,19 @@
+id: BC-004
+title: Treinamento de força para economia e desempenho
+claim: Treinamento com cargas altas, pliometria ou métodos combinados tende a melhorar economia de corrida e pode melhorar medidas de desempenho em corredores de média e longa distância.
+distances: [5K, 10K, 21K, 42K, general]
+profiles: [recreational, trained, elite]
+topics: [strength_training, running_economy]
+outcomes: [running_economy, time_trial, performance]
+evidence_level: A
+confidence: high
+applicability: direct
+practical_application: Integrar força progressiva ao ciclo, compatibilizando-a com sessões-chave e capacidade técnica do corredor.
+limitations:
+  - A confiança é maior para economia do que para prevenção de lesões.
+  - Exercícios e cargas não devem ser copiados sem avaliação técnica.
+source_ids: [SRC-0006, SRC-0007]
+status: active
+last_reviewed: 2026-07-18
+review_due: 2027-01-18
+

@@ -1,0 +1,19 @@
+id: BC-008
+title: Wearables como apoio e não como decisão clínica
+claim: Feedback de wearables pode ajudar técnica, controle de velocidade e motivação, mas métricas proprietárias não substituem contexto, percepção ou avaliação profissional.
+distances: [5K, 10K, 21K, 42K, general]
+profiles: [recreational, trained]
+topics: [wearables, monitoring, technology]
+outcomes: [technique, performance, motivation, injury]
+evidence_level: A
+confidence: moderate
+applicability: partial
+practical_application: Guardar dados brutos e contexto; tratar VO2max estimado, readiness e carga proprietária como estimativas, não diagnósticos.
+limitations:
+  - Efeito depende do dispositivo, algoritmo e desfecho.
+  - Evidência para redução de lesão permanece limitada.
+source_ids: [SRC-0022]
+status: active
+last_reviewed: 2026-07-18
+review_due: 2027-01-18
+

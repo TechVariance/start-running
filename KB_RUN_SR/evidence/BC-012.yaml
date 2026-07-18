@@ -1,0 +1,19 @@
+id: BC-012
+title: Risco de hidratação excessiva em endurance
+claim: Hiponatremia associada ao exercício está frequentemente ligada à ingestão de líquido superior às perdas, sobretudo em esforços longos; beber o máximo possível não é orientação segura.
+distances: [21K, 42K, general]
+profiles: [recreational, trained, elite]
+topics: [hydration, hyponatremia, race_safety]
+outcomes: [health, safety, performance]
+evidence_level: A
+confidence: high
+applicability: direct
+practical_application: Considerar sede, duração, condições ambientais, taxa individual de suor e oportunidades de abastecimento; testar a estratégia em treino.
+limitations:
+  - Necessidades são individuais e mudam com ambiente e ritmo.
+  - Condições clínicas e ambientes extremos exigem orientação profissional.
+source_ids: [SRC-0016]
+status: active
+last_reviewed: 2026-07-18
+review_due: 2027-01-18
+

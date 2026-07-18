@@ -1,0 +1,19 @@
+id: BC-010
+title: Sono como componente central da recuperação
+claim: Sono insuficiente pode comprometer recuperação e atletas podem precisar de mais sono conforme carga e déficit acumulado; extensão e cochilos são estratégias promissoras.
+distances: [5K, 10K, 21K, 42K, general]
+profiles: [recreational, trained, elite, masters]
+topics: [sleep, recovery, monitoring]
+outcomes: [recovery, cognition, performance]
+evidence_level: A
+confidence: moderate
+applicability: direct
+practical_application: Monitorar regularidade, duração, qualidade percebida e sonolência; ajustar carga diante de déficit persistente.
+limitations:
+  - Necessidade individual varia.
+  - A qualidade dos estudos de intervenção é desigual.
+source_ids: [SRC-0019]
+status: active
+last_reviewed: 2026-07-18
+review_due: 2027-01-18
+

@@ -1,0 +1,19 @@
+id: BC-014
+title: Prevenção multifatorial de lesões relacionadas à corrida
+claim: Lesões de corrida resultam da interação entre histórico, exposição, capacidade e fatores biomecânicos; nenhum exercício isolado demonstrou prevenção universal.
+distances: [5K, 10K, 21K, 42K, general]
+profiles: [beginner, recreational, trained, return_to_run]
+topics: [injury_prevention, training_load, biomechanics]
+outcomes: [injury, adherence, health]
+evidence_level: A
+confidence: high
+applicability: direct
+practical_application: Combinar histórico, progressão contextual, educação, força, técnica quando indicada e acesso rápido à avaliação de sintomas persistentes.
+limitations:
+  - A confiança é menor para intervenções específicas.
+  - Definições de lesão e populações variam entre estudos.
+source_ids: [SRC-0011, SRC-0012, SRC-0014]
+status: active
+last_reviewed: 2026-07-18
+review_due: 2027-01-18
+

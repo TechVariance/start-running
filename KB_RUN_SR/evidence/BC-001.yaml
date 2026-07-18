@@ -1,0 +1,19 @@
+id: BC-001
+title: Predominância de baixa intensidade no treinamento de endurance
+claim: A maior parte do treinamento de endurance deve ocorrer em baixa intensidade; modelos piramidal e polarizado são defensáveis, sem superioridade universal do polarizado.
+distances: [5K, 10K, 21K, 42K, general]
+profiles: [recreational, trained, elite]
+topics: [intensity_distribution, periodization]
+outcomes: [performance, aerobic_capacity, fatigue_management]
+evidence_level: A
+confidence: moderate
+applicability: direct
+practical_application: Preservar predominância de sessões fáceis e usar intensidade alta de forma deliberada sem transformar 80/20 em regra rígida.
+limitations:
+  - A classificação muda conforme seja medida por sessão, tempo, frequência cardíaca ou percepção.
+  - Parte relevante dos dados deriva de atletas treinados e de diferentes esportes de endurance.
+source_ids: [SRC-0005, SRC-0003]
+status: active
+last_reviewed: 2026-07-18
+review_due: 2027-01-18
+

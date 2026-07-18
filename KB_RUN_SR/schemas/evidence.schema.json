@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kb-run.local/schemas/evidence.schema.json",
+  "title": "KB_RUN_SR Evidence Record",
+  "type": "object",
+  "required": [
+    "id", "title", "claim", "distances", "profiles", "topics", "outcomes",
+    "evidence_level", "confidence", "applicability", "practical_application",
+    "limitations", "source_ids", "status", "last_reviewed", "review_due"
+  ],
+  "properties": {
+    "id": {"type": "string", "pattern": "^BC-[0-9]{3}$"},
+    "title": {"type": "string", "minLength": 10},
+    "claim": {"type": "string", "minLength": 20},
+    "distances": {"type": "array", "items": {"enum": ["5K", "10K", "21K", "42K", "general"]}, "minItems": 1, "uniqueItems": true},
+    "profiles": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "topics": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "outcomes": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "evidence_level": {"enum": ["A", "B", "C", "D"]},
+    "confidence": {"enum": ["high", "moderate", "low", "insufficient"]},
+    "applicability": {"enum": ["direct", "partial", "indirect"]},
+    "practical_application": {"type": "string"},
+    "limitations": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "source_ids": {"type": "array", "items": {"type": "string", "pattern": "^SRC-[0-9]{4}$"}, "minItems": 1, "uniqueItems": true},
+    "status": {"enum": ["active", "under_review", "superseded", "withdrawn"]},
+    "last_reviewed": {"type": "string", "format": "date"},
+    "review_due": {"type": "string", "format": "date"}
+  },
+  "additionalProperties": false
+}
+

@@ -1,0 +1,19 @@
+id: BC-005
+title: Progressão de carga sem regra semanal universal
+claim: A regra de aumentar 10 por cento por semana não está validada como limite universal; histórico de lesão, carga por sessão e contexto individual são mais relevantes.
+distances: [5K, 10K, 21K, 42K, general]
+profiles: [beginner, recreational, trained, return_to_run]
+topics: [training_load, progression, injury_risk]
+outcomes: [injury, adherence, load_tolerance]
+evidence_level: A
+confidence: moderate
+applicability: direct
+practical_application: Monitorar maior sessão recente, volume, intensidade, terreno e resposta do atleta; progredir uma variável relevante por vez quando possível.
+limitations:
+  - Há alta confiança sobre lesão prévia, mas baixa a moderada para limiares numéricos de progressão.
+  - O achado sobre picos em uma sessão necessita replicação antes de virar regra rígida.
+source_ids: [SRC-0012, SRC-0013, SRC-0026]
+status: active
+last_reviewed: 2026-07-18
+review_due: 2027-01-18
+

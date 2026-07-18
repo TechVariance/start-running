@@ -1,0 +1,19 @@
+id: BC-013
+title: Aclimatação para treinamento e competição no calor
+claim: Exposições repetidas e controladas ao calor antes da competição melhoram respostas termorregulatórias e constituem a principal preparação fisiológica para competir em ambiente quente.
+distances: [5K, 10K, 21K, 42K, general]
+profiles: [recreational, trained, elite]
+topics: [heat, acclimation, environment]
+outcomes: [thermoregulation, safety, performance]
+evidence_level: A
+confidence: high
+applicability: direct
+practical_application: Preparar-se progressivamente em ambiente semelhante, ajustar ritmo e manter plano de segurança, evitando exposição extrema sem supervisão.
+limitations:
+  - Protocolo ideal depende da carga térmica e do estado do atleta.
+  - Resposta e retenção das adaptações variam.
+source_ids: [SRC-0017]
+status: active
+last_reviewed: 2026-07-18
+review_due: 2027-01-18
+
