@@ -32,6 +32,22 @@ type StrengthSetRow = {
   exercises: { name: string; muscle_group: string } | null;
 };
 
+type SwimSegmentRow = {
+  id: string;
+  segment_number: number;
+  stroke: string;
+  distance_m: number;
+  elapsed_s: number;
+};
+
+const STROKE_LABELS: Record<string, string> = {
+  livre: "Livre",
+  costas: "Costas",
+  peito: "Peito",
+  borboleta: "Borboleta",
+  medley: "Medley",
+};
+
 const MODALITIES: { id: Modality; label: string; Icon: typeof PersonStanding }[] = [
   { id: "run", label: "Corrida", Icon: PersonStanding },
   { id: "swim", label: "Natação", Icon: Waves },
@@ -60,7 +76,7 @@ export function Treinos() {
     queryFn: async () => {
       const { data } = await supabase
         .from("activities")
-        .select("*, activity_metrics(*), strength_sets(*, exercises(name, muscle_group))")
+        .select("*, activity_metrics(*), strength_sets(*, exercises(name, muscle_group)), swim_segments(*)")
         .eq("user_id", uid)
         .eq("modality", modality)
         .order("started_at", { ascending: false })
@@ -151,6 +167,7 @@ export function Treinos() {
         {activities?.map((a) => {
           const m = a.activity_metrics?.[0];
           const strengthSets = (a.strength_sets ?? []) as unknown as StrengthSetRow[];
+          const swimSegments = (a.swim_segments ?? []) as unknown as SwimSegmentRow[];
           const isOpen = openId === a.id;
           return (
             <div key={a.id} className="card-surface overflow-hidden">
@@ -210,6 +227,7 @@ export function Treinos() {
                       <MiniStat label="sRPE" value={m.srpe_load?.toFixed(0) ?? "—"} />
                     </div>
                   )}
+                  {modality === "swim" && swimSegments.length > 0 && <SwimSegmentsSummary segments={swimSegments} />}
                   {modality === "strength" && strengthSets.length > 0 && (
                     <StrengthSetsSummary sets={strengthSets} />
                   )}
@@ -327,6 +345,22 @@ function StrengthSetsSummary({ sets }: { sets: StrengthSetRow[] }) {
           </div>
         </div>
       ))}
+    </div>
+  );
+}
+
+function SwimSegmentsSummary({ segments }: { segments: SwimSegmentRow[] }) {
+  const sorted = [...segments].sort((a, b) => a.segment_number - b.segment_number);
+  return (
+    <div>
+      <p className="label-cap mb-1 text-muted-foreground">Trechos por estilo</p>
+      <div className="flex flex-wrap gap-1.5">
+        {sorted.map((s) => (
+          <span key={s.id} className="tabular rounded-md bg-surface px-2 py-1 text-[11px] text-muted-foreground">
+            {STROKE_LABELS[s.stroke] ?? s.stroke} · {s.distance_m}m · {formatDuration(s.elapsed_s)}
+          </span>
+        ))}
+      </div>
     </div>
   );
 }
@@ -457,23 +491,39 @@ function AddSheetRun({ open, onClose, userId, onSaved }: { open: boolean; onClos
   );
 }
 
+type SwimSegmentDraft = { stroke: string; distance: string; time: string };
+
 function AddSheetSwim({ open, onClose, userId, onSaved }: { open: boolean; onClose: () => void; userId: string; onSaved: () => void }) {
   const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
-  const [duration, setDuration] = useState("");
-  const [distance, setDistance] = useState("");
   const [poolLength, setPoolLength] = useState<25 | 50>(25);
-  const [stroke, setStroke] = useState("livre");
+  const [segments, setSegments] = useState<SwimSegmentDraft[]>([{ stroke: "livre", distance: "", time: "" }]);
   const [avgHr, setAvgHr] = useState("");
   const [rpe, setRpe] = useState(5);
   const [notes, setNotes] = useState("");
   const [err, setErr] = useState<string | null>(null);
 
+  const addSegment = () => setSegments((prev) => [...prev, { stroke: "livre", distance: "", time: "" }]);
+  const removeSegment = (idx: number) => setSegments((prev) => prev.filter((_, i) => i !== idx));
+  const updateSegment = (idx: number, patch: Partial<SwimSegmentDraft>) =>
+    setSegments((prev) => prev.map((s, i) => (i === idx ? { ...s, ...patch } : s)));
+
   const save = useMutation({
     mutationFn: async () => {
       setErr(null);
-      const elapsedS = Math.round(Number(duration) * 60);
-      if (!elapsedS) throw new Error("Duração é obrigatória");
-      const distanceM = distance ? Math.round(Number(distance)) : null;
+      const parsed = segments.map((s) => ({
+        stroke: s.stroke,
+        distanceM: Math.round(Number(s.distance) || 0),
+        elapsedS: parseClock(s.time) ?? 0,
+      }));
+      if (parsed.some((s) => !s.distanceM || !s.elapsedS)) {
+        throw new Error("Preencha metragem e tempo (mm:ss) de todos os trechos");
+      }
+
+      const distanceM = parsed.reduce((sum, s) => sum + s.distanceM, 0);
+      const elapsedS = parsed.reduce((sum, s) => sum + s.elapsedS, 0);
+      const byStroke = new Map<string, number>();
+      parsed.forEach((s) => byStroke.set(s.stroke, (byStroke.get(s.stroke) ?? 0) + s.distanceM));
+      const predominantStroke = [...byStroke.entries()].sort((a, b) => b[1] - a[1])[0][0];
       const avgHrN = avgHr ? Number(avgHr) : null;
       const avgPaceSPer100m = distanceM ? elapsedS / (distanceM / 100) : null;
 
@@ -500,7 +550,7 @@ function AddSheetSwim({ open, onClose, userId, onSaved }: { open: boolean; onClo
         distance_m: distanceM,
         avg_hr: avgHrN,
         srpe: rpe,
-        stroke,
+        stroke: predominantStroke,
         pool_length_m: poolLength,
         notes: notes || null,
       }).select("id").single();
@@ -518,10 +568,21 @@ function AddSheetSwim({ open, onClose, userId, onSaved }: { open: boolean; onClo
         avg_pace_s_per_100m: avgPaceSPer100m,
       });
 
+      await supabase.from("swim_segments").insert(
+        parsed.map((s, i) => ({
+          activity_id: created.id,
+          user_id: userId,
+          segment_number: i + 1,
+          stroke: s.stroke,
+          distance_m: s.distanceM,
+          elapsed_s: s.elapsedS,
+        })),
+      );
+
       await recomputeDailyLoadForUser(userId);
     },
     onSuccess: () => {
-      setDuration(""); setDistance(""); setAvgHr(""); setNotes(""); setRpe(5);
+      setSegments([{ stroke: "livre", distance: "", time: "" }]); setAvgHr(""); setNotes(""); setRpe(5);
       onSaved();
     },
     onError: (e: unknown) => setErr(e instanceof Error ? e.message : "Erro"),
@@ -530,16 +591,11 @@ function AddSheetSwim({ open, onClose, userId, onSaved }: { open: boolean; onClo
   return (
     <BottomSheet open={open} onClose={onClose} title="Registrar natação">
       <div className="space-y-3">
-        <label className="block">
-          <span className="label-cap text-muted-foreground">Data</span>
-          <input type="date" value={date} onChange={(e) => setDate(e.target.value)} className="mt-1 w-full rounded-xl border border-border bg-background px-4 py-3 text-[15px] tabular text-foreground focus:border-ignite focus:outline-none" />
-        </label>
         <div className="grid grid-cols-2 gap-3">
-          <NumberField label="Duração (min)" value={duration} onChange={setDuration} placeholder="40" />
-          <NumberField label="Distância (m)" value={distance} onChange={setDistance} placeholder="1500" />
-        </div>
-
-        <div className="grid grid-cols-2 gap-3">
+          <label className="block">
+            <span className="label-cap text-muted-foreground">Data</span>
+            <input type="date" value={date} onChange={(e) => setDate(e.target.value)} className="mt-1 w-full rounded-xl border border-border bg-background px-4 py-3 text-[15px] tabular text-foreground focus:border-ignite focus:outline-none" />
+          </label>
           <label className="block">
             <span className="label-cap text-muted-foreground">Piscina</span>
             <div className="mt-1 grid grid-cols-2 gap-2">
@@ -547,23 +603,55 @@ function AddSheetSwim({ open, onClose, userId, onSaved }: { open: boolean; onClo
                 <button
                   key={n}
                   onClick={() => setPoolLength(n as 25 | 50)}
-                  className={`rounded-lg border py-2 text-[12px] font-bold transition ${poolLength === n ? "border-ignite bg-ignite/10 text-ignite" : "border-border text-muted-foreground"}`}
+                  className={`rounded-lg border py-3 text-[12px] font-bold transition ${poolLength === n ? "border-ignite bg-ignite/10 text-ignite" : "border-border text-muted-foreground"}`}
                 >
                   {n}m
                 </button>
               ))}
             </div>
           </label>
-          <label className="block">
-            <span className="label-cap text-muted-foreground">Estilo predominante</span>
-            <select value={stroke} onChange={(e) => setStroke(e.target.value)} className="mt-1 w-full rounded-xl border border-border bg-background px-3 py-3 text-[14px] text-foreground focus:border-ignite focus:outline-none">
-              <option value="livre">Livre</option>
-              <option value="costas">Costas</option>
-              <option value="peito">Peito</option>
-              <option value="borboleta">Borboleta</option>
-              <option value="medley">Medley</option>
-            </select>
-          </label>
+        </div>
+
+        <div>
+          <span className="label-cap text-muted-foreground">Trechos (por estilo)</span>
+          <div className="mt-2 space-y-2">
+            {segments.map((s, idx) => (
+              <div key={idx} className="flex items-center gap-2 rounded-xl border border-border bg-background p-2.5">
+                <select
+                  value={s.stroke}
+                  onChange={(e) => updateSegment(idx, { stroke: e.target.value })}
+                  className="w-[110px] shrink-0 rounded-lg border border-border bg-surface px-2 py-2 text-[12px] text-foreground focus:border-ignite focus:outline-none"
+                >
+                  <option value="livre">Livre</option>
+                  <option value="costas">Costas</option>
+                  <option value="peito">Peito</option>
+                  <option value="borboleta">Borboleta</option>
+                  <option value="medley">Medley</option>
+                </select>
+                <input
+                  value={s.distance}
+                  onChange={(e) => updateSegment(idx, { distance: e.target.value })}
+                  inputMode="numeric"
+                  placeholder="metros"
+                  className="w-20 rounded-lg border border-border bg-surface px-2 py-2 text-[13px] tabular text-foreground focus:border-ignite focus:outline-none"
+                />
+                <input
+                  value={s.time}
+                  onChange={(e) => updateSegment(idx, { time: e.target.value })}
+                  placeholder="mm:ss"
+                  className="w-20 rounded-lg border border-border bg-surface px-2 py-2 text-[13px] tabular text-foreground focus:border-ignite focus:outline-none"
+                />
+                {segments.length > 1 && (
+                  <button onClick={() => removeSegment(idx)} className="ml-auto shrink-0 text-muted-foreground hover:text-danger">
+                    <X size={14} />
+                  </button>
+                )}
+              </div>
+            ))}
+            <button onClick={addSegment} className="flex w-full items-center justify-center gap-1.5 rounded-xl border border-dashed border-border py-2.5 text-[13px] font-semibold text-muted-foreground hover:border-ignite hover:text-ignite">
+              <Plus size={14} /> Adicionar trecho
+            </button>
+          </div>
         </div>
 
         <NumberField label="FC média (bpm) — opcional" value={avgHr} onChange={setAvgHr} placeholder="140" />
@@ -580,7 +668,7 @@ function AddSheetSwim({ open, onClose, userId, onSaved }: { open: boolean; onClo
 
         {err && <p className="text-[13px] text-danger">{err}</p>}
 
-        <button onClick={() => save.mutate()} disabled={save.isPending || !duration} className="btn-ignite mt-2 flex w-full items-center justify-center gap-2 py-3 text-[14px] disabled:opacity-60">
+        <button onClick={() => save.mutate()} disabled={save.isPending} className="btn-ignite mt-2 flex w-full items-center justify-center gap-2 py-3 text-[14px] disabled:opacity-60">
           {save.isPending && <Loader2 size={14} className="animate-spin" />} Salvar treino
         </button>
       </div>

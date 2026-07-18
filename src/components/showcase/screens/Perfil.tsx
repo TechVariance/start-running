@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Loader2, Database, LogOut, Trash2, Bot, ChevronRight } from "lucide-react";
+import { Loader2, Database, LogOut, Trash2, Bot, ChevronRight, RefreshCw, Dumbbell } from "lucide-react";
 import { useAuth } from "@/lib/auth";
 import { supabase } from "@/integrations/supabase/client";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
@@ -177,6 +177,38 @@ export function Perfil() {
           <div className="min-w-0 flex-1">
             <p className="text-[13px] font-bold text-foreground">Assistente de IA</p>
             <p className="text-[11px] text-muted-foreground">Conecte ChatGPT, Claude ou outro cliente MCP.</p>
+          </div>
+          <ChevronRight size={18} className="text-muted-foreground" />
+        </Link>
+      </Section>
+
+      <Section title="Musculação">
+        <Link
+          to="/exercicios"
+          className="flex w-full items-center gap-3 rounded-xl border border-border bg-background p-3 transition hover:border-ignite"
+        >
+          <div className="grid h-10 w-10 place-items-center rounded-full bg-ignite/10 text-ignite">
+            <Dumbbell size={20} />
+          </div>
+          <div className="min-w-0 flex-1">
+            <p className="text-[13px] font-bold text-foreground">Biblioteca de exercícios</p>
+            <p className="text-[11px] text-muted-foreground">Cadastre seus próprios exercícios para usar nos registros.</p>
+          </div>
+          <ChevronRight size={18} className="text-muted-foreground" />
+        </Link>
+      </Section>
+
+      <Section title="Recomeçar">
+        <Link
+          to="/onboarding"
+          className="flex w-full items-center gap-3 rounded-xl border border-border bg-background p-3 transition hover:border-ignite"
+        >
+          <div className="grid h-10 w-10 place-items-center rounded-full bg-ignite/10 text-ignite">
+            <RefreshCw size={20} />
+          </div>
+          <div className="min-w-0 flex-1">
+            <p className="text-[13px] font-bold text-foreground">Refazer onboarding</p>
+            <p className="text-[11px] text-muted-foreground">Redefina seus limiares do zero. Para recomeçar um plano, use "Resetar plano" em Plano.</p>
           </div>
           <ChevronRight size={18} className="text-muted-foreground" />
         </Link>

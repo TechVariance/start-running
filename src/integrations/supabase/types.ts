@@ -152,6 +152,7 @@ export type Database = {
           id: string
           muscle_group: string
           name: string
+          user_id: string | null
         }
         Insert: {
           created_at?: string
@@ -159,6 +160,7 @@ export type Database = {
           id?: string
           muscle_group: string
           name: string
+          user_id?: string | null
         }
         Update: {
           created_at?: string
@@ -166,6 +168,7 @@ export type Database = {
           id?: string
           muscle_group?: string
           name?: string
+          user_id?: string | null
         }
         Relationships: []
       }
@@ -216,6 +219,47 @@ export type Database = {
             columns: ["exercise_id"]
             isOneToOne: false
             referencedRelation: "exercises"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      swim_segments: {
+        Row: {
+          activity_id: string
+          created_at: string
+          distance_m: number
+          elapsed_s: number
+          id: string
+          segment_number: number
+          stroke: string
+          user_id: string
+        }
+        Insert: {
+          activity_id: string
+          created_at?: string
+          distance_m: number
+          elapsed_s: number
+          id?: string
+          segment_number: number
+          stroke: string
+          user_id: string
+        }
+        Update: {
+          activity_id?: string
+          created_at?: string
+          distance_m?: number
+          elapsed_s?: number
+          id?: string
+          segment_number?: number
+          stroke?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "swim_segments_activity_id_fkey"
+            columns: ["activity_id"]
+            isOneToOne: false
+            referencedRelation: "activities"
             referencedColumns: ["id"]
           },
         ]

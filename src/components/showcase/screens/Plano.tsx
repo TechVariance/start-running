@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Loader2, Plus, Check, ChevronDown } from "lucide-react";
+import { Loader2, Plus, Check, ChevronDown, RotateCcw } from "lucide-react";
 import { useAuth } from "@/lib/auth";
 import { supabase } from "@/integrations/supabase/client";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
@@ -9,6 +9,7 @@ export function Plano() {
   const uid = session!.user.id;
   const qc = useQueryClient();
   const [openDay, setOpenDay] = useState<string | null>(null);
+  const [confirmReset, setConfirmReset] = useState(false);
 
   const { data: plan } = useQuery({
     queryKey: ["plan", uid],
@@ -73,6 +74,18 @@ export function Plano() {
     onSuccess: () => qc.invalidateQueries({ queryKey: ["plan", uid] }),
   });
 
+  const resetPlan = useMutation({
+    mutationFn: async () => {
+      if (!plan) return;
+      await supabase.from("plans").delete().eq("id", plan.id);
+    },
+    onSuccess: () => {
+      setConfirmReset(false);
+      qc.invalidateQueries({ queryKey: ["plan", uid] });
+      qc.invalidateQueries({ queryKey: ["planned", uid, plan?.id] });
+    },
+  });
+
   const markDone = useMutation({
     mutationFn: async ({ id, day }: { id: string; day: string }) => {
       const match = recentActivities?.find((a) => a.started_at.slice(0, 10) === day);
@@ -117,6 +130,25 @@ export function Plano() {
                 <p className="font-display text-[24px] font-black text-ignite tabular">{adherence}%</p>
               </div>
             </div>
+
+            {!confirmReset && (
+              <button onClick={() => setConfirmReset(true)} className="mt-3 inline-flex items-center gap-1.5 text-[12px] font-semibold text-muted-foreground hover:text-danger">
+                <RotateCcw size={12} /> Resetar plano
+              </button>
+            )}
+            {confirmReset && (
+              <div className="mt-3 rounded-xl border border-danger/30 bg-danger/5 p-3">
+                <p className="text-[12px] text-foreground">Isso apaga este plano e todos os treinos planejados (o histórico de treinos executados continua intacto). Tem certeza?</p>
+                <div className="mt-2 flex gap-2">
+                  <button onClick={() => resetPlan.mutate()} disabled={resetPlan.isPending} className="inline-flex items-center gap-1.5 rounded-full bg-danger px-3 py-1.5 text-[12px] font-bold text-white disabled:opacity-60">
+                    {resetPlan.isPending && <Loader2 size={12} className="animate-spin" />} Confirmar reset
+                  </button>
+                  <button onClick={() => setConfirmReset(false)} className="rounded-full border border-border px-3 py-1.5 text-[12px] font-bold text-muted-foreground">
+                    Cancelar
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
 
           <div className="mt-4 space-y-2">
