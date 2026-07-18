@@ -1,0 +1,144 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Archivo", "Inter", sans-serif;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-alt: var(--surface-alt);
+  --color-border: var(--border);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-ignite: var(--ignite);
+  --color-ignite-pressed: var(--ignite-pressed);
+  --color-ignite-light: var(--ignite-light);
+  --color-pulse: var(--pulse);
+  --color-pulse-pressed: var(--pulse-pressed);
+  --color-pulse-light: var(--pulse-light);
+  --color-volt: var(--volt);
+  --color-volt-ink: var(--volt-ink);
+
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-info: var(--info);
+
+  --color-z1: #3FA9F5;
+  --color-z2: #17B26A;
+  --color-z3: #F5C518;
+  --color-z4: #FF7A1F;
+  --color-z5: #E02749;
+
+  --color-primary: var(--ignite);
+  --color-primary-foreground: #FFFFFF;
+
+  --shadow-glow-ignite: 0 6px 24px rgba(255, 58, 94, 0.38);
+}
+
+/* LIGHT theme */
+:root {
+  --background: #F5F7FA;
+  --foreground: #0B0F14;
+  --surface: #FFFFFF;
+  --surface-alt: #F5F7FA;
+  --border: #E9EEF4;
+  --muted: #F5F7FA;
+  --muted-foreground: #64748B;
+
+  --ignite: #FF3A5E;
+  --ignite-pressed: #E82550;
+  --ignite-light: #FFE0E6;
+  --pulse: #1E5BFF;
+  --pulse-pressed: #1246D6;
+  --pulse-light: #DEE8FF;
+  --volt: #D6FF3D;
+  --volt-ink: #A8CC00;
+
+  --success: #17B26A;
+  --warning: #F5A524;
+  --danger: #E02749;
+  --info: #1E5BFF;
+}
+
+/* DARK theme (default) */
+.dark {
+  --background: #0B0F14;
+  --foreground: #F5F7FA;
+  --surface: #0B0F14;
+  --surface-alt: #1B2530;
+  --border: #303C4D;
+  --muted: #1B2530;
+  --muted-foreground: #8A99AB;
+
+  --ignite: #FF3A5E;
+  --ignite-pressed: #E82550;
+  --ignite-light: #3A1620;
+  --pulse: #1E5BFF;
+  --pulse-pressed: #4A7BFF;
+  --pulse-light: #172548;
+  --volt: #D6FF3D;
+  --volt-ink: #D6FF3D;
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { font-family: var(--font-sans); }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@utility font-display {
+  font-family: var(--font-display);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+@utility tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+@utility label-cap {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.72px;
+}
+
+@utility btn-ignite {
+  background-color: var(--color-ignite);
+  color: #FFFFFF;
+  border-radius: 999px;
+  font-weight: 700;
+  box-shadow: var(--shadow-glow-ignite);
+  transition: transform 200ms cubic-bezier(.2,.8,.2,1), background-color 200ms;
+  &:hover { background-color: var(--color-ignite-pressed); }
+  &:active { transform: scale(0.98); }
+}
+
+@utility card-surface {
+  background-color: var(--color-surface-alt);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+}
+
+@keyframes pulse-ring {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}

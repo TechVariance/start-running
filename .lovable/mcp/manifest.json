@@ -1,0 +1,142 @@
+{
+  "version": 1,
+  "sdk_version": "0.20.0",
+  "path": "/mcp",
+  "auth": {
+    "type": "oauth",
+    "issuer": "https://xijotooymrkixlmgnout.supabase.co/auth/v1",
+    "accepted_audiences": [
+      "authenticated"
+    ]
+  },
+  "mcp": {
+    "server": {
+      "name": "start-running-mcp",
+      "version": "0.1.0",
+      "title": "Start Running — Coach MCP"
+    },
+    "tools": [
+      {
+        "name": "get_profile",
+        "title": "Ver perfil do atleta",
+        "description": "Retorna o perfil do usuário autenticado: nome, limiares (FCmáx, LTHR, pace de limiar, VO2max), modelo de zonas e volume semanal.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_today",
+        "title": "Ver o dia de hoje",
+        "description": "Retorna o wellness de hoje, o treino planejado do dia (se houver) e o último ponto de carga (CTL/ATL/TSB/ACWR).",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_recent_activities",
+        "title": "Listar treinos recentes",
+        "description": "Lista os treinos concluídos mais recentes do atleta autenticado (distância, duração, pace médio, FC média, sRPE).",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "limit": {
+              "default": 10,
+              "description": "Quantos treinos retornar (1-50).",
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50
+            }
+          }
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_load_summary",
+        "title": "Resumo de carga (CTL/ATL/TSB/ACWR)",
+        "description": "Retorna a série diária de carga do atleta (CTL fitness, ATL fadiga, TSB forma, ACWR) dos últimos N dias e o último ponto.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "days": {
+              "default": 30,
+              "description": "Janela em dias (7-120).",
+              "type": "integer",
+              "minimum": 7,
+              "maximum": 120
+            }
+          }
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "log_wellness",
+        "title": "Registrar wellness do dia",
+        "description": "Grava (ou atualiza) os dados de prontidão do dia: HRV (rMSSD, ms), horas de sono e FC de repouso (bpm).",
+        "annotations": {
+          "readOnlyHint": false,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "day": {
+              "description": "Data ISO YYYY-MM-DD. Padrão: hoje.",
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+            },
+            "hrv_rmssd": {
+              "description": "HRV rMSSD em ms.",
+              "type": "number",
+              "minimum": 5,
+              "maximum": 300
+            },
+            "sleep_hours": {
+              "description": "Horas de sono.",
+              "type": "number",
+              "minimum": 0,
+              "maximum": 24
+            },
+            "hr_rest_bpm": {
+              "description": "FC de repouso ao acordar.",
+              "type": "integer",
+              "minimum": 25,
+              "maximum": 120
+            }
+          }
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
