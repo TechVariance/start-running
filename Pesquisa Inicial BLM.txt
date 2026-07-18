@@ -1,0 +1,483 @@
+================================================================
+DESENVOLVIMENTO — APP DE TREINO DE CORRIDA POR IA
+Registro da conversa
+28 de junho de 2026
+================================================================
+
+Resumo: conversa sobre o desenvolvimento de um aplicativo de
+treinos de corrida por inteligência artificial — quais dados
+coletar, como a Zyla funciona, e o mapa de concorrentes no
+Brasil e nos EUA.
+
+As tabelas foram convertidas em listas para leitura confortável
+no celular. As fontes das pesquisas estão no fim do arquivo.
+
+
+================================================================
+1) BRUNNO
+================================================================
+
+Contexto do projeto:
+
+1. PERFIL DO USUÁRIO
+Atleta amador competitivo, corredor de meias e maratonas pelo
+mundo. Constantemente tentando melhorar os recordes pessoais.
+Agenda profissional intensa. Tom informal, prático e direto.
+
+2. FOCO DO PROJETO
+Performance em provas de longa distância (21km e 42km) e
+ultramaratonas. Equilíbrio entre evolução esportiva, saúde e
+sustentabilidade a longo prazo.
+
+3. ESTRUTURA PADRÃO — PLANOS DE TREINO
+• Objetivo da fase (base, volume, intensidade, polimento, recuperação)
+• Distribuição semanal de treinos
+• Considerar sempre treinos de corrida e de fortalecimento
+  (força, propriocepção e pliometria)
+• Treinos-chave da semana com descrição detalhada
+• Prescrição de zonas de esforço (FC ou pace)
+• Volume total e progressão
+
+4. NUTRIÇÃO
+Sempre integrada ao planejamento de treino. Foco em evidências
+científicas — sem modismos sem respaldo. Considerar:
+periodização nutricional, carboidratos em treinos longos,
+recuperação pós-treino, hidratação e estratégia de prova.
+
+5. PREVENÇÃO E RECUPERAÇÃO
+Em toda recomendação de treino intenso, incluir: sinais de
+overtraining a monitorar; estratégias de recuperação ativa;
+quando buscar avaliação profissional (fisio, médico do esporte).
+
+6. PROVAS INTERNACIONAIS
+Quando discutir provas específicas: perfil do percurso e pontos
+críticos com riqueza de detalhes; estratégia de pace e
+distribuição de esforço; logística de viagem integrada ao
+desempenho (fuso horário, aclimatação, alimentação no destino).
+
+7. TECNOLOGIA
+Considerar uso de Garmin/GPS watch, Strava, Training Peaks.
+Analisar dados de treino quando compartilhados (pace, FC,
+cadência, variabilidade).
+
+Pergunta:
+Você é um técnico especializado em corrida. Consegue planilhar
+diferentes treinos para diferentes níveis de atletas. O objetivo
+principal desta conversa é evoluir ideias, planilhas e
+desenvolver informações a respeito de um aplicativo de treinos
+por inteligência artificial que estamos desenvolvendo. Como
+haverá múltiplas marcas de relógio, modelos e apps de corrida,
+gostaria de começar sabendo quais seriam os principais dados que
+deveriam ser coletados para montar as planilhas e realizar a
+leitura dos treinos feitos.
+
+
+================================================================
+2) CLAUDE
+================================================================
+
+O ponto mais importante, antes de qualquer lista de campos: o
+desafio de vocês não é QUAIS dados coletar — é COMO tornar dados
+de fontes diferentes comparáveis entre si. Garmin, Coros, Polar,
+Apple, Suunto e Strava entregam métricas parecidas, mas com nomes
+e algoritmos diferentes. Se o app ingerir o "Training Load" do
+Garmin e o do Coros como se fossem a mesma coisa, a IA vai
+comparar laranja com banana e a leitura perde confiabilidade.
+
+A decisão de arquitetura que resolve isso de raiz:
+Ingerir as séries temporais brutas (FC segundo a segundo, pace,
+potência, cadência, GPS) e calcular todas as métricas derivadas
+internamente, com uma única metodologia. Assim a leitura é
+consistente independentemente do relógio. Os scores proprietários
+(Body Battery, Training Readiness, Recovery Pro, etc.) entram só
+como sinais secundários — nunca como base de cálculo.
+
+Com isso firmado, organizo os dados em CAMADAS, porque é assim que
+a lógica do app deve degradar com elegância: funcionar com o
+mínimo e ficar mais rica conforme o atleta tem mais sensores.
+
+» CAMADA 0 — PERFIL DO ATLETA (input + medições pontuais)
+Muda devagar, mas ancora todo o resto.
+• Idade, sexo, peso, altura — cálculo de zonas, carga relativa
+  (W/kg), gasto energético
+• FC máx (medida vs estimada) — base das zonas por %FCmax
+• FC repouso — base do método Karvonen (%FCR) e tendência de prontidão
+• LTHR (limiar) e pace de limiar — zonas por limiar, o padrão
+  para atleta sério
+• VO2máx (lab ou estimado) — benchmark e tração de evolução
+• Critical Speed / Critical Power — modelagem de capacidade e
+  zonas por potência
+• Histórico de lesões — restrições e gestão de risco
+• PRs por distância — calibrar metas e paces-alvo
+• Nível / volume habitual / disponibilidade semanal — ponto de
+  partida do plano
+• Prova-alvo, data, meta de tempo — define a periodização inteira
+
+» CAMADA 1 — NÚCLEO UNIVERSAL (todo relógio com GPS + FC entrega)
+É o mínimo viável para já montar e ler treino.
+Tempo total e em movimento; distância; pace médio e por km
+(splits); FC média/máx; tempo em cada zona; cadência; ganho/perda
+de elevação e grade; GAP (pace ajustado ao relevo); temperatura
+ambiente; tipo de treino (planejado vs executado).
+
+» CAMADA 2 — DINÂMICA E POTÊNCIA (depende de sensor/dispositivo)
+Enriquece técnica e prevenção, mas não pode ser obrigatória.
+Potência de corrida (W e Normalized Power); tempo de contato com
+o solo (GCT) e equilíbrio L/R; oscilação vertical e vertical
+ratio; comprimento da passada; leg stiffness (Stryd).
+
+» CAMADA 3 — CARGA E PRONTIDÃO (você calcula a partir do bruto)
+Aqui mora a "inteligência" da leitura. Tudo isto deve ser
+computado por vocês, não importado:
+• TRIMP / rTSS / hrTSS — carga interna de cada sessão; quantificar
+  esforço de forma comparável
+• CTL (~42d) — fitness acumulado; tração de forma de longo prazo
+• ATL (~7d) — fadiga aguda; detectar acúmulo
+• TSB (CTL − ATL) — form/frescor; polimento e prontidão pré-prova
+• ACWR (aguda:crônica) — risco de lesão; alertar pico de carga
+  (zona ~0,8–1,3)
+• Efficiency Factor (pace ou potência ÷ FC) — economia aeróbia;
+  confirmar evolução real, não só volume
+• Decoupling / cardiac drift (%) — durabilidade aeróbia; avaliar
+  resistência em longões (<5% = bom)
+• HRV (RMSSD, baseline + desvio diário) — estado autonômico;
+  modular intensidade do dia
+• Sono, FC repouso (tendência), SpO2 — recuperação; sinais de
+  overreaching
+
+» CAMADA 4 — SUBJETIVO E CONTEXTO (input do atleta)
+Barato, sem hardware, e às vezes o sinal mais honesto:
+sRPE (RPE 0–10 x duração em min) — excelente porque dispensa
+sensor e captura carga interna; sintomas (dor, rigidez, humor,
+motivação, estresse); superfície (asfalto/trilha/esteira);
+calçado (para rodízio e durabilidade); clima (calor, umidade,
+vento, altitude).
+
+DOIS PONTOS QUE COSTUMAM SER ESQUECIDOS E SÃO DECISIVOS PARA A IA
+
+1. Sistema de zonas precisa ser configurável, não fixo. O app
+deve deixar o atleta/treinador escolher o modelo (3, 5 ou 7 zonas)
+e a âncora (%FCmax, Karvonen %FCR, %LTHR, %pace de limiar ou
+%potência crítica). Atleta sério trabalha por limiar, não por
+%FCmax — se isso vier hardcoded, perde credibilidade com o público
+que vocês querem.
+
+2. Qualidade do dado é pré-requisito da leitura. Antes de qualquer
+cálculo, é preciso validar e limpar:
+• FC óptica de pulso tem atraso e cadence lock em tiros — péssima
+  para tempo-em-zona de alta intensidade. Marque a fonte (cinta
+  peitoral vs óptica) e pondere a confiança.
+• Drift de GPS em cidade/trilha vira ruído de pace — prefira pace
+  de footpod quando houver, ou suavize.
+• Spikes, dropouts e gaps precisam de remoção/interpolação, ou a
+  IA vai ler um pico de FC inexistente como esforço real.
+
+FORMATOS E FONTES (em ordem de riqueza)
+FIT (Garmin/Coros/etc. — o mais completo, registro a registro) >
+TCX (XML, razoável) > GPX (só GPS + tempo, mínimo). Via API:
+Garmin (Connect/Health), Strava, Apple HealthKit, Polar
+AccessLink, Coros, Suunto. Sempre que possível, puxe o FIT
+original em vez do JSON resumido.
+
+RECOMENDAÇÃO DE MVP
+Não tente abraçar tudo na largada. Com Camada 1 + sRPE (Camada 4)
+vocês já conseguem montar plano e ler treino de forma útil: pace,
+tempo-em-zona, volume e progressão semanal, carga interna. Depois
+acrescente os derivados da Camada 3 (TSS/CTL/ATL/ACWR) assim que
+houver limiares limpos por atleta. Dinâmica/potência (Camada 2) e
+HRV/sono entram como enrichment premium.
+
+Na ingestão, eu ancoraria o MVP em uma ou duas fontes ricas (FIT
+via Strava + Garmin) para acertar o modelo canônico com calma,
+antes de construir conector para cada marca.
+
+
+================================================================
+3) BRUNNO
+================================================================
+
+Faça um descritivo completo de como funciona a Zyla e como eles
+traçam as métricas de cada cliente.
+
+
+================================================================
+4) CLAUDE
+================================================================
+
+Zyla (zyla.fit, da ZYLA TECNOLOGIA LTDA, sediada na Av. Paulista)
+é exatamente um concorrente direto do que vocês estão construindo:
+a primeira assessoria de corrida movida por IA do Brasil. O lema
+deles resume o posicionamento: "run by humans, powered by AI".
+Vale entender como funcionam — e, mais importante, onde a leitura
+de métricas deles é rasa, porque é aí que mora a oportunidade.
+
+Aviso de método: o que segue vem do site oficial, das fichas de
+App Store/Google Play e de avaliações de usuários. Não tenho
+acesso ao código nem ao algoritmo real deles — parte é descrição
+factual, parte é inferência fundamentada no comportamento
+observável do app.
+
+» QUEM ESTÁ POR TRÁS E O POSICIONAMENTO
+O responsável técnico é Pedro "O Mago" Keller, com mais de 15
+anos como treinador, 1250+ atletas treinados e 50+ maratonistas
+sub-3h. O "cérebro" metodológico é humano (a periodização sai da
+cabeça do treinador) e a IA é a camada de personalização e
+entrega em escala, não necessariamente um motor fisiológico
+sofisticado. O marketing é construído contra o "treino genérico"
+e contra "treinar corrida pelo ChatGPT".
+Público-alvo declarado: iniciantes, intermediários e avançados —
+mas, na prática, o produto é calibrado para iniciante/intermediário.
+
+» COMO FUNCIONA — O FLUXO DO PRODUTO
+1. Questionário inicial (onboarding) — nível, ritmo atual,
+   objetivo, distância-alvo e data da prova, dias disponíveis
+   (checkboxes).
+2. Geração do plano pela IA — sessões como "Descanso" e "Corre e
+   Anda" (run/walk) num calendário semanal.
+3. Execução + sincronização — integração com Strava e Garmin.
+   Detalhe revelador: o changelog marca o "Lançamento da
+   Integração com o Strava!" como novidade recente, ou seja,
+   operaram boa parte da vida do produto SEM ler dados executados.
+4. Feedback semanal — prometem feedback de 100% dos treinos.
+5. Ajuste do plano — treinos atualizados semanalmente com ajuste
+   automático de carga e volume para prevenir lesões.
+Entrega via app próprio (iOS/Android), suporte e comunidade por
+WhatsApp. Preço: R$39,90/mês, R$139,90/semestre ou R$229,90/ano,
+com 14 dias grátis.
+
+» COMO ELES TRAÇAM AS MÉTRICAS DE CADA CLIENTE
+Bloco 1 — Dados declarados (o que mais pesa): nível autoavaliado,
+ritmo/PR informado, distância-alvo, data, dias disponíveis. Este
+parece ser o input dominante. Evidência: o suporte orientou um
+usuário a ALTERAR o pace informado no formulário inicial —
+indicando um RP que ele nunca tinha feito — para os treinos
+ficarem mais variados. Ou seja, a prescrição é puxada do pace
+declarado no onboarding, não de uma leitura contínua do executado.
+
+Bloco 2 — Dados sincronizados de dispositivo: via Strava/Garmin
+entram pace, FC, distância executados, mas a leitura parece
+superficial — mais para registro e "feedback" textual do que para
+recalibrar zonas, paces-alvo ou carga.
+
+Bloco 3 — O que alimenta o ajuste semanal: a progressão parece
+seguir regras/templates de progressão gradual ancorados no perfil
+inicial, com camada de IA por cima, em vez de um modelo de carga
+interna de verdade (TSS/CTL/ATL/TSB, ACWR, decoupling). Não há
+evidência pública de que computem essas métricas derivadas.
+
+» O PONTO CRÍTICO: DISTÂNCIA ENTRE O MARKETING E A ENTREGA
+O marketing promete leitura de evolução e ajuste automático de
+carga. Mas uma avaliação longa e crível na App Store — de alguém
+que NÃO é iniciante (10 km com RP de 6:10) — relata o oposto:
+• Treinos praticamente iguais, sem análise de evolução, mesma
+  distância e mesmo pace.
+• Na 14ª semana de treino para 21 km, o longo prescrito era de
+  11 km — a mesma distância já estipulada na 2ª semana.
+• Todos os longos e regenerativos prescritos a 7:15/km, muito
+  conservador para o perfil dele.
+• Suporte justificou o teto dizendo que não passariam de 12–14 km
+  porque a duração se aproximaria de 2 horas, e respondeu que não
+  são um app para "entreter com treinos diferentes e mirabolantes".
+• Conclusão do usuário: após 14 semanas regrediu em todas as
+  métricas e migrou para outro app, onde voltou a evoluir.
+
+Isso não é bug isolado — é a assinatura de um motor raso:
+dependente do questionário, com progressões conservadoras e
+templatizadas, teto de volume baixo e leitura fraca do executado.
+Funciona bem para iniciante (daí o 4.8 e os depoimentos de quem
+"começou a correr") e quebra para quem tem base.
+
+» O QUE ISSO SIGNIFICA PARA O APP DE VOCÊS
+1. O fosso competitivo é exatamente a camada que a Zyla não faz.
+   Eles param no pace declarado + progressão templatizada. O
+   diferencial de vocês é ingerir a série temporal bruta e
+   computar carga interna e prontidão de forma canônica.
+2. Zonas e paces-alvo precisam vir do executado, não do
+   formulário. O erro central da Zyla (prescrever 7:15
+   eternamente) se resolve recalibrando LTHR/pace de limiar a
+   partir dos treinos reais e de testes de campo.
+3. Não subestime o que a Zyla acertou: onboarding limpo, encaixe
+   na rotina por checkbox de dias, comunidade no WhatsApp,
+   feedback semanal e preço agressivo. A retenção vem tanto de
+   comunidade e UX quanto de algoritmo.
+
+
+================================================================
+5) BRUNNO
+================================================================
+
+Existem outras empresas que prestam este mesmo serviço no Brasil?
+E nos Estados Unidos?
+
+
+================================================================
+6) CLAUDE
+================================================================
+
+Sim — e os dois mercados estão fervendo. O mercado global de
+corrida de rua movimentou US$ 53,6 bilhões em 2025 e projeta
+US$ 56,9 bilhões em 2026; no Brasil já são 15 milhões de
+praticantes regulares, com o volume de corridas oficiais crescendo
+29% em um ano.
+
+Aviso de leitura: boa parte dos rankings "melhor app de IA" é
+publicada pelos próprios concorrentes (Running Genie, Coach Leo,
+NXT RUN e STAS escrevem comparativos que os colocam em primeiro).
+Tratei a existência e o modelo de cada um como factual, mas
+ignorei a parte de "quem é o melhor".
+
+» BRASIL — CONCORRENTES DIRETOS DA ZYLA
+
+ZYLA (líder)
+• Modelo/distribuição: app próprio + Wellhub
+• Como lê métricas: compara planejado vs executado; integra
+  Garmin, Amazfit e Strava para monitorar carga e intervir se
+  passar do limite de segurança
+• Preço: a partir de R$39,90/mês
+
+PACER (Pacefit / Clube Pace)
+• Modelo/distribuição: WhatsApp + app
+• Como lê métricas: lê histórico, qualidade das corridas e, via
+  Strava/Garmin, leva em conta FC e sono; ajusta quando você
+  dorme mal
+• Preço: ~R$0,83/dia, 14 dias grátis
+
+AI RUNNER
+• Modelo/distribuição: quiz e acompanhamento 100% no WhatsApp
+• Como lê métricas: analisa objetivo, rotina e evolução; sem
+  necessidade de relógio
+• Preço: R$29,90/mês, 7 dias grátis
+
+ASSESSORIA.APP
+• Modelo/distribuição: web/app + WhatsApp
+• Como lê métricas: Strava/Garmin com sync automático; formulário
+  de risco cardiológico; feedback adaptado a "personas" de
+  corredor (bem-estar, performance, social)
+• Preço: não informado
+
+CORREAI
+• Modelo/distribuição: app (iOS)
+• Como lê métricas: adapta com base no feedback pós-treino; mostra
+  o "raciocínio da IA" para cada mudança; monitora dor/lesão
+• Preço: grátis + assinatura
+
+Notas Brasil: a Zyla é disparada a maior — saiu de 200 para 84 mil
+alunos em menos de um ano e projeta faturar R$ 10 milhões em 2026;
+o Wellhub responde por mais de 90% dos alunos. Fundadores:
+Guilherme Monteiro (engenheiro nuclear que treinava pelo ChatGPT),
+Maria Luiza Sanches (influenciadora) e Samy Waintraub, com
+metodologia do treinador Pedro Keller. Incumbentes tradicionais
+(sem IA): MPR e Run&Fun.
+Característica única do mercado brasileiro: distribuição por
+WhatsApp (Pacer e AI Runner praticamente dispensam o app). É
+barato e de baixa fricção para iniciante, mas estruturalmente raso
+para leitura fina de dados.
+
+» ESTADOS UNIDOS / GLOBAL
+
+RUNNA (origem UK; comprada pela Strava em 2025)
+• Posicionamento: UX mais polida do mercado
+• Adaptação: planos desenhados por treinadores + ajuste semanal
+  por IA (menos agressivo)
+• Preço: ~US$19,99/mês
+
+STRAVA (Athlete Intelligence)
+• Posicionamento: camada de IA dentro da rede social
+• Adaptação: insights sobre treinos executados
+• Preço: incluso no Strava
+
+TRAINASONE
+• Posicionamento: a IA mais profunda (engine "Artemis 3")
+• Adaptação: ML puro, treinado em 100M+ km; recalcula o plano
+  inteiro a cada treino; usa potência de corrida
+• Preço: tier grátis + ~US$9,99/mês
+
+ATHLETICA.AI
+• Posicionamento: base científica, multiesporte/triatlo
+• Adaptação: modelo fisiológico que adapta a treino perdido,
+  viagem e sono ruim
+• Preço: assinatura
+
+NXT RUN
+• Posicionamento: feito para meta de prova / Boston Qualifier
+• Adaptação: recalibra paces futuros pelo que você executou;
+  "BQ Bonus" na inscrição de Boston
+• Preço: assinatura
+
+GARMIN COACH / COROS TRAINING HUB
+• Posicionamento: grátis se você tem o relógio
+• Adaptação: planos de treinadores (Galloway, McMillan) com IA
+  leve; Garmin só até meia maratona
+• Preço: grátis
+
+NIKE RUN CLUB
+• Posicionamento: porta de entrada gratuita
+• Adaptação: ajusta dificuldade; áudio-guiado; gamificação
+• Preço: grátis
+
+FINAL SURGE / TRAININGPEAKS
+• Posicionamento: padrão-ouro para elite/competitivo
+• Adaptação: plataforma + treinador humano (a IA é coadjuvante)
+• Preço: assinatura
+
+COACH LEO / STAS.RUN
+• Posicionamento: coach conversacional com memória
+• Adaptação: conectam Strava/Intervals.icu e deixam você conversar
+  com o coach via ChatGPT/Claude (MCP)
+• Preço: varia
+
+Mudança estrutural mais importante: a Strava adquiriu a Runna em
+2025 e embarcou sua própria IA (Athlete Intelligence). O maior app
+social de corrida do mundo verticalizou para dentro do coaching,
+comprimindo a margem de quem depende da API do Strava.
+
+» A LEITURA ESTRATÉGICA PARA O APP DE VOCÊS
+1. Existem dois arquétipos, e quase ninguém faz o terceiro. De um
+   lado, "plano de treinador + ajuste de IA" (Zyla, Runna, NRC) —
+   bom de UX, raso de fisiologia. De outro, "engine de
+   ML/fisiológico" (TrainAsONE, Athletica) — profundo, mas
+   interface datada. O espaço aberto é juntar os dois: leitura
+   fisiológica séria COM experiência premium.
+2. O segmento de atleta competitivo segue órfão — e é o seu. Os
+   próprios comparativos admitem: para elite ou amador competitivo,
+   Final Surge ou TrainingPeaks com treinador humano ainda é o
+   padrão-ouro; a IA pura não fechou essa lacuna. Tudo que mapeamos
+   (série bruta, TSS/CTL/ATL/TSB, ACWR, decoupling, recalibrar
+   LTHR) é o que falta nesse nicho. A Zyla trava em
+   iniciante/intermediário; ninguém no Brasil atende bem o sub-3h.
+3. A fronteira emergente é coach conversacional com dados reais
+   via MCP. Coach Leo e STAS.run construíram o negócio em cima de
+   conectar Strava e plugar no ChatGPT/Claude via MCP. Vale decidir
+   cedo se o app compete contra esse modelo ou se É esse modelo,
+   empacotado.
+
+
+================================================================
+FONTES CONSULTADAS
+================================================================
+
+Zyla:
+• Site oficial — https://www.zyla.fit/
+• App Store (avaliações) — https://apps.apple.com/br/app/zyla-corrida-com-ia/id6745179898
+• Google Play — https://play.google.com/store/apps/details?id=com.serviceadminzyla.zylaplatform
+• Análise MWM — https://mwm.ai/apps/zyla-corrida-com-ia/6745179898
+• Exame (crescimento e fundadores) — https://exame.com/negocios/com-ia-a-assessoria-de-corrida-deles-foi-de-200-a-84-mil-alunos-em-um-ano-e-agora-lidera-o-pais/
+• Portal Tela — https://www.portaltela.com/esporte/outros-esportes/2026/06/17/ia-impulsiona-assessoria-de-corrida-de-200-a-84-mil-alunos-em-um-ano/
+
+Concorrentes Brasil:
+• Pacer — https://pacerrun.com/
+• AI Runner — https://airunner.com.br/
+• Assessoria.App — https://assessoria.app/
+• CorreAI — https://apps.apple.com/br/app/correai-treine-corrida-com-ia/id6743434833
+• Pacefit (contexto de mercado) — https://pacefit.com.br/blog/treino-de-corrida-via-ia/
+
+Concorrentes EUA / global:
+• TrainAsONE — https://trainasone.com/
+• Athletica / Coach Leo / NXT RUN / STAS — comparativos em
+  coachleo.ai, nxtrun.ai, stas.run e therunninggenie.com
+• Aquisição da Runna pela Strava (2025) e Athlete Intelligence —
+  cobertura em therunninggenie.com e aitoolsbakery.com
+
+================================================================
+Fim do registro.
+================================================================
