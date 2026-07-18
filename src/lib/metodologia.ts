@@ -161,6 +161,116 @@ export function computeLoads(input: LoadComputeInput): LoadComputeOutput {
   };
 }
 
+// ---------------------- Natação: CSS (Critical Swim Speed) ----------------------
+// CSS (m/s) = 200 / (T400 − T200); pace/100m (s) = 100 / CSS = (T400 − T200) / 2
+export function cssFromTest(t200S: number, t400S: number): number | null {
+  if (!t200S || !t400S || t400S <= t200S) return null;
+  return +((t400S - t200S) / 2).toFixed(1);
+}
+
+// sTSS = horas × (velocidade/velocidade_CSS)² × 100 — mesmo formato do rTSS, âncora pace/100m
+export function sTss(minutes: number, avgPaceSPer100m: number, cssPaceSPer100m: number): number | null {
+  if (!avgPaceSPer100m || !cssPaceSPer100m) return null;
+  const vel = 1 / avgPaceSPer100m;
+  const velCss = 1 / cssPaceSPer100m;
+  return +((minutes / 60) * Math.pow(vel / velCss, 2) * 100).toFixed(1);
+}
+
+// Zonas de pace de nado ancoradas em %CSS (RF-19.4) — mesmo espírito do motor de zonas de FC (PC-4),
+// mas em pace/100m: low = mais rápido (menos segundos), high = mais lento. Percentuais de velocidade
+// (não de pace) para manter a leitura "maior % = mais forte" igual à das zonas de FC.
+const SWIM_ZONE_LABELS = ["Z1 Recuperação", "Z2 Aeróbico", "Z3 Limiar (CSS)", "Z4 VO2máx", "Z5 Velocidade"];
+const PCT_CSS_SPEED_5 = [80, 92, 100, 105, 112];
+const SWIM_ZONE_COLORS = ["#3FA9F5", "#17B26A", "#F5C518", "#FF7A1F", "#E02749"];
+
+export function computeSwimZones(cssPaceSPer100m: number): Zone[] {
+  const cssSpeed = 100 / cssPaceSPer100m;
+  // bounds em pace (s/100m); decrescente porque %velocidade é crescente
+  const bounds = PCT_CSS_SPEED_5.map((pct) => +(100 / ((pct / 100) * cssSpeed)).toFixed(1));
+  const zones: Zone[] = [];
+  let prev = +(bounds[0] * 1.15).toFixed(1); // piso: ~15% mais lento que o teto de Z1
+  for (let i = 0; i < 5; i++) {
+    zones.push({ label: SWIM_ZONE_LABELS[i], low: bounds[i], high: prev, color: SWIM_ZONE_COLORS[i] });
+    prev = bounds[i];
+  }
+  return zones;
+}
+
+export type SwimLoadInput = {
+  elapsedS: number;
+  avgHr?: number | null;
+  avgPaceSPer100m?: number | null;
+  srpe?: number | null;
+  profile: {
+    lthr?: number | null;
+    cssPaceSPer100m?: number | null;
+  };
+};
+
+export type SwimLoadOutput = {
+  minutes: number;
+  hrtss: number | null;
+  stss: number | null;
+  srpeLoad: number | null;
+  sessionLoad: number;
+  confidence: number;
+  source: "hrtss" | "stss" | "srpe";
+};
+
+// Hierarquia: hrTSS (FC óptica na água — confiança reduzida, RN-19.2) > sTSS (via CSS) > sRPE
+export function computeSwimLoads(input: SwimLoadInput): SwimLoadOutput {
+  const minutes = input.elapsedS / 60;
+  const hrtss = input.avgHr && input.profile.lthr ? hrTss(minutes, input.avgHr, input.profile.lthr) : null;
+  const stssVal = input.avgPaceSPer100m && input.profile.cssPaceSPer100m
+    ? sTss(minutes, input.avgPaceSPer100m, input.profile.cssPaceSPer100m)
+    : null;
+  const srpeL = input.srpe != null ? srpeLoad(input.srpe, minutes) : null;
+
+  let source: SwimLoadOutput["source"] = "srpe";
+  let sessionLoad = srpeL ?? 0;
+  let confidence = 0.4;
+  if (hrtss != null) { source = "hrtss"; sessionLoad = hrtss; confidence = 0.6; }
+  else if (stssVal != null) { source = "stss"; sessionLoad = stssVal; confidence = 0.8; }
+
+  return {
+    minutes: +minutes.toFixed(1),
+    hrtss,
+    stss: stssVal,
+    srpeLoad: srpeL,
+    sessionLoad: +sessionLoad.toFixed(1),
+    confidence,
+    source,
+  };
+}
+
+// ---------------------- Musculação ----------------------
+
+// 1RM estimado (Epley): peso × (1 + reps/30)
+export function epley1Rm(weightKg: number, reps: number): number {
+  if (reps <= 0) return weightKg;
+  return +(weightKg * (1 + reps / 30)).toFixed(1);
+}
+
+export function tonnageFromSets(sets: { reps: number; weightKg: number }[]): number {
+  return +sets.reduce((sum, s) => sum + s.reps * s.weightKg, 0).toFixed(1);
+}
+
+export type StrengthLoadOutput = {
+  minutes: number;
+  srpeLoad: number;
+  sessionLoad: number;
+  confidence: number;
+  source: "srpe";
+};
+
+// RF-20.4 (Must): base universal é sRPE (RPE × minutos). Refino por tonelagem relativa fica para
+// quando houver uma fórmula validada — não inventamos closed-formula aqui (PC-2).
+export function computeStrengthLoads(elapsedS: number, srpe: number): StrengthLoadOutput {
+  const minutes = elapsedS / 60;
+  const load = srpeLoad(srpe, minutes);
+  return { minutes: +minutes.toFixed(1), srpeLoad: load, sessionLoad: +load.toFixed(1), confidence: 0.4, source: "srpe" };
+}
+
 // ---------------------- Tempo em zona (aprox. FC média) ----------------------
 // Sem série ponto a ponto: alocamos 100% do tempo à zona da FC média.
 export function timeInZoneFromAvgHr(

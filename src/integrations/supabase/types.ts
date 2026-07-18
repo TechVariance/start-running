@@ -24,12 +24,15 @@ export type Database = {
           elevation_gain_m: number | null
           id: string
           max_hr: number | null
+          modality: string
           moving_s: number | null
           notes: string | null
+          pool_length_m: number | null
           source: string
           srpe: number | null
           started_at: string
           status: string
+          stroke: string | null
           updated_at: string
           user_id: string
         }
@@ -42,12 +45,15 @@ export type Database = {
           elevation_gain_m?: number | null
           id?: string
           max_hr?: number | null
+          modality?: string
           moving_s?: number | null
           notes?: string | null
+          pool_length_m?: number | null
           source?: string
           srpe?: number | null
           started_at: string
           status?: string
+          stroke?: string | null
           updated_at?: string
           user_id: string
         }
@@ -60,12 +66,15 @@ export type Database = {
           elevation_gain_m?: number | null
           id?: string
           max_hr?: number | null
+          modality?: string
           moving_s?: number | null
           notes?: string | null
+          pool_length_m?: number | null
           source?: string
           srpe?: number | null
           started_at?: string
           status?: string
+          stroke?: string | null
           updated_at?: string
           user_id?: string
         }
@@ -74,6 +83,7 @@ export type Database = {
       activity_metrics: {
         Row: {
           activity_id: string
+          avg_pace_s_per_100m: number | null
           computed_at: string
           confidence: number | null
           hrtss: number | null
@@ -83,12 +93,15 @@ export type Database = {
           session_load: number | null
           splits: Json | null
           srpe_load: number | null
+          stss: number | null
           time_in_zone: Json | null
+          tonnage_kg: number | null
           trimp: number | null
           user_id: string
         }
         Insert: {
           activity_id: string
+          avg_pace_s_per_100m?: number | null
           computed_at?: string
           confidence?: number | null
           hrtss?: number | null
@@ -98,12 +111,15 @@ export type Database = {
           session_load?: number | null
           splits?: Json | null
           srpe_load?: number | null
+          stss?: number | null
           time_in_zone?: Json | null
+          tonnage_kg?: number | null
           trimp?: number | null
           user_id: string
         }
         Update: {
           activity_id?: string
+          avg_pace_s_per_100m?: number | null
           computed_at?: string
           confidence?: number | null
           hrtss?: number | null
@@ -113,7 +129,9 @@ export type Database = {
           session_load?: number | null
           splits?: Json | null
           srpe_load?: number | null
+          stss?: number | null
           time_in_zone?: Json | null
+          tonnage_kg?: number | null
           trimp?: number | null
           user_id?: string
         }
@@ -126,6 +144,117 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      exercises: {
+        Row: {
+          created_at: string
+          equipment: string
+          id: string
+          muscle_group: string
+          name: string
+        }
+        Insert: {
+          created_at?: string
+          equipment: string
+          id?: string
+          muscle_group: string
+          name: string
+        }
+        Update: {
+          created_at?: string
+          equipment?: string
+          id?: string
+          muscle_group?: string
+          name?: string
+        }
+        Relationships: []
+      }
+      strength_sets: {
+        Row: {
+          activity_id: string
+          created_at: string
+          exercise_id: string
+          id: string
+          reps: number
+          rpe: number | null
+          set_number: number
+          user_id: string
+          weight_kg: number
+        }
+        Insert: {
+          activity_id: string
+          created_at?: string
+          exercise_id: string
+          id?: string
+          reps: number
+          rpe?: number | null
+          set_number: number
+          user_id: string
+          weight_kg?: number
+        }
+        Update: {
+          activity_id?: string
+          created_at?: string
+          exercise_id?: string
+          id?: string
+          reps?: number
+          rpe?: number | null
+          set_number?: number
+          user_id?: string
+          weight_kg?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "strength_sets_activity_id_fkey"
+            columns: ["activity_id"]
+            isOneToOne: false
+            referencedRelation: "activities"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "strength_sets_exercise_id_fkey"
+            columns: ["exercise_id"]
+            isOneToOne: false
+            referencedRelation: "exercises"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      swim_tests: {
+        Row: {
+          confidence: number
+          created_at: string
+          css_pace_s_per_100m: number
+          id: string
+          pool_length_m: number
+          t200_s: number
+          t400_s: number
+          tested_at: string
+          user_id: string
+        }
+        Insert: {
+          confidence?: number
+          created_at?: string
+          css_pace_s_per_100m: number
+          id?: string
+          pool_length_m: number
+          t200_s: number
+          t400_s: number
+          tested_at?: string
+          user_id: string
+        }
+        Update: {
+          confidence?: number
+          created_at?: string
+          css_pace_s_per_100m?: number
+          id?: string
+          pool_length_m?: number
+          t200_s?: number
+          t400_s?: number
+          tested_at?: string
+          user_id?: string
+        }
+        Relationships: []
       }
       coach_messages: {
         Row: {
@@ -308,6 +437,9 @@ export type Database = {
           consent_marketing: boolean
           consent_share_anon: boolean
           created_at: string
+          css_pace_s_per_100m: number | null
+          css_pool_length_m: number | null
+          css_tested_at: string | null
           display_name: string | null
           hr_max: number | null
           hr_rest: number | null
@@ -330,6 +462,9 @@ export type Database = {
           consent_marketing?: boolean
           consent_share_anon?: boolean
           created_at?: string
+          css_pace_s_per_100m?: number | null
+          css_pool_length_m?: number | null
+          css_tested_at?: string | null
           display_name?: string | null
           hr_max?: number | null
           hr_rest?: number | null
@@ -352,6 +487,9 @@ export type Database = {
           consent_marketing?: boolean
           consent_share_anon?: boolean
           created_at?: string
+          css_pace_s_per_100m?: number | null
+          css_pool_length_m?: number | null
+          css_tested_at?: string | null
           display_name?: string | null
           hr_max?: number | null
           hr_rest?: number | null

@@ -13,7 +13,7 @@ export default defineTool({
   name: "list_recent_activities",
   title: "Listar treinos recentes",
   description:
-    "Lista os treinos concluídos mais recentes do atleta autenticado (distância, duração, pace médio, FC média, sRPE).",
+    "Lista os treinos concluídos mais recentes do atleta autenticado, de qualquer modalidade (corrida, natação, musculação): distância, duração, pace médio, FC média, sRPE.",
   inputSchema: {
     limit: z.number().int().min(1).max(50).default(10).describe("Quantos treinos retornar (1-50)."),
   },
@@ -24,7 +24,7 @@ export default defineTool({
     const { data, error } = await sb(ctx)
       .from("activities")
       .select(
-        "id, started_at, source, distance_m, elapsed_s, moving_s, avg_pace_s_per_km, avg_hr, max_hr, elevation_gain_m, srpe, notes",
+        "id, started_at, source, modality, stroke, pool_length_m, distance_m, elapsed_s, moving_s, avg_pace_s_per_km, avg_hr, max_hr, elevation_gain_m, srpe, notes",
       )
       .eq("user_id", ctx.getUserId())
       .order("started_at", { ascending: false })

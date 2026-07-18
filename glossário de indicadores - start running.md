@@ -238,6 +238,45 @@ Plataformas comparadas: **TrainingPeaks (TP)**, **Strava**, **Garmin Connect**, 
 
 ---
 
+## 9. Natação e musculação (Módulos 19 e 20)
+
+### CSS (Critical Swim Speed)
+**O que é:** velocidade crítica de nado — a âncora de limiar da natação, equivalente ao LTHR/pace de limiar da corrida (PC-4). Um pace sustentável por tempo relativamente longo antes da fadiga acelerada.
+**Cálculo:** teste guiado de 400m e 200m no maior esforço sustentável; CSS (m/s) = 200 ÷ (T400 − T200); expressa aqui como pace em s/100m = (T400 − T200) ÷ 2. Zonas de pace de nado (Z1–Z5) são ancoradas em %CSS, mesmo espírito do motor de zonas de FC.
+**Comparativo:** MySwimPro/Garmin/tri calculam CSS de formas equivalentes · a maioria dos apps consumer não expõe o número, só zonas fechadas.
+
+### SWOLF
+**O que é:** eficiência de nado por piscina — tempo da piscina + número de braçadas. Menor é mais eficiente.
+**Cálculo:** requer contagem de braçadas por comprimento (sensor de pulso ou ingestão FIT); **não computado no registro manual** desta fase — chega junto da ingestão FIT/HealthKit (Módulo 19, fase F-b).
+**Comparativo:** Garmin ✓ (nativo) · MySwimPro ✓ · registro manual em qualquer app ✗.
+
+### sTSS (swim Training Stress Score)
+**O que é:** carga de sessão de natação na mesma moeda do rTSS/hrTSS — entra direto no `daily_load` unificado (PC-6).
+**Cálculo:** sTSS = horas × (velocidade média ÷ velocidade do CSS)² × 100. Com FC disponível, hrTSS de nado é a alternativa preferida (mesma fórmula do hrTSS de corrida), mas com confiança reduzida (máx. 0,6) — FC óptica na água tem mais ruído (arrasto, contato).
+**Comparativo:** nenhum app consumer soma a carga da natação à carga de corrida/força na mesma série — é a lacuna que o PC-6 fecha.
+
+### Tonelagem
+**O que é:** volume total de trabalho de uma sessão de força — soma de peso × repetições em todas as séries.
+**Cálculo:** Σ (reps × carga_kg) de cada série registrada.
+**Comparativo:** Hevy ✓ · Strong ✓ · Fitbod ≈ (usa fadiga estimada, não tonelagem bruta).
+
+### 1RM estimado
+**O que é:** carga máxima estimada para uma repetição, por exercício — usado para acompanhar progressão e recordes.
+**Cálculo:** fórmula de Epley: 1RM ≈ peso × (1 + reps ÷ 30).
+**Comparativo:** Hevy ✓ · Strong ✓ · Fitbod ✓.
+
+### Carga de força (sRPE)
+**O que é:** carga de sessão de musculação na mesma moeda das demais modalidades (PC-6) — base universal exigida pelo motor, já que nem toda sessão tem tonelagem completa registrada.
+**Cálculo:** sRPE × minutos de sessão (mesma fórmula já usada como fallback na corrida). Refino por tonelagem relativa é trabalho futuro — não entra sem uma fórmula validada (PC-2: sem score fechado inventado).
+**Comparativo:** nenhum app consumer usa sRPE como carga *plena* de força somável à carga de endurance.
+
+### Interferência (janela de proteção)
+**O que é:** princípio de treino que evita agendar força pesada de membros inferiores nas ~36h antes de uma sessão-chave de corrida/natação, para não comprometer a qualidade do estímulo principal.
+**Cálculo:** janela configurável por atleta (default 36h) checada no motor de prescrição do calendário (Módulo 20, fase F-b) — fora do escopo desta entrega, que é só registro manual.
+**Comparativo:** nenhum app consumer previne isso automaticamente — é decisão manual do treinador humano hoje.
+
+---
+
 ## Tabela-resumo do comparativo
 
 | Termo/KPI | Start Running | TP | Strava | Garmin | Polar | COROS | intervals.icu |
