@@ -1,0 +1,17 @@
+id: BM-025
+title: Benefícios amplos de saúde
+claim: Atividades de fortalecimento estão associadas a menor risco de mortalidade e doenças crônicas, e a combinação com atividade aeróbia tende a ampliar benefícios.
+goals: [health, function]
+profiles: [adult, recreational, older_adult]
+topics: [public_health, mortality, chronic_disease]
+outcomes: [health, mortality, disease_risk]
+evidence_level: A
+confidence: moderate
+applicability: direct
+practical_application: Para saúde, priorizar consistência e combinação de modalidades em vez de maximizar volume.
+limitations: [Grande parte da evidência de mortalidade é observacional.]
+source_ids: [SRC-M-0027]
+status: active
+last_reviewed: 2026-07-18
+review_due: 2027-01-18
+

@@ -1,0 +1,17 @@
+id: BM-012
+title: Intenção de velocidade para potência
+claim: Potência depende de produzir força rapidamente; intenção de velocidade com controle é mais útil que um tempo de repetição universal.
+goals: [power, strength, running_support]
+profiles: [trained, athlete]
+topics: [velocity, power]
+outcomes: [power, movement_velocity]
+evidence_level: A
+confidence: moderate
+applicability: direct
+practical_application: Ajustar ou encerrar séries quando velocidade e técnica se degradarem além do objetivo.
+limitations: [Medição de velocidade nem sempre está disponível ou validada.]
+source_ids: [SRC-M-0001]
+status: active
+last_reviewed: 2026-07-18
+review_due: 2027-01-18
+

@@ -1,0 +1,18 @@
+id: SW-001
+title: Desempenho multifatorial
+claim: O desempenho competitivo resulta da interação entre fatores fisiológicos, biomecânicos, neuromusculares e habilidades de prova.
+events: [all]
+strokes: [all]
+profiles: [all]
+topics: [performance, planning]
+outcomes: [race_time]
+evidence_level: A
+confidence: high
+applicability: direct
+practical_application: Avaliar técnica, condicionamento, largadas, viradas e pacing em conjunto.
+limitations: [Grande parte dos estudos de determinantes é observacional.]
+source_ids: [SRC-S-0001, SRC-S-0010]
+status: active
+last_reviewed: 2026-07-18
+review_due: 2027-01-18
+

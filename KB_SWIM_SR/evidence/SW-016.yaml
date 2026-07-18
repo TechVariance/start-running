@@ -1,0 +1,18 @@
+id: SW-016
+title: Não normalizar dor
+claim: Continuar a mesma carga apesar de dor persistente ou crescente não é uma estratégia segura de desenvolvimento.
+events: [all]
+strokes: [all]
+profiles: [all]
+topics: [pain, safety]
+outcomes: [health, participation]
+evidence_level: B
+confidence: high
+applicability: direct
+practical_application: Interromper ou modificar estímulos provocadores e buscar avaliação qualificada.
+limitations: [A base não diagnostica nem prescreve reabilitação.]
+source_ids: [SRC-S-0005, SRC-S-0013]
+status: active
+last_reviewed: 2026-07-18
+review_due: 2027-01-18
+

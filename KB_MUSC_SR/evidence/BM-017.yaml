@@ -1,0 +1,17 @@
+id: BM-017
+title: Ordem no treino concorrente
+claim: Quando resistência e endurance ocorrem na mesma sessão, realizar primeiro a prioridade pode preservar melhor o desfecho desejado.
+goals: [strength, running_support]
+profiles: [recreational, trained, runner]
+topics: [concurrent_training, exercise_order]
+outcomes: [dynamic_strength, endurance, hypertrophy]
+evidence_level: A
+confidence: moderate
+applicability: direct
+practical_application: Colocar primeiro o componente prioritário e separar sessões quando possível.
+limitations: [Efeito mais claro para força dinâmica de membros inferiores.]
+source_ids: [SRC-M-0017]
+status: active
+last_reviewed: 2026-07-18
+review_due: 2027-01-18
+

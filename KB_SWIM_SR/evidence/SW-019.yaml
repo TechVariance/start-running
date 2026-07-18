@@ -1,0 +1,18 @@
+id: SW-019
+title: Disponibilidade energética e saúde
+claim: Ingestão insuficiente para sustentar treino, recuperação e crescimento pode prejudicar saúde e desempenho.
+events: [all]
+strokes: [all]
+profiles: [all]
+topics: [nutrition, energy_availability, safety]
+outcomes: [health, recovery]
+evidence_level: B
+confidence: high
+applicability: indirect
+practical_application: Priorizar alimentação suficiente e encaminhar sinais persistentes a profissional habilitado; não prescrever restrição.
+limitations: [Fonte clínica geral e não específica de natação.]
+source_ids: [SRC-S-0019]
+status: active
+last_reviewed: 2026-07-18
+review_due: 2027-01-18
+

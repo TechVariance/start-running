@@ -1,0 +1,18 @@
+id: SW-022
+title: Intervenções hipóxicas
+claim: Intervenções hipóxicas mostraram efeito pequeno em desempenho e nenhum efeito significativo em VO2máx no conjunto analisado.
+events: [100m, 200m]
+strokes: [freestyle]
+profiles: [trained_amateur, adult]
+topics: [hypoxia, advanced_methods]
+outcomes: [race_time, vo2max]
+evidence_level: A
+confidence: moderate
+applicability: partial
+practical_application: Não usar como padrão para amadores; exige estrutura e supervisão especializadas e não equivale a apneia.
+limitations: [Onze estudos, 182 nadadores; aplicabilidade estreita.]
+source_ids: [SRC-S-0022]
+status: active
+last_reviewed: 2026-07-18
+review_due: 2027-01-18
+

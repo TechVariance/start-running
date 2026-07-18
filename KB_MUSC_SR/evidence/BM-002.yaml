@@ -1,0 +1,17 @@
+id: BM-002
+title: Especificidade dos ganhos de força
+claim: Ganhos de força são maiores nas tarefas, amplitudes, equipamentos e padrões praticados; a transferência não é completa.
+goals: [strength, power, running_support]
+profiles: [recreational, trained, athlete]
+topics: [specificity, exercise_selection]
+outcomes: [strength, transfer]
+evidence_level: A
+confidence: high
+applicability: direct
+practical_application: Incluir movimentos próximos ao desempenho que será avaliado.
+limitations: [A transferência depende da semelhança entre treino e teste.]
+source_ids: [SRC-M-0004, SRC-M-0012]
+status: active
+last_reviewed: 2026-07-18
+review_due: 2027-01-18
+

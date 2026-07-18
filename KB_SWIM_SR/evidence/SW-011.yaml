@@ -1,0 +1,18 @@
+id: SW-011
+title: Segurança no submerso
+claim: Treino de submerso não justifica hiperventilação, apneia prolongada ou prática sem supervisão por causa do risco de perda de consciência na água.
+events: [all]
+strokes: [all]
+profiles: [all]
+topics: [underwater, safety]
+outcomes: [safety]
+evidence_level: A
+confidence: high
+applicability: direct
+practical_application: Respeitar regras, limites técnicos, supervisão e retorno à respiração normal; interromper diante de sintomas.
+limitations: [Princípio de segurança; não é protocolo de desempenho.]
+source_ids: [SRC-S-0010]
+status: active
+last_reviewed: 2026-07-18
+review_due: 2027-01-18
+

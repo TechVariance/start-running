@@ -1,0 +1,18 @@
+id: SW-006
+title: Progressão de carga
+claim: A carga deve ser monitorada e progredir de forma individual; distância semanal isolada não representa todo o estresse do treino.
+events: [all]
+strokes: [all]
+profiles: [all]
+topics: [training_load, progression]
+outcomes: [adaptation, injury_risk]
+evidence_level: B
+confidence: moderate
+applicability: direct
+practical_application: Registrar metros, duração, intensidade, estilos, equipamentos, treino em terra, sintomas e recuperação.
+limitations: [Não há corte universal de volume seguro nem causalidade estabelecida.]
+source_ids: [SRC-S-0005, SRC-S-0006]
+status: active
+last_reviewed: 2026-07-18
+review_due: 2027-01-18
+

@@ -1,0 +1,18 @@
+id: SW-017
+title: Pacing específico e treinável
+claim: O perfil de ritmo varia por distância, estilo e indivíduo; parciais e feedback ajudam a praticar a distribuição de esforço.
+events: [100m, 200m, 400m, 800m, 1500m, medley]
+strokes: [all]
+profiles: [all]
+topics: [pacing, race_strategy]
+outcomes: [split_consistency, race_time]
+evidence_level: B
+confidence: moderate
+applicability: partial
+practical_application: Testar estratégias em treino e ajustar pelos parciais sem copiar percentuais de elite.
+limitations: [Dados disponíveis são frequentemente específicos de estilo ou nível competitivo.]
+source_ids: [SRC-S-0015, SRC-S-0017]
+status: active
+last_reviewed: 2026-07-18
+review_due: 2027-01-18
+

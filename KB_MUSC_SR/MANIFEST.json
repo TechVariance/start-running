@@ -1,0 +1,18 @@
+{
+  "knowledge_base": "KB_MUSC_SR",
+  "version": "1.0.0-rag",
+  "language": "pt-BR",
+  "created_at": "2026-07-18",
+  "source_master_version": "1.0",
+  "source_master_sha256": "9648710380b3f0ee5eacab2359350fb76351825622a2eb7f9197366763bdfc33",
+  "goals": ["health", "strength", "hypertrophy", "power", "function", "running_support"],
+  "primary_population": "adultos saudáveis recreacionais e treinados não profissionais",
+  "evidence_records": 25,
+  "source_records": 27,
+  "golden_set_cases": 15,
+  "canonical_source": "source_master/KB_MUSC_SR.md",
+  "evidence_schema": "schemas/evidence.schema.json",
+  "retrieval_policy": "retrieval/chunking_e_recuperacao.md",
+  "status": "ready_for_prototype_rag",
+  "next_review_due": "2027-01-18"
+}

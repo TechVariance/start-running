@@ -1,0 +1,18 @@
+id: SW-005
+title: Trabalho intenso e pace de prova
+claim: Séries intensas e específicas podem desenvolver velocidade e execução sob fadiga, mas não devem transformar todas as sessões em testes máximos.
+events: [all]
+strokes: [all]
+profiles: [recreational_competitor, trained_amateur, youth, adult, masters]
+topics: [high_intensity, race_pace]
+outcomes: [speed, pacing]
+evidence_level: C
+confidence: moderate
+applicability: direct
+practical_application: Preservar qualidade e recuperação; dosar o trabalho intenso conforme resposta individual.
+limitations: [Não existe dose semanal universal validada para amadores.]
+source_ids: [SRC-S-0003, SRC-S-0004]
+status: active
+last_reviewed: 2026-07-18
+review_due: 2027-01-18
+

@@ -1,0 +1,17 @@
+id: BM-024
+title: Restrição de fluxo sanguíneo sob supervisão
+claim: BFR com cargas baixas pode gerar adaptações, mas aplicação e segurança dependem de pressão, manguito, triagem e supervisão; não é método autônomo padrão.
+goals: [strength, hypertrophy, function]
+profiles: [adult, clinical_context]
+topics: [blood_flow_restriction, safety]
+outcomes: [strength, power, safety]
+evidence_level: A
+confidence: moderate
+applicability: partial
+practical_application: Reservar BFR para contexto supervisionado por profissional competente.
+limitations: [Protocolos, pressões e populações são heterogêneos.]
+source_ids: [SRC-M-0025, SRC-M-0026]
+status: active
+last_reviewed: 2026-07-18
+review_due: 2027-01-18
+

@@ -1,0 +1,17 @@
+id: BM-007
+title: Falha muscular não obrigatória
+claim: Treinar até falha momentânea não é superior de forma consistente para hipertrofia e aumenta fadiga aguda.
+goals: [strength, hypertrophy, power, running_support]
+profiles: [beginner, recreational, trained]
+topics: [failure, effort, fatigue]
+outcomes: [muscle_mass, strength, fatigue]
+evidence_level: A
+confidence: high
+applicability: direct
+practical_application: Manter repetições em reserva na maior parte do programa e usar falha somente de modo contextual.
+limitations: [A distância ótima da falha ainda é difícil de medir.]
+source_ids: [SRC-M-0008]
+status: active
+last_reviewed: 2026-07-18
+review_due: 2027-01-18
+

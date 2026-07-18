@@ -1,0 +1,18 @@
+id: SW-021
+title: Treinamento muscular respiratório
+claim: Pode melhorar força inspiratória e alguns índices pulmonares, mas não demonstrou melhora consistente em provas de 50 a 200 m.
+events: [50m, 100m, 200m]
+strokes: [all]
+profiles: [trained_amateur, adult, masters]
+topics: [respiratory_training]
+outcomes: [inspiratory_strength, race_time]
+evidence_level: A
+confidence: moderate
+applicability: direct
+practical_application: Não priorizar sobre técnica, treino específico e recuperação.
+limitations: [Heterogeneidade e ausência de efeito consistente no tempo de prova.]
+source_ids: [SRC-S-0021]
+status: active
+last_reviewed: 2026-07-18
+review_due: 2027-01-18
+

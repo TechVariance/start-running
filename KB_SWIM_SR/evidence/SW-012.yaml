@@ -1,0 +1,18 @@
+id: SW-012
+title: Aquecimento individualizado
+claim: Diferentes aquecimentos produzem efeitos pequenos e inconsistentes no sprint; não há formato único superior.
+events: [50m, 100m]
+strokes: [all]
+profiles: [all]
+topics: [warmup, competition]
+outcomes: [sprint_performance]
+evidence_level: A
+confidence: moderate
+applicability: direct
+practical_application: Usar rotina familiar, progressiva e específica sem gerar fadiga desnecessária.
+limitations: [Estudos pequenos e protocolos heterogêneos.]
+source_ids: [SRC-S-0011]
+status: active
+last_reviewed: 2026-07-18
+review_due: 2027-01-18
+

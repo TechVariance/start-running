@@ -1,0 +1,18 @@
+id: SW-007
+title: Natação combinada com força
+claim: Combinar treino na água com força ou potência em terra tende a superar treino somente na água em vários desfechos de desempenho.
+events: [50m, 100m, 200m, 400m]
+strokes: [all]
+profiles: [recreational_competitor, trained_amateur, youth, adult, masters]
+topics: [dryland, strength]
+outcomes: [strength, race_time]
+evidence_level: A
+confidence: moderate
+applicability: direct
+practical_application: Integrar sessões progressivas de força sem comprometer a qualidade do treino aquático.
+limitations: [Protocolos e populações são heterogêneos.]
+source_ids: [SRC-S-0007, SRC-S-0008, SRC-S-0009]
+status: active
+last_reviewed: 2026-07-18
+review_due: 2027-01-18
+

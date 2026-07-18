@@ -1,0 +1,28 @@
+{
+  "package": "KB_SWIM_SR",
+  "version": "1.0.0",
+  "language": "pt-BR",
+  "created": "2026-07-18",
+  "last_reviewed": "2026-07-18",
+  "review_due": "2027-01-18",
+  "scope": "Natação competitiva em piscina para nadadores amadores, 50 m a 1.500 m, quatro estilos e medley",
+  "canonical_source": "source_master/KB_SWIM_SR.md",
+  "evidence_schema": "schemas/evidence.schema.json",
+  "counts": {
+    "evidence_records": 25,
+    "source_records": 25,
+    "modules": 8,
+    "policies": 3,
+    "golden_set_cases": 15
+  },
+  "authority_order": [
+    "policies/seguranca_e_encaminhamento.md",
+    "policies/politica_de_respostas.md",
+    "evidence/",
+    "modules/",
+    "source_master/KB_SWIM_SR.md"
+  ],
+  "license_note": "Sínteses originais; direitos das fontes permanecem com seus autores e editores. Ver policies/propriedade_intelectual.md.",
+  "status": "validated"
+}
+

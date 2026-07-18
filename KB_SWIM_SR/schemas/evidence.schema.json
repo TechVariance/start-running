@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "KB_SWIM_SR Evidence Record",
+  "type": "object",
+  "required": ["id", "title", "claim", "events", "strokes", "profiles", "topics", "outcomes", "evidence_level", "confidence", "applicability", "practical_application", "limitations", "source_ids", "status", "last_reviewed", "review_due"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^SW-[0-9]{3}$"},
+    "title": {"type": "string"},
+    "claim": {"type": "string"},
+    "events": {"type": "array", "items": {"enum": ["50m", "100m", "200m", "400m", "800m", "1500m", "medley", "all"]}, "minItems": 1},
+    "strokes": {"type": "array", "items": {"enum": ["freestyle", "backstroke", "breaststroke", "butterfly", "medley", "all"]}, "minItems": 1},
+    "profiles": {"type": "array", "items": {"enum": ["beginner_competitor", "recreational_competitor", "trained_amateur", "youth", "adult", "masters", "all"]}, "minItems": 1},
+    "topics": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "outcomes": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "evidence_level": {"enum": ["A", "B", "C", "D"]},
+    "confidence": {"enum": ["high", "moderate", "low", "insufficient"]},
+    "applicability": {"enum": ["direct", "partial", "indirect"]},
+    "practical_application": {"type": "string"},
+    "limitations": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "source_ids": {"type": "array", "items": {"type": "string", "pattern": "^SRC-S-[0-9]{4}$"}, "minItems": 1},
+    "status": {"enum": ["active", "under_review", "superseded", "withdrawn"]},
+    "last_reviewed": {"type": "string", "format": "date"},
+    "review_due": {"type": "string", "format": "date"}
+  },
+  "additionalProperties": false
+}
+

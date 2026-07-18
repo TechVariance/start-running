@@ -1,0 +1,18 @@
+id: SW-015
+title: Dor no ombro é multifatorial
+claim: Exposição, fadiga, histórico, mobilidade, força, controle e técnica podem se associar à dor no ombro, sem uma causa única universal.
+events: [all]
+strokes: [all]
+profiles: [all]
+topics: [shoulder, injury_risk]
+outcomes: [pain, participation]
+evidence_level: A
+confidence: moderate
+applicability: direct
+practical_application: Monitorar sintomas e modificar a carga; procurar avaliação quando a dor persiste, cresce ou limita função.
+limitations: [Associações não provam causalidade e pontos de corte não são amplamente validados.]
+source_ids: [SRC-S-0005, SRC-S-0013, SRC-S-0014]
+status: active
+last_reviewed: 2026-07-18
+review_due: 2027-01-18
+

@@ -1,0 +1,17 @@
+id: BM-020
+title: Proteína como benefício adicional ao treinamento
+claim: Maior ingestão proteica pode acrescentar pequenos ganhos de massa magra e força em adultos quando combinada ao treinamento, sobretudo se a ingestão habitual for insuficiente.
+goals: [strength, hypertrophy, function]
+profiles: [adult, recreational, trained]
+topics: [nutrition, protein, recovery]
+outcomes: [lean_mass, strength]
+evidence_level: A
+confidence: high
+applicability: direct
+practical_application: Priorizar alimentação adequada e avaliação individual; não converter médias em prescrição automática.
+limitations: [Dose individual depende de ingestão habitual, saúde e objetivo.]
+source_ids: [SRC-M-0019]
+status: active
+last_reviewed: 2026-07-18
+review_due: 2027-01-18
+

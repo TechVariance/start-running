@@ -1,0 +1,18 @@
+id: SW-002
+title: Frequência e comprimento de braçada
+claim: A combinação útil entre frequência e comprimento de braçada varia por nadador, estilo, distância e fadiga; não existe contagem universal ideal.
+events: [all]
+strokes: [all]
+profiles: [all]
+topics: [technique, biomechanics]
+outcomes: [velocity, efficiency]
+evidence_level: B
+confidence: moderate
+applicability: partial
+practical_application: Usar vídeo e parciais para encontrar a combinação individual que sustenta velocidade com técnica estável.
+limitations: [Parte da evidência vem de crawl ou masters e não generaliza a todos os estilos.]
+source_ids: [SRC-S-0002, SRC-S-0015]
+status: active
+last_reviewed: 2026-07-18
+review_due: 2027-01-18
+

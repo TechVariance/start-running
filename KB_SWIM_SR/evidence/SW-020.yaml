@@ -1,0 +1,18 @@
+id: SW-020
+title: Creatina em nadadores
+claim: A meta-análise disponível não mostrou benefício significativo consistente da creatina no desempenho de natação.
+events: [all]
+strokes: [all]
+profiles: [adult, masters]
+topics: [supplements, creatine]
+outcomes: [race_time, physiology]
+evidence_level: A
+confidence: moderate
+applicability: direct
+practical_application: Não tratar creatina como intervenção rotineira; não recomendar suplemento a menores.
+limitations: [Número e qualidade dos estudos limitam conclusões definitivas.]
+source_ids: [SRC-S-0020]
+status: active
+last_reviewed: 2026-07-18
+review_due: 2027-01-18
+

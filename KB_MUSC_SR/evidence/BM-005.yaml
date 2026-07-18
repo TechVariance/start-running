@@ -1,0 +1,17 @@
+id: BM-005
+title: Dose-resposta do volume com retornos decrescentes
+claim: Múltiplas séries geralmente superam uma série e maior volume pode ampliar ganhos, mas os retornos diminuem e a tolerância é individual.
+goals: [strength, hypertrophy, function]
+profiles: [beginner, recreational, trained]
+topics: [volume, dose_response]
+outcomes: [strength, muscle_mass, fatigue]
+evidence_level: A
+confidence: high
+applicability: direct
+practical_application: Começar com dose recuperável e aumentar somente quando desempenho e recuperação justificarem.
+limitations: [Não existe ponto ótimo universal por grupo muscular.]
+source_ids: [SRC-M-0001, SRC-M-0003, SRC-M-0007]
+status: active
+last_reviewed: 2026-07-18
+review_due: 2027-01-18
+

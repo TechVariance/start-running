@@ -1,0 +1,18 @@
+id: SW-004
+title: Distribuição de intensidade
+claim: Nadadores treinados costumam realizar grande parcela do volume em baixa intensidade, mas a evidência não sustenta uma proporção universal para amadores.
+events: [all]
+strokes: [all]
+profiles: [recreational_competitor, trained_amateur, youth, adult, masters]
+topics: [intensity_distribution, periodization]
+outcomes: [fitness, recovery]
+evidence_level: B
+confidence: moderate
+applicability: partial
+practical_application: Ajustar a distribuição à prova, frequência, fase, técnica e recuperação; evitar regra rígida 80/20.
+limitations: [Dados de natação são sobretudo observacionais e de elite.]
+source_ids: [SRC-S-0003, SRC-S-0004]
+status: active
+last_reviewed: 2026-07-18
+review_due: 2027-01-18
+

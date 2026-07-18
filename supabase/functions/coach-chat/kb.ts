@@ -41,7 +41,7 @@ Personalização: antes de sugerir uma estrutura individual de treino (plano, vo
 
 Conflito entre fontes: informe a divergência, explique diferenças de população/desenho/desfecho, prefira a conclusão mais prudente, nunca oculte incerteza para parecer mais categórico.
 
-Escopo: esta base cobre treinamento de corrida de rua (5K/10K/21K/42K). Para natação e musculação ainda não existe uma base de evidências equivalente conectada — nesses casos, apoie-se apenas nos dados reais do atleta e em orientação geral cautelosa, deixando claro que não há uma base de evidência dedicada ainda, em vez de citar BC-xxx (que são exclusivos de corrida) fora de contexto.`;
+Escopo: esta base cobre treinamento de corrida de rua (5K/10K/21K/42K). Musculação e natação têm bases de evidência próprias e igualmente conectadas (KB_MUSC_SR, com registros BM-xxx, e KB_SWIM_SR, com registros SW-xxx) — nunca cite BC-xxx para afirmações sobre força ou natação, nem o inverso; use o registro da base correspondente ao tema da pergunta.`;
 
 export const KB_IP_POLICY = `PROPRIEDADE INTELECTUAL: cite apenas metadados bibliográficos, DOI/PMID/links públicos e paráfrases curtas das fontes abaixo. Nunca reproduza artigos/planos protegidos na íntegra.`;
 

@@ -1,6 +1,11 @@
-// Coach IA — usa Lovable AI Gateway. Contexto real do atleta + KB_RUN_SR (RAG restrito à base de corrida).
+// Coach IA — usa Lovable AI Gateway. Contexto real do atleta + as 3 bases de
+// conhecimento do app (RAG restrito): KB_RUN_SR (corrida), KB_MUSC_SR
+// (musculação) e KB_SWIM_SR (natação). O Coach nunca deve responder fora
+// dessas bases nem misturar os prefixos de citação entre elas.
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.4";
 import { buildKbContext } from "./kb.ts";
+import { buildMuscKbContext } from "./kb-musc.ts";
+import { buildSwimKbContext } from "./kb-swim.ts";
 
 const cors = {
   "Access-Control-Allow-Origin": "*",
@@ -63,12 +68,18 @@ Deno.serve(async (req) => {
         : "Nenhum treino registrado ainda.",
     ].join("\n");
 
-    const systemPrompt = `Você é o coach de corrida do ${name} no app Start Running. Persona: técnico que respeita o atleta — direto, prático, sem jargão despejado. Celebra evolução real. Nunca inventa números; se um dado não existe, diga. Português do Brasil. Frases curtas. Nada de listas gigantes: máximo 3 bullets curtos ou parágrafo direto. Não recomenda medicação. Sempre baseia conselho nos dados abaixo.
+    const systemPrompt = `Você é o coach do ${name} no app Start Running — corrida, natação e musculação num único sistema de treino (o mesmo atleta, a mesma carga, o mesmo plano). Persona: técnico que respeita o atleta — direto, prático, sem jargão despejado. Celebra evolução real. Nunca inventa números; se um dado não existe, diga. Português do Brasil. Frases curtas. Nada de listas gigantes: máximo 3 bullets curtos ou parágrafo direto. Não recomenda medicação. Sempre baseia conselho nos dados abaixo.
+
+Você tem 3 bases de conhecimento conectadas, uma por modalidade — nunca responda como se tivesse mais que isso, e nunca cite o identificador de evidência de uma base para uma afirmação sobre outra modalidade (BC-xxx é só corrida, BM-xxx é só musculação, SW-xxx é só natação):
 
 DADOS ATUAIS DO ATLETA:
 ${ctx}
 
-${buildKbContext(plan?.race_distance_m)}`;
+${buildKbContext(plan?.race_distance_m)}
+
+${buildMuscKbContext()}
+
+${buildSwimKbContext()}`;
 
     const priorMessages = (history ?? []).reverse().map((m: { role: string; content: string }) => ({
       role: m.role === "coach" ? "assistant" : "user",

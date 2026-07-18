@@ -1,0 +1,17 @@
+id: BM-001
+title: Efeitos gerais do treinamento resistido
+claim: Treinamento resistido melhora força, massa muscular e função física em comparação com não treinar.
+goals: [health, strength, hypertrophy, function, general]
+profiles: [beginner, recreational, trained]
+topics: [adaptation, effectiveness]
+outcomes: [strength, muscle_mass, physical_function]
+evidence_level: A
+confidence: high
+applicability: direct
+practical_application: Usar um programa progressivo e aderente; complexidade não é pré-requisito para benefício.
+limitations: [Magnitude varia por objetivo, experiência e população.]
+source_ids: [SRC-M-0001, SRC-M-0002]
+status: active
+last_reviewed: 2026-07-18
+review_due: 2027-01-18
+

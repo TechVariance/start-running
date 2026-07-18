@@ -1,0 +1,18 @@
+id: SW-014
+title: Monitoramento interno e externo
+claim: Combinar carga externa com percepção de esforço, recuperação, sono e sintomas oferece contexto melhor do que uma métrica isolada.
+events: [all]
+strokes: [all]
+profiles: [all]
+topics: [monitoring, training_load]
+outcomes: [adaptation, wellbeing]
+evidence_level: B
+confidence: moderate
+applicability: direct
+practical_application: Registrar medidas simples e consistentes e observar tendências individuais.
+limitations: [Relações com lesão e desempenho são complexas e não determinísticas.]
+source_ids: [SRC-S-0005, SRC-S-0006]
+status: active
+last_reviewed: 2026-07-18
+review_due: 2027-01-18
+

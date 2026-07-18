@@ -1,0 +1,18 @@
+id: SW-025
+title: Recuperação em masters mais velhos
+claim: Com o avanço da idade, alguns nadadores podem precisar de aquecimento mais longo, mais recuperação e menor carga total, com grande variação individual.
+events: [all]
+strokes: [all]
+profiles: [masters]
+topics: [aging, recovery, masters]
+outcomes: [participation, recovery]
+evidence_level: C
+confidence: moderate
+applicability: direct
+practical_application: Ajustar pela resposta real, condições clínicas e regularidade, sem presumir incapacidade pela idade.
+limitations: [Revisão parcialmente narrativa e recomendações não são universais.]
+source_ids: [SRC-S-0025]
+status: active
+last_reviewed: 2026-07-18
+review_due: 2027-01-18
+

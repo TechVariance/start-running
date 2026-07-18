@@ -1,0 +1,18 @@
+id: SW-008
+title: Nenhum método único de força
+claim: A literatura não identifica um método de treinamento de força universalmente superior para o desempenho na natação.
+events: [all]
+strokes: [all]
+profiles: [all]
+topics: [dryland, strength_method]
+outcomes: [strength, power, race_time]
+evidence_level: A
+confidence: high
+applicability: direct
+practical_application: Escolher método seguro, progressivo e compatível com experiência, prova e recursos.
+limitations: [Comparações diretas entre métodos são limitadas.]
+source_ids: [SRC-S-0007, SRC-S-0008]
+status: active
+last_reviewed: 2026-07-18
+review_due: 2027-01-18
+

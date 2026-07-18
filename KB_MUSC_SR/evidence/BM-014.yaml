@@ -1,0 +1,17 @@
+id: BM-014
+title: Autoregulação do treinamento
+claim: APRE, RPE, RIR e velocidade podem ajustar o treino ao estado do praticante, mas dependem de aprendizagem e medição consistente.
+goals: [strength, hypertrophy, power]
+profiles: [recreational, trained, athlete]
+topics: [autoregulation, monitoring]
+outcomes: [strength, fatigue_management, adherence]
+evidence_level: A
+confidence: moderate
+applicability: direct
+practical_application: Combinar meta planejada com resposta real da sessão e manter registros consistentes.
+limitations: [Comparações entre métodos são heterogêneas.]
+source_ids: [SRC-M-0014]
+status: active
+last_reviewed: 2026-07-18
+review_due: 2027-01-18
+

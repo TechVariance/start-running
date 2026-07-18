@@ -1,0 +1,18 @@
+id: SW-003
+title: Especificidade por distância
+claim: Potência e capacidade anaeróbia têm maior peso relativo em provas curtas, enquanto capacidade aeróbia e economia ganham importância em distâncias maiores.
+events: [50m, 100m, 200m, 400m, 800m, 1500m]
+strokes: [all]
+profiles: [all]
+topics: [event_demands, physiology]
+outcomes: [race_time]
+evidence_level: B
+confidence: moderate
+applicability: direct
+practical_application: Manter base ampla e aumentar a especificidade conforme prova e fase da temporada.
+limitations: [Todas as provas usam sistemas energéticos mistos; fronteiras não são rígidas.]
+source_ids: [SRC-S-0001, SRC-S-0016]
+status: active
+last_reviewed: 2026-07-18
+review_due: 2027-01-18
+

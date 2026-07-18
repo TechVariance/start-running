@@ -1,0 +1,18 @@
+id: SW-024
+title: Adaptação em masters
+claim: Nadadores masters podem melhorar desempenho e eficiência com blocos que integrem condicionamento, intensidade e técnica.
+events: [50m, 100m, 200m]
+strokes: [freestyle]
+profiles: [masters]
+topics: [masters, periodization, technique]
+outcomes: [race_time, drag, efficiency]
+evidence_level: C
+confidence: moderate
+applicability: partial
+practical_application: Individualizar volume, intensidade e técnica considerando histórico e recuperação.
+limitations: [Estudos pequenos e predominantemente de crawl.]
+source_ids: [SRC-S-0002, SRC-S-0024]
+status: active
+last_reviewed: 2026-07-18
+review_due: 2027-01-18
+

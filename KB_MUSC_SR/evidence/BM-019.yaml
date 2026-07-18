@@ -1,0 +1,17 @@
+id: BM-019
+title: Sono e desempenho de força
+claim: Perda de sono pode reduzir algumas medidas de força, potência e resistência muscular, embora a resposta varie entre tarefas e indivíduos.
+goals: [health, strength, hypertrophy, power, function]
+profiles: [recreational, trained, athlete]
+topics: [sleep, recovery]
+outcomes: [strength, power, fatigue]
+evidence_level: A
+confidence: moderate
+applicability: direct
+practical_application: Com sono insuficiente, priorizar técnica e ajustar carga ou volume em vez de buscar recordes.
+limitations: [Número de estudos e amostras ainda é limitado.]
+source_ids: [SRC-M-0018]
+status: active
+last_reviewed: 2026-07-18
+review_due: 2027-01-18
+

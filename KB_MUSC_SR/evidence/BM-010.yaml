@@ -1,0 +1,17 @@
+id: BM-010
+title: Eficácia de máquinas e pesos livres
+claim: Máquinas e pesos livres podem produzir força e hipertrofia; cada modalidade melhora mais testes semelhantes ao treinamento.
+goals: [health, strength, hypertrophy, function]
+profiles: [beginner, recreational, trained, older_adult]
+topics: [equipment, specificity]
+outcomes: [strength, muscle_mass, adherence]
+evidence_level: A
+confidence: high
+applicability: direct
+practical_application: Escolher por objetivo, preferência, acesso, estabilidade, habilidade e segurança.
+limitations: [Há menos estudos de hipertrofia que de força.]
+source_ids: [SRC-M-0012]
+status: active
+last_reviewed: 2026-07-18
+review_due: 2027-01-18
+

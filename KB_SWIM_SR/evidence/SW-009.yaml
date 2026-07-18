@@ -1,0 +1,18 @@
+id: SW-009
+title: Especificidade aquática
+claim: O treino em terra complementa, mas não substitui, a prática técnica e específica na água.
+events: [all]
+strokes: [all]
+profiles: [all]
+topics: [specificity, dryland]
+outcomes: [skill_transfer]
+evidence_level: B
+confidence: high
+applicability: direct
+practical_application: Manter a natação como eixo do programa e usar força para apoiar capacidades limitantes.
+limitations: [A transferência varia por exercício, atleta e prova.]
+source_ids: [SRC-S-0007, SRC-S-0009]
+status: active
+last_reviewed: 2026-07-18
+review_due: 2027-01-18
+

@@ -1,0 +1,17 @@
+id: BM-016
+title: Compatibilidade do treino concorrente
+claim: Resistência e endurance são geralmente compatíveis, com pequena interferência possível em fibras, força ou potência quando o volume e a proximidade dos estímulos são altos.
+goals: [strength, hypertrophy, running_support]
+profiles: [recreational, trained, runner]
+topics: [concurrent_training, interference]
+outcomes: [strength, muscle_mass, endurance]
+evidence_level: A
+confidence: moderate
+applicability: direct
+practical_application: Definir prioridade, gerenciar volume e separar sessões exigentes quando desempenho máximo for essencial.
+limitations: [Interferência em fibras não implica necessariamente diferença no músculo inteiro.]
+source_ids: [SRC-M-0016]
+status: active
+last_reviewed: 2026-07-18
+review_due: 2027-01-18
+

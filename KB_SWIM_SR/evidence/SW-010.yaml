@@ -1,0 +1,18 @@
+id: SW-010
+title: Valor de largadas, viradas e submerso
+claim: Largadas, viradas e submersos contribuem de modo relevante ao tempo total, sobretudo em sprints e piscina curta.
+events: [50m, 100m, 200m, 400m, medley]
+strokes: [all]
+profiles: [all]
+topics: [starts, turns, underwater]
+outcomes: [race_time]
+evidence_level: A
+confidence: high
+applicability: direct
+practical_application: Treinar essas fases com feedback técnico, profundidade adequada e supervisão.
+limitations: [Importância relativa varia com prova, estilo e comprimento da piscina.]
+source_ids: [SRC-S-0001, SRC-S-0010]
+status: active
+last_reviewed: 2026-07-18
+review_due: 2027-01-18
+

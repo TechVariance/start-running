@@ -1,0 +1,18 @@
+id: SW-023
+title: Desenvolvimento de jovens
+claim: Em jovens, maturação e idade relativa podem afetar desempenho e seleção; formação não deve se reduzir ao resultado imediato.
+events: [all]
+strokes: [all]
+profiles: [youth]
+topics: [youth, maturation, long_term_development]
+outcomes: [development, participation]
+evidence_level: A
+confidence: moderate
+applicability: direct
+practical_application: Priorizar técnica ampla, segurança, variedade, prazer e progressão compatível com maturação.
+limitations: [Efeito populacional não permite prever trajetória individual.]
+source_ids: [SRC-S-0001, SRC-S-0023]
+status: active
+last_reviewed: 2026-07-18
+review_due: 2027-01-18
+

@@ -1,0 +1,17 @@
+id: BM-021
+title: Benefícios em adultos mais velhos
+claim: Adultos mais velhos podem melhorar força, função e massa muscular com treinamento resistido adaptado à capacidade e ao estado de saúde.
+goals: [health, strength, hypertrophy, function]
+profiles: [older_adult, sarcopenia]
+topics: [aging, function, strength]
+outcomes: [strength, physical_function, muscle_mass]
+evidence_level: A
+confidence: high
+applicability: direct
+practical_application: Individualizar técnica, equilíbrio, carga e supervisão sem excluir estímulo desafiador somente pela idade.
+limitations: [Condições clínicas e fragilidade alteram aplicabilidade.]
+source_ids: [SRC-M-0020, SRC-M-0021]
+status: active
+last_reviewed: 2026-07-18
+review_due: 2027-01-18
+

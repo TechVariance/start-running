@@ -1,0 +1,18 @@
+id: SW-013
+title: Taper antes da competição
+claim: Reduzir volume antes da competição enquanto se preservam estímulos importantes tende a melhorar desempenho de endurance.
+events: [all]
+strokes: [all]
+profiles: [recreational_competitor, trained_amateur, youth, adult, masters]
+topics: [taper, competition]
+outcomes: [race_time, fatigue]
+evidence_level: A
+confidence: moderate
+applicability: partial
+practical_application: Individualizar duração e redução com base em carga anterior, prova e resposta histórica.
+limitations: [A faixa de 41% a 60% por até 21 dias vem de múltiplos esportes e não é regra universal.]
+source_ids: [SRC-S-0012]
+status: active
+last_reviewed: 2026-07-18
+review_due: 2027-01-18
+
