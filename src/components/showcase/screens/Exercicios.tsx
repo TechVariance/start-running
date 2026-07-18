@@ -4,6 +4,7 @@ import { BottomSheet } from "@/components/app/BottomSheet";
 import { useAuth } from "@/lib/auth";
 import { supabase } from "@/integrations/supabase/client";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { errorMessage } from "@/lib/errors";
 
 const MUSCLE_GROUPS = [
   { value: "peito", label: "Peito" },
@@ -41,8 +42,22 @@ function normalizeToSlug(input: string, options: { value: string; label: string 
   return t.normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/\s+/g, "_");
 }
 
+// Remove BOM (comum em "CSV UTF-8" salvo pelo Excel)
+function stripBom(text: string): string {
+  return text.charCodeAt(0) === 0xfeff ? text.slice(1) : text;
+}
+
+// Excel no Brasil normalmente exporta CSV separado por ; (porque , é o separador decimal
+// da localidade) — detecta o delimitador mais provável pela primeira linha do arquivo.
+function detectDelimiter(text: string): string {
+  const firstLine = text.split(/\r\n|\r|\n/)[0] ?? "";
+  const counts: [string, number][] = [",", ";", "\t"].map((d) => [d, (firstLine.match(new RegExp(`\\${d}`, "g")) ?? []).length]);
+  const best = counts.sort((a, b) => b[1] - a[1])[0];
+  return best[1] > 0 ? best[0] : ",";
+}
+
 // Parser simples de CSV com suporte a campos entre aspas (RFC 4180 básico)
-function parseCsv(text: string): string[][] {
+function parseCsv(text: string, delimiter: string): string[][] {
   const rows: string[][] = [];
   let row: string[] = [];
   let field = "";
@@ -55,7 +70,7 @@ function parseCsv(text: string): string[][] {
       } else field += c;
     } else if (c === '"') {
       inQuotes = true;
-    } else if (c === ",") {
+    } else if (c === delimiter) {
       row.push(field); field = "";
     } else if (c === "\n" || c === "\r") {
       if (c === "\r" && text[i + 1] === "\n") i++;
@@ -75,8 +90,9 @@ function parseCsv(text: string): string[][] {
 
 type ImportRow = { name: string; muscleGroup: string; equipment: string };
 
-function parseExercisesCsv(text: string): ImportRow[] {
-  const rows = parseCsv(text);
+function parseExercisesCsv(rawText: string): ImportRow[] {
+  const text = stripBom(rawText);
+  const rows = parseCsv(text, detectDelimiter(text));
   if (rows.length === 0) return [];
   const header = rows[0].map((h) => h.trim().toLowerCase());
   const findCol = (...names: string[]) => names.map((n) => header.indexOf(n)).find((i) => i >= 0) ?? -1;
@@ -222,7 +238,7 @@ function AddExerciseSheet({ open, onClose, userId, onSaved }: { open: boolean; o
       setName(""); setMuscleGroup(MUSCLE_GROUPS[0].value); setEquipment(EQUIPMENT[0].value);
       onSaved();
     },
-    onError: (e: unknown) => setErr(e instanceof Error ? e.message : "Erro"),
+    onError: (e: unknown) => setErr(errorMessage(e)),
   });
 
   return (
@@ -278,7 +294,7 @@ function ImportExercisesSheet({ open, onClose, userId, onSaved }: { open: boolea
       setRows(parsed);
     } catch (e) {
       setRows([]);
-      setErr(e instanceof Error ? e.message : "Não foi possível ler o arquivo");
+      setErr(errorMessage(e, "Não foi possível ler o arquivo"));
     }
   };
 
@@ -291,7 +307,7 @@ function ImportExercisesSheet({ open, onClose, userId, onSaved }: { open: boolea
       if (error) throw error;
     },
     onSuccess: () => { reset(); onSaved(); },
-    onError: (e: unknown) => setErr(e instanceof Error ? e.message : "Erro ao importar"),
+    onError: (e: unknown) => setErr(errorMessage(e, "Erro ao importar")),
   });
 
   return (

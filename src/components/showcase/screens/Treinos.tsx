@@ -20,6 +20,7 @@ import {
   timeInZoneFromAvgHr,
 } from "@/lib/metodologia";
 import { recomputeDailyLoadForUser } from "@/lib/loadRecompute";
+import { errorMessage } from "@/lib/errors";
 
 type Modality = "run" | "swim" | "strength";
 
@@ -452,7 +453,7 @@ function AddSheetRun({ open, onClose, userId, onSaved }: { open: boolean; onClos
       setDuration(""); setDistance(""); setAvgHr(""); setNotes(""); setRpe(5);
       onSaved();
     },
-    onError: (e: unknown) => setErr(e instanceof Error ? e.message : "Erro"),
+    onError: (e: unknown) => setErr(errorMessage(e)),
   });
 
   return (
@@ -585,7 +586,7 @@ function AddSheetSwim({ open, onClose, userId, onSaved }: { open: boolean; onClo
       setSegments([{ stroke: "livre", distance: "", time: "" }]); setAvgHr(""); setNotes(""); setRpe(5);
       onSaved();
     },
-    onError: (e: unknown) => setErr(e instanceof Error ? e.message : "Erro"),
+    onError: (e: unknown) => setErr(errorMessage(e)),
   });
 
   return (
@@ -794,7 +795,7 @@ function AddSheetStrength({ open, onClose, userId, onSaved }: { open: boolean; o
       setDuration(""); setNotes(""); setRpe(6); setEntries([]);
       onSaved();
     },
-    onError: (e: unknown) => setErr(e instanceof Error ? e.message : "Erro"),
+    onError: (e: unknown) => setErr(errorMessage(e)),
   });
 
   return (
@@ -949,7 +950,7 @@ function CssTestSheet({ open, onClose, userId, onSaved }: { open: boolean; onClo
       }).eq("user_id", userId);
     },
     onSuccess: () => { setT200(""); setT400(""); onSaved(); },
-    onError: (e: unknown) => setErr(e instanceof Error ? e.message : "Erro"),
+    onError: (e: unknown) => setErr(errorMessage(e)),
   });
 
   return (
