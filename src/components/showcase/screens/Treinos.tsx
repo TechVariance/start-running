@@ -201,10 +201,10 @@ export function Treinos() {
                   {modality === "strength" && (
                     <>
                       <p className="mt-0.5 font-display text-[16px] font-extrabold text-foreground">
-                        {strengthSets.length} séries · {formatDuration(a.elapsed_s)}
+                        {totalExercises(strengthSets)} exercícios · {strengthSets.length} séries · {formatDuration(a.elapsed_s)}
                       </p>
                       <p className="text-[12px] text-muted-foreground">
-                        {m?.tonnage_kg ? `${m.tonnage_kg.toFixed(0)} kg tonelagem` : ""}{a.srpe ? ` · RPE ${a.srpe}` : ""}{m?.session_load ? ` · ${m.session_load.toFixed(0)} carga` : ""}
+                        {m?.tonnage_kg ? `${m.tonnage_kg.toFixed(0)} kg tonelagem` : ""}{a.avg_hr ? ` · FC ${a.avg_hr}` : ""}{a.srpe ? ` · Esforço ${a.srpe}` : ""}{m?.session_load ? ` · ${m.session_load.toFixed(0)} carga` : ""}
                       </p>
                     </>
                   )}
@@ -218,14 +218,14 @@ export function Treinos() {
                       <MiniStat label="hrTSS" value={m.hrtss?.toFixed(0) ?? "—"} />
                       <MiniStat label="rTSS" value={m.rtss?.toFixed(0) ?? "—"} />
                       <MiniStat label="TRIMP" value={m.trimp?.toFixed(0) ?? "—"} />
-                      <MiniStat label="sRPE" value={m.srpe_load?.toFixed(0) ?? "—"} />
+                      <MiniStat label="Esforço" value={m.srpe_load?.toFixed(0) ?? "—"} />
                     </div>
                   )}
                   {modality === "swim" && m && (
                     <div className="grid grid-cols-3 gap-2">
                       <MiniStat label="hrTSS" value={m.hrtss?.toFixed(0) ?? "—"} />
                       <MiniStat label="sTSS" value={m.stss?.toFixed(0) ?? "—"} />
-                      <MiniStat label="sRPE" value={m.srpe_load?.toFixed(0) ?? "—"} />
+                      <MiniStat label="Esforço" value={m.srpe_load?.toFixed(0) ?? "—"} />
                     </div>
                   )}
                   {modality === "swim" && swimSegments.length > 0 && <SwimSegmentsSummary segments={swimSegments} />}
@@ -350,6 +350,10 @@ function StrengthSetsSummary({ sets }: { sets: StrengthSetRow[] }) {
   );
 }
 
+function totalExercises(sets: StrengthSetRow[]): number {
+  return new Set(sets.map((s) => s.exercises?.name ?? s.id)).size;
+}
+
 function SwimSegmentsSummary({ segments }: { segments: SwimSegmentRow[] }) {
   const sorted = [...segments].sort((a, b) => a.segment_number - b.segment_number);
   return (
@@ -470,7 +474,7 @@ function AddSheetRun({ open, onClose, userId, onSaved }: { open: boolean; onClos
         <NumberField label="FC média (bpm) — opcional" value={avgHr} onChange={setAvgHr} placeholder="145" />
 
         <label className="block">
-          <span className="label-cap text-muted-foreground">Percepção de esforço (RPE 0–10): <b className="tabular text-foreground">{rpe}</b></span>
+          <span className="label-cap text-muted-foreground">Esforço percebido (0–10): <b className="tabular text-foreground">{rpe}</b></span>
           <input type="range" min={0} max={10} value={rpe} onChange={(e) => setRpe(Number(e.target.value))} className="mt-2 w-full accent-ignite" />
           <div className="mt-1 flex justify-between text-[10px] text-muted-foreground">
             <span>Fácil</span><span>Duro</span><span>Máximo</span>
@@ -658,7 +662,7 @@ function AddSheetSwim({ open, onClose, userId, onSaved }: { open: boolean; onClo
         <NumberField label="FC média (bpm) — opcional" value={avgHr} onChange={setAvgHr} placeholder="140" />
 
         <label className="block">
-          <span className="label-cap text-muted-foreground">Percepção de esforço (RPE 0–10): <b className="tabular text-foreground">{rpe}</b></span>
+          <span className="label-cap text-muted-foreground">Esforço percebido (0–10): <b className="tabular text-foreground">{rpe}</b></span>
           <input type="range" min={0} max={10} value={rpe} onChange={(e) => setRpe(Number(e.target.value))} className="mt-2 w-full accent-ignite" />
         </label>
 
@@ -684,6 +688,7 @@ function AddSheetStrength({ open, onClose, userId, onSaved }: { open: boolean; o
   const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
   const [duration, setDuration] = useState("");
   const [rpe, setRpe] = useState(6);
+  const [avgHr, setAvgHr] = useState("");
   const [notes, setNotes] = useState("");
   const [entries, setEntries] = useState<StrengthEntryDraft[]>([]);
   const [pickerOpen, setPickerOpen] = useState(false);
@@ -751,6 +756,7 @@ function AddSheetStrength({ open, onClose, userId, onSaved }: { open: boolean; o
       if (entries.length === 0) throw new Error("Adicione ao menos um exercício");
 
       const loads = computeStrengthLoads(elapsedS, rpe);
+      const avgHrN = avgHr ? Number(avgHr) : null;
 
       const flatSets = entries.flatMap((e) =>
         e.sets.map((s, i) => ({
@@ -770,6 +776,7 @@ function AddSheetStrength({ open, onClose, userId, onSaved }: { open: boolean; o
         status: "concluido",
         modality: "strength",
         elapsed_s: elapsedS,
+        avg_hr: avgHrN,
         srpe: rpe,
         notes: notes || null,
       }).select("id").single();
@@ -792,7 +799,7 @@ function AddSheetStrength({ open, onClose, userId, onSaved }: { open: boolean; o
       await recomputeDailyLoadForUser(userId);
     },
     onSuccess: () => {
-      setDuration(""); setNotes(""); setRpe(6); setEntries([]);
+      setDuration(""); setNotes(""); setRpe(6); setAvgHr(""); setEntries([]);
       onSaved();
     },
     onError: (e: unknown) => setErr(errorMessage(e)),
@@ -808,7 +815,9 @@ function AddSheetStrength({ open, onClose, userId, onSaved }: { open: boolean; o
         <NumberField label="Duração (min)" value={duration} onChange={setDuration} placeholder="50" />
 
         <div>
-          <span className="label-cap text-muted-foreground">Exercícios</span>
+          <span className="label-cap text-muted-foreground">
+            Exercícios{entries.length > 0 ? ` — ${entries.length} adicionado${entries.length > 1 ? "s" : ""}` : ""}
+          </span>
           <div className="mt-2 space-y-2">
             {entries.map((entry, idx) => (
               <div key={`${entry.exerciseId}-${idx}`} className="rounded-xl border border-border bg-background p-3">
@@ -842,8 +851,8 @@ function AddSheetStrength({ open, onClose, userId, onSaved }: { open: boolean; o
                         value={s.rpe}
                         onChange={(e) => updateSet(idx, setIdx, { rpe: e.target.value })}
                         inputMode="decimal"
-                        placeholder="RPE"
-                        className="w-14 rounded-lg border border-border bg-surface px-2 py-1.5 text-[13px] tabular text-foreground focus:border-ignite focus:outline-none"
+                        placeholder="Esforço"
+                        className="w-16 rounded-lg border border-border bg-surface px-2 py-1.5 text-[13px] tabular text-foreground focus:border-ignite focus:outline-none"
                       />
                     </div>
                   ))}
@@ -885,8 +894,10 @@ function AddSheetStrength({ open, onClose, userId, onSaved }: { open: boolean; o
           </div>
         </div>
 
+        <NumberField label="FC média (bpm) — opcional" value={avgHr} onChange={setAvgHr} placeholder="130" />
+
         <label className="block">
-          <span className="label-cap text-muted-foreground">Percepção de esforço da sessão (RPE 0–10): <b className="tabular text-foreground">{rpe}</b></span>
+          <span className="label-cap text-muted-foreground">Esforço percebido da sessão (0–10): <b className="tabular text-foreground">{rpe}</b></span>
           <input type="range" min={0} max={10} value={rpe} onChange={(e) => setRpe(Number(e.target.value))} className="mt-2 w-full accent-ignite" />
         </label>
 

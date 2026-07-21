@@ -201,6 +201,7 @@ export async function seedDemoData(userId: string, profile: Profile) {
       if (!STRENGTH_DAYS.includes(dow)) continue;
       const elapsedS = (45 + Math.round(Math.random() * 15)) * 60;
       const rpe = 6 + Math.round(Math.random() * 3);
+      const avgHr = 105 + Math.round(Math.random() * 20);
       const load = computeStrengthLoads(elapsedS, rpe);
 
       const { data: created, error } = await supabase.from("activities").insert({
@@ -209,6 +210,7 @@ export async function seedDemoData(userId: string, profile: Profile) {
         source: "demo",
         status: "concluido",
         modality: "strength",
+        avg_hr: avgHr,
         elapsed_s: elapsedS,
         srpe: rpe,
         notes: "Demo · musculação",
