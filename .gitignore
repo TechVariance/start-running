@@ -7,6 +7,7 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Dependências e build
 node_modules
 dist
 dist-ssr
@@ -15,10 +16,23 @@ dist-ssr
 .tanstack/**
 .nitro
 *.local
+.vite/
+.eslintcache
+*.tsbuildinfo
+coverage/
 
 # Wrangler / Cloudflare
 .wrangler/
 .dev.vars
+
+# Variáveis de ambiente.
+# `.env` fica versionado de propósito: é o contrato do Lovable e só guarda
+# chaves publishable do Supabase, que já vão para o bundle do cliente pelo
+# prefixo VITE_. Qualquer outra variante (.env.local, .env.production, ...)
+# pode conter segredo de verdade e nunca entra no histórico.
+.env*
+!.env
+!.env.example
 
 # Editor directories and files
 .vscode/*
@@ -31,5 +45,27 @@ dist-ssr
 *.sln
 *.sw?
 
-# Claude Code local config
+# Lixo de Windows e do OneDrive.
+# Esta árvore vive dentro do OneDrive da Variance, que espalha desktop.ini
+# e arquivos de bloqueio do Office pelas pastas.
+desktop.ini
+Thumbs.db
+ehthumbs.db
+$RECYCLE.BIN/
+*.lnk
+~$*
+*.tmp
+
+# Trabalho local de sessão: config do Claude Code e arquivo de estado do
+# projeto. O OneDrive já sincroniza os dois entre máquinas; não precisam ir
+# para o repositório, que espelha no Lovable.
 .claude/
+ESTADO_DO_PROJETO.md
+
+# Vídeos de gravação de tela e de campo soltos na raiz.
+# Ficam no disco (e no OneDrive), fora do histórico do git: são ~390 MB
+# e o repositório sincroniza com o Lovable.
+*.mp4
+*.MP4
+*.mov
+*.MOV
