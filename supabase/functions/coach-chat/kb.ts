@@ -1,7 +1,7 @@
 // KB_RUN_SR — base de conhecimento de treinamento de corrida (5K/10K/21K/42K).
 // Embutida diretamente na function (em vez de depender de uma tabela) para não
 // depender de mais uma migração de banco ser aplicada no Supabase do Lovable.
-// Fonte canônica: /KB_RUN_SR no repositório (v1.1.0-rag). Se o conteúdo da KB
+// Fonte canônica: /KB_RUN_SR no repositório (v1.2.0-rag). Se o conteúdo da KB
 // mudar lá, replique aqui manualmente.
 
 export const KB_VERSION = "KB_RUN_SR v1.2.0-rag (corrida 5K/10K/21K/42K)";

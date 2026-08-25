@@ -2,7 +2,7 @@
 // (força, hipertrofia, potência, saúde/função e integração com a corrida).
 // Embutida diretamente na function (em vez de depender de uma tabela) para não
 // depender de mais uma migração de banco ser aplicada no Supabase do Lovable.
-// Fonte canônica: /KB_MUSC_SR no repositório (v1.0.0-rag). Se o conteúdo da KB
+// Fonte canônica: /KB_MUSC_SR no repositório (v1.1.0-rag). Se o conteúdo da KB
 // mudar lá, replique aqui manualmente.
 
 export const KB_MUSC_VERSION = "KB_MUSC_SR v1.1.0-rag (musculação: força, hipertrofia, potência, saúde e função)";
