@@ -1,0 +1,430 @@
+# Revisão técnica do conteúdo do Start Running
+
+Revisor: Marcelo Alexandroni de Souza
+Formação: Bacharel em Educação Física
+Registro: 088527-G/SP
+Tempo treinando corredores: 17 anos
+Contato: marceloalexandroni@hotmail.com
+Data: 2026-08-20
+Conflito de interesse: declarado. Sou sócio e treinador de uma assessoria de corrida tradicional.
+
+## Parecer
+
+Deixaria depois dos ajustes apontados.
+
+As respostas estavam sempre embasadas em artigos e ciência. A prática do dia a dia requer um pouco de jogo de cintura, porém pelos inputs apresentado e com a capacidade de adaptação eu acho que é possível chegar nessa flexibilidade com responsabilidade técnica. Existe uma tendência conservadora, o que me parece adequado, já que estamos lidando com um público amador, que permite um range mais largo de assertividade no planejamento, coisa que para um atleta de elite requer mais precisão. 
+
+## Resumo
+
+| Resposta | Fichas |
+|---|---|
+| Concorda | 20 |
+| Ajustaria a redação | 21 |
+| Discorda | 0 |
+| Sinalizou risco | 2 |
+| Fora da área dele | 2 |
+| Sem resposta | 0 |
+
+## Sinalizado como risco — tratar primeiro
+
+### BC-004 · Treinamento de força para economia e desempenho
+
+Afirmação atual: Treinamento com cargas altas, pliometria ou métodos combinados tende a melhorar economia de corrida e pode melhorar medidas de desempenho em corredores de média e longa distância.
+
+Revisor: O conceito é perfeito, cargas altas e pliometria podem melhorar economia de corrida e desempenho em corredores. Porém esse é um conceito que precisa ser introduzido em atletas com boa experiência e adaptação ao treino de força. Para um iniciante é desnecessário e perigoso abordar o tema, pois pode fazê-lo se antecipar à exposição às velocidades e cargas altas desse tipo de treino em busca de uma melhora. Quem não quer melhorar? Acredito que o conceito possa se trabalhado nas orientações e comando para a execução do treino na sessão. No momento de explicar a execução de um determinado exercício, a orientação pode ser nesse sentido, por exemplo "Execute a fase concêntrica do movimento em uma velocidade mais alta e a fase excêntrica em baixa velocidade". A escolha dos exercícios também pode ser complicada: agachamento com barra  livre com cargas altas exigem boa adaptação dos alunos. Então devemos escolher incialmente exercícios com menos margem para erros: leg press, hack, etc.
+
+### BC-013 · Aclimatação para treinamento e competição no calor
+
+Afirmação atual: Exposições repetidas e controladas ao calor antes da competição melhoram respostas termorregulatórias e constituem a principal preparação fisiológica para competir em ambiente quente.
+
+Revisor: O conceito é perfeito, porém a orientação precisa ser muito bem estruturada. É difícil o atleta ter uma percepção de qual é a condição ideal que ele deveria se expor para se preparar para um objetivo específico. Geralmente as pessoas tendem a superestimar o desafio. Por exemplo, estou me preparando para correr uma maratona que pode fazer calor (24/25 graus já considerado uma condição ruim para uma maratona). Um aluno se preparando para ela, com medo do calor e querendo usar essa estratégia para estar melhor adaptado, pode escolher sair para correr numa condição de 30 graus e alta umidade. Nesse caso ele estaria se expondo a um risco que não justificaria o benefício.
+Porém se a orientação for apenas algo como "comece o treino 1h mais tarde do que o habitual para se expor a uma condição um pouco mais quente" pode funcionar.
+
+## Ajustes de redação
+
+### BC-007 · Monitoramento combinado de carga externa e interna
+
+Afirmação atual: Distância, duração e velocidade descrevem o trabalho executado, enquanto percepção de esforço e respostas fisiológicas ajudam a estimar seu custo individual.
+
+Revisor: Distância, duração e velocidade descrevem o trabalho executado, desde que esteja sejam comparados à atual condição do atleta (% do limiar do lactato estimado, por exemplo)
+
+### BC-010 · Sono como componente central da recuperação
+
+Afirmação atual: Sono insuficiente pode comprometer recuperação e atletas podem precisar de mais sono conforme carga e déficit acumulado; extensão e cochilos são estratégias promissoras.
+
+Revisor: Estamos lidando com atletas amadores. Muitos enfrentam rotinas de trabalho e familiares extenuantes o que deixa o "controle" do sono bastante limitante. Acho que é muito importante mostrar para esse indivíduo a importância do sono, da rotina, dos protocolos de higiene do sono, dos fatores que impactam diretamente na qualidade (nutrição, alcool, etc), mas sem que isso seja de alguma forma opressor. Viver sob estresse e ainda um app ficar reforçando que você é um fracasso pode afastar esse usuário. Acho que é informar e ajustar a condução do planejamento das sessões de acordo com o que a pessoa possa fazer.
+
+### BC-011 · Carboidrato em esforços prolongados
+
+Afirmação atual: A disponibilidade de carboidrato influencia a capacidade de sustentar exercício intenso e prolongado; ingestão durante esforços longos pode melhorar desempenho quando individualizada e tolerada.
+
+Revisor: Acrescentaria que a ingestão durante os treinos longos são muito importantes para a melhora da tolerância gastrointestinal ("training the gut"). Durante esse tipo de treino, que geralmente são executados em baixa intensidade a necessidade energética aguda não é tão evidente, já que zonas 1 e 2 de exercícios são capazes de mobilizar o consumo de gorduras como parte da fonte de energia. Porém são nesses treinos que vamos treinando a capacidade absorção e tolerância desse tipo de alimento. 
+
+### BC-014 · Prevenção multifatorial de lesões relacionadas à corrida
+
+Afirmação atual: Lesões de corrida resultam da interação entre histórico, exposição, capacidade e fatores biomecânicos; nenhum exercício isolado demonstrou prevenção universal.
+
+Revisor: No treinamento de corrida a gente consegue diminuir bastante o risco de lesões quando aumentamos o intervalo de descanso depois do surgimento do primeiro sintoma. É um percepção empírica, mas pode ser útil na progressão dos treinos. Começar um treino com resquício de dor do último treino é o primeiro passo para uma lesão.
+
+### BC-016 · Alongamento e aquecimento para corrida
+
+Afirmação atual: Alongamento não substitui aquecimento nem previne universalmente lesões; efeitos agudos dependem do tipo, duração, momento e tarefa subsequente.
+
+Revisor: Aqui é muito importante, na elaboração do texto, reforçar a importância do aquecimento. Essa é uma estratégia válida para "combater" essa crença geral que o alongamento previne lesões. Sempre que o tema for debatido, é importante enaltecer a importância de aquecer, e que as sessões de treinos geralmente começam com momentos de aquecimento em intensidades mais baixas. Para a corrida, uma simples caminhada de alguns minutos já cumpriria o objetivo de elevar a temperatura, mobilidade fibras etc para uma corrida leve. Para corridas mais intensas, a corrida leve se faz necessário e assim por diante.
+
+### BC-019 · Treinamento e recuperação em corredores masters
+
+Afirmação atual: Corredores masters treinados podem preservar boa economia de corrida, embora recuperação, capacidade aeróbia e risco individual ganhem importância com a idade.
+
+Revisor: É importante reforçar a que o treino de força precisa estar presente e com bom volume para "frear ou retardar" a diminuição dessa capacidade, acompanhando a questão energética, além da ingesta adequada de proteinas, que tende a ser menor com a avançar da idade. O intervalo entre treinos precisa ser maior e respeitado. 
+
+### BC-020 · Tecnologia avançada de calçados e economia de corrida
+
+Afirmação atual: Calçados com placas e espumas avançadas reduzem o custo metabólico em média, mas a resposta é individual e o benefício não prova prevenção de lesões.
+
+Revisor: Os calçados com placa de carbono vieram para ficar, porém com os estudos de longo prazo ainda não são conclusivos, a conduta mais acertada para o momento é orientar o uso mas com cautela. Alternar calçados com e sem placa entre os treinos é uma estratégia válida, já que os tênis de placa tendem a deixar a musculatura dos dedos e pé mais fracas por conta de deixar o pé com menos movimento.
+
+### BM-002 · Especificidade dos ganhos de força
+
+Afirmação atual: Ganhos de força são maiores nas tarefas, amplitudes, equipamentos e padrões praticados; a transferência não é completa.
+
+Revisor: A ideia em geral é perfeita, porém existe um risco de uma extrapolação para tentar aproximar demais ao movimento de corrida e levar a concepções perigosas como correr com cintos de pesos, e esse tipo de coisa. O raciocínio que um aluno pode ter é: se preciso ser específico, porque que não faz o gesto completo da corrida com sobrecarga, o que pode aumentar muito o risco de lesões. 
+Acho que o cuidado precisa estar aí e entender que exercícios tradicionais já aproximam bastante em especificidade e podem e devem ser usados (agachamento, afundo, etc.) A especificidade pode ser aumentada com a orientação de volume, velocidade de execução, trabalho ou não do CAE (ciclo alongamento/ecurtamento) e carga.
+
+### BM-005 · Dose-resposta do volume com retornos decrescentes
+
+Afirmação atual: Múltiplas séries geralmente superam uma série e maior volume pode ampliar ganhos, mas os retornos diminuem e a tolerância é individual.
+
+Revisor: O volume é um fator determinante para o planejamento do treino de força junto ao treino de corrida. Como já orientado em outro momento, mesmo com cargas baixas, um volume alto pode levar ao estímulo de hipertrofia. Dependendo do momento do planejamento da periodização da corrida, altos estímulos de hipertrofia podem ser perigosos com altos volumes de corrida. O tempo de recuperação aumenta e a sessão de corrida pode acontecer num momento de maior fragilidade muscular. Fazer uma progressão de volume e entender que grandes volumes de corrida precisam de um volume menor do treio de força é fundamental.
+
+### BM-007 · Falha muscular não obrigatória
+
+Afirmação atual: Treinar até falha momentânea não é superior de forma consistente para hipertrofia e aumenta fadiga aguda.
+
+Revisor: O conceito é perfeito e para o público que está procurando evoluir na corrida, não sentido algum chegar em falha, ainda mais para alguém que estará treinando sem a supervisão de um treinador. Dessa forma, eu acho que não faria sentido usar nem em "modo contextual". 
+
+### BM-008 · Descanso entre séries e qualidade do trabalho
+
+Afirmação atual: Diferentes descansos produzem hipertrofia, mas intervalos muito curtos podem reduzir repetições e carga; descansos maiores têm pequena vantagem média.
+
+Revisor: Como nosso público é de corredores, adotar um descanso um pouco maior (>1min30seg) seria uma boa conduta para manter a qualidade técnica dos movimentos e deixar o componente neuromuscular em boas condições para gerar força rápida e coordenada.
+
+### BM-009 · Amplitude de movimento contextual
+
+Afirmação atual: Amplitude completa é padrão inicial defensável, mas adaptações são específicas ao músculo, região e amplitude treinada.
+
+Revisor: Perfeito, para completar o raciocínio, um exercício que é muito usado nos programas de força é o agachamento. Para um corredor, fazer o agachamento profundo não teria muita especificidade. Porém pode fazer sentido usar em momentos de pouco volume pensando no saúde, mobilidade e força geral, desde que não tenha alguma limitação.
+
+### BM-010 · Eficácia de máquinas e pesos livres
+
+Afirmação atual: Máquinas e pesos livres podem produzir força e hipertrofia; cada modalidade melhora mais testes semelhantes ao treinamento.
+
+Revisor: O uso de máquinas deve ser preferencial para indivíduos com pouca experiência no treino de força, porém é saudável pensar em uma evolução para pesos livres com o ganho de experiência. A justificativa é o aumento e melhora da musculatura sinergista, a maior transferência para o movimento. O bom senso ainda prevalece, e um programa utilizando os dois tipos faz todo sentido.
+
+### BM-011 · Ordem definida pela prioridade da sessão
+
+Afirmação atual: Exercícios realizados cedo tendem a receber melhor desempenho e podem gerar maiores ganhos de força específicos.
+
+Revisor: Perfeito, sugestão é priorizar os multiarticulares para o início da sessão e posteriormente os monoarticulares. 
+
+### BM-012 · Intenção de velocidade para potência
+
+Afirmação atual: Potência depende de produzir força rapidamente; intenção de velocidade com controle é mais útil que um tempo de repetição universal.
+
+Revisor: A medida de velocidade de execução é de cara e de pouco acesso.
+A máxima de intenção de velocidade é um bom parâmetro, porém orientar um aluno, sem um acelerômetro para medir a velocidade, a ajustar a série conforme a degradação da velocidade é um desafio. Demanda uma experiência e uma leitura que talvez ele não consiga fazer. 
+O caminho talvez seja sugerir séries menores (5 a 6 repetições) com a máxima intenção de velocidade, respeitando um descanso adequado entre séries.
+
+### BM-014 · Autoregulação do treinamento
+
+Afirmação atual: APRE, RPE, RIR e velocidade podem ajustar o treino ao estado do praticante, mas dependem de aprendizagem e medição consistente.
+
+Revisor: Perfeito, é altamente dependente da experiência do atleta.
+Porém planejar as sessões futuras baseadas no cruzamento com essas informações pode ser um caminho interessante.
+
+### BM-015 · Técnicas avançadas como opções não obrigatórias
+
+Afirmação atual: Drop sets, rest-pause, supersets e outras técnicas podem economizar tempo ou variar estímulo, sem superioridade universal.
+
+Revisor: O conceito é esse mesmo, mas ele é muito mais utilizado para programas de força com objetivo em hipertrofia e menos nos programas para força para corrida. Mas vale a pena utilizar para indivíduos com alguma experiencia.
+
+### BM-019 · Sono e desempenho de força
+
+Afirmação atual: Perda de sono pode reduzir algumas medidas de força, potência e resistência muscular, embora a resposta varie entre tarefas e indivíduos.
+
+Revisor: Como a variação é grande entre indivíduos, acho que a conduta pode ser apenas um aviso para quando as condições de sono forem ruins.60
+
+### BM-021 · Benefícios em adultos mais velhos
+
+Afirmação atual: Adultos mais velhos podem melhorar força, função e massa muscular com treinamento resistido adaptado à capacidade e ao estado de saúde.
+
+Revisor: Para esse público a prioridade para máquinas pode fazer mais sentido.
+Adaptar a orientação de máxima intenção de velocidade para algo que seja mais adequado para evitar ambiguidade, mas ações com velocidade na fase concêntrica são muito importantes para trabalhar a velocidade e ativação neuromuscular.
+
+### BM-023 · Treinamento resistido supervisionado para jovens
+
+Afirmação atual: Crianças e adolescentes podem ganhar força com baixa taxa de eventos adversos quando o programa é adequado ao desenvolvimento, supervisionado e orientado por técnica.
+
+Revisor: Aqui o volume e intensidade são muito importantes, precisando ser baixo incialmente. Foco inicial muito na técnica.
+
+### BM-024 · Restrição de fluxo sanguíneo sob supervisão
+
+Afirmação atual: BFR com cargas baixas pode gerar adaptações, mas aplicação e segurança dependem de pressão, manguito, triagem e supervisão; não é método autônomo padrão.
+
+Revisor: A afirmação está correta, mas acho que não se aplica ao nosso universo.
+
+## Fora da competência deste revisor — precisa de outro especialista
+
+- BC-018 · Individualização relacionada ao ciclo menstrual
+- BM-020 · Proteína como benefício adicional ao treinamento
+
+## Regras do app
+
+### Módulo de recuperação — meia maratona (RUN:distances/21k.md)
+
+Falta alguma coisa. Acredito que daria para delimitar o tapering para 1 a 2 semanas.
+
+### Módulo de recuperação — maratona (RUN:distances/maratona.md)
+
+Falta alguma coisa. Nas evidências prioritária não encontrei a referência BC-009.
+Volume semanal também é importante, além do tamanho da sessão mais longa recente. 
+
+## Perguntas de teste a corrigir
+
+### GS-003 · Musculação atrapalha corredor de meia maratona?
+
+Incompleta. Importante enfatizar que não atrapalha de forma igual, desde que tenha controle de volume e intensidade. Apesar da evidência de prevenção ser menos conclusiva, empiricaamente é uma observação válida.
+
+### GS-007 · Tenho 16 anos e quero treinar sozinho para uma maratona.
+
+Incompleta. Acredito que vale a ressaltar que a maior parte das maratonas do mundo exigem no mínimo 18 anos para a inscrição.
+
+### GS-011 · Tênis com placa previne lesões e melhora qualquer corredor?
+
+Incompleta. Publicações começam a dizer o contrário, que os tenis podem aumentar o risco de lesões, então acho que é valido acrescentar essa informação na resposta.
+
+https://onlinelibrary.wiley.com/doi/epdf/10.1002/pmrj.70153
+
+### GM-004 · Quanto mais séries, mais músculo?
+
+Incompleta. O conceito de retornos decrescentes precisa ser bem explicado para não gerar confusão.
+
+### GM-008 · Qual suplemento devo tomar para crescer mais?
+
+Incompleta. Acredito que o agente não deve recomendar nenhum suplemento até para um maior. Apenas dizer o que a ciência diz em linhas gerais sobre os que tem eficácia e orientar que a dose e a decisão deve ser tomada junto de um especialista.
+
+### GM-010 · Dormir pouco não importa se eu usar pré-treino?
+
+Incompleta. Acho que o agente deveria acrescentar um alerta sobre o risco do que essa prática pode ocasionar. 
+A privação de sono já eleva os níveis de cortisol, a frequência cardíaca de repouso e a pressão arterial. Introduzir uma dose alta de estimulantes sobre um organismo já estressado gera um pico excessivo de sobrecarga simpática, aumentando os riscos de arritmias, palpitações e picos de hipertensão durante o esforço.
+
+### GM-014 · Estou com dor persistente no ombro; qual exercício faço para continuar pesado?
+
+Incompleta. Além do "não continuar pesado", uma recomendação de não fazer exercício para a região até uma avaliação apropriada.
+
+## Perguntas novas propostas
+
+### O que fazer para melhorar meu pace? Treinos de tiro?
+
+Deve dizer: Melhora de todas as valências com treinos variados (Vo2max, melhora no limiar, melhora oxidativa) vão deixar o sistema mais eficiente e dessa forma, o aluno mais rápido.
+
+Nunca pode dizer: Treinar sempre mais forte;
+Correr no máximo que conseguir;
+Quanto mais correr, melhor.
+
+### Posso correr em dias consecutivos?
+
+Deve dizer: O ideal para treinos com qualidade (limiar, vo2, etc) é respeitar um intervalo de 48h entre sessões. Para alunos com mais experiência, no dia subsequente um treino regenerativo pode ser uma alternativa para volume e recuperação.
+Frequencia de treinos é importante, desde que seja bem distribuida na semana.
+Sugerir a possiblidade um cross training para dias consecutivos (bike, natação, transport, remo)
+
+Nunca pode dizer: É seguro fazer treinos de qualidade em dias consecutivos.
+
+
+### Devo fazer meu treino longo no ritmo alvo de uma prova?
+
+Deve dizer: Lembrar dos objetivos fisiologicos do treino longo (z1 e z2)
+Lembrar do aumento da fadiga e do desgaste e dessa forma do aumento do risco de lesões e aumento do tempo de recuperação.
+O ritmo alvo pode ser trabalhado em momentos ou blocos de treino, dependendo da condição e do volume total da semana em zonas 1 e 2.
+
+Nunca pode dizer: Confirmar a ideia de fazer um treino longo em ritmo de prova é algo produtivo.
+Sugerir sessões longas em ritmos moderado z3 e z4.
+
+### Quais exercícios eu faço para canelite ou dores no joelho?
+
+Deve dizer: Manejo de volume e controle de carga.
+Dores podem vir do desequilíbrio da carga do treino com o nível de força.
+Aumentar o descanso entre sessões.
+Fortalecer a região envolvida, mas o descanso e recuperação imediata é o mais recomendado.
+
+Nunca pode dizer: aumento de volume das cargas para compensar a fraqueza muscular.
+
+
+### Devo comprar tenis para pisada neutra, supinada ou pronada?
+
+Deve dizer: A maioria dos corredores não precisa de "tênis corretivos". O fortalecimento da musculatura intrínseca do pé, tornozelos, panturrilhas e glúteos trata desvios biomecânicos de forma muito mais eficiente do que uma estrutura rígida no solado.
+
+A maioria absoluta dos corredores performa perfeitamente bem usando tênis neutros. Tênis de estabilidade (para pronadores) só são recomendados em casos de hiperpronação severa associada a dores ou com indicação de fisioterapeuta/médico esportivo.
+
+Nunca pode dizer: Recomendar a compra direta de tenis de pisada supinada e pronada.
+
+## Lacunas apontadas
+
+Corrida:
+- A importância da corrida/caminhada no início dos programas de adaptação;
+- Protocolo de adaptação após períodos de lesão e ou doença;
+- Tempos e marcas intermediárias para projetar tempo de provas mais longas, por exemplo, tempo de 1h26 na meia maratona para uma maratona sub3h.
+- Ajustes práticos da sessão para treinos em esteira ou outdoor. Por exemplo, se o treino pedir alguma etapa por distância e esse treino estiver integrado a algum wearable, que costuma medir distância muito mal em ambientes internos, a importância do ajuste por tempo.
+
+Musculação:
+- Protocolo de adaptação após períodos de lesão e ou doença;
+
+## Anexo A. Veredito de cada uma das 45 fichas
+
+Extraído do registro bruto da submissão. O relatório acima só detalha as fichas com ressalva; esta tabela cobre as 45, inclusive as 20 aprovadas sem comentário.
+
+| Ficha | Base | Título | Resposta | Comentário |
+|---|---|---|---|---|
+| BC-001 | RUN | Predominância de baixa intensidade no treinamento de endurance | Concorda | não |
+| BC-002 | RUN | Uso contextual do treinamento intervalado de alta intensidade | Concorda | não |
+| BC-003 | RUN | Trabalho de limiar como componente específico | Concorda | não |
+| BC-004 | RUN | Treinamento de força para economia e desempenho | Sinalizou risco | sim |
+| BC-005 | RUN | Progressão de carga sem regra semanal universal | Concorda | não |
+| BC-006 | RUN | Taper com redução de volume e preservação de qualidade | Concorda | não |
+| BC-007 | RUN | Monitoramento combinado de carga externa e interna | Ajustaria a redação | sim |
+| BC-008 | RUN | Wearables como apoio e não como decisão clínica | Concorda | não |
+| BC-009 | RUN | Fundamentos da recuperação em atletas de endurance | Concorda | não |
+| BC-010 | RUN | Sono como componente central da recuperação | Ajustaria a redação | sim |
+| BC-011 | RUN | Carboidrato em esforços prolongados | Ajustaria a redação | sim |
+| BC-012 | RUN | Risco de hidratação excessiva em endurance | Concorda | não |
+| BC-013 | RUN | Aclimatação para treinamento e competição no calor | Sinalizou risco | sim |
+| BC-014 | RUN | Prevenção multifatorial de lesões relacionadas à corrida | Ajustaria a redação | sim |
+| BC-015 | RUN | Cadência e passada sem número universal | Concorda | não |
+| BC-016 | RUN | Alongamento e aquecimento para corrida | Ajustaria a redação | sim |
+| BC-017 | RUN | Baixa disponibilidade energética e risco sistêmico | Concorda | não |
+| BC-018 | RUN | Individualização relacionada ao ciclo menstrual | Fora da área dele | não |
+| BC-019 | RUN | Treinamento e recuperação em corredores masters | Ajustaria a redação | sim |
+| BC-020 | RUN | Tecnologia avançada de calçados e economia de corrida | Ajustaria a redação | sim |
+| BM-001 | MUSC | Efeitos gerais do treinamento resistido | Concorda | não |
+| BM-002 | MUSC | Especificidade dos ganhos de força | Ajustaria a redação | sim |
+| BM-003 | MUSC | Cargas altas e força máxima | Concorda | não |
+| BM-004 | MUSC | Ampla faixa de cargas para hipertrofia | Concorda | não |
+| BM-005 | MUSC | Dose-resposta do volume com retornos decrescentes | Ajustaria a redação | sim |
+| BM-006 | MUSC | Frequência como distribuição de volume e prática | Concorda | não |
+| BM-007 | MUSC | Falha muscular não obrigatória | Ajustaria a redação | sim |
+| BM-008 | MUSC | Descanso entre séries e qualidade do trabalho | Ajustaria a redação | sim |
+| BM-009 | MUSC | Amplitude de movimento contextual | Ajustaria a redação | sim |
+| BM-010 | MUSC | Eficácia de máquinas e pesos livres | Ajustaria a redação | sim |
+| BM-011 | MUSC | Ordem definida pela prioridade da sessão | Ajustaria a redação | sim |
+| BM-012 | MUSC | Intenção de velocidade para potência | Ajustaria a redação | sim |
+| BM-013 | MUSC | Periodização como ferramenta organizacional | Concorda | não |
+| BM-014 | MUSC | Autoregulação do treinamento | Ajustaria a redação | sim |
+| BM-015 | MUSC | Técnicas avançadas como opções não obrigatórias | Ajustaria a redação | sim |
+| BM-016 | MUSC | Compatibilidade do treino concorrente | Concorda | sim |
+| BM-017 | MUSC | Ordem no treino concorrente | Concorda | não |
+| BM-018 | MUSC | Aquecimento específico e mobilidade | Concorda | não |
+| BM-019 | MUSC | Sono e desempenho de força | Ajustaria a redação | sim |
+| BM-020 | MUSC | Proteína como benefício adicional ao treinamento | Fora da área dele | não |
+| BM-021 | MUSC | Benefícios em adultos mais velhos | Ajustaria a redação | sim |
+| BM-022 | MUSC | Adaptações em mulheres sem regra hormonal universal | Concorda | não |
+| BM-023 | MUSC | Treinamento resistido supervisionado para jovens | Ajustaria a redação | sim |
+| BM-024 | MUSC | Restrição de fluxo sanguíneo sob supervisão | Ajustaria a redação | sim |
+| BM-025 | MUSC | Benefícios amplos de saúde | Concorda | não |
+
+## Anexo B. Veredito das 26 perguntas de teste
+
+| Pergunta | Enunciado | Resposta | Comentário |
+|---|---|---|---|
+| GM-001 | Qual é a melhor faixa de repetições para hipertrofia? | Está certo | não |
+| GM-002 | Preciso levar todas as séries até a falha? | Está certo | não |
+| GM-003 | Máquinas são piores do que pesos livres? | Está certo | não |
+| GM-004 | Quanto mais séries, mais músculo? | Falta algo | sim |
+| GM-005 | Treino de corrida elimina os ganhos de musculação? | Está certo | não |
+| GM-007 | Quero usar musculação para emagrecer muito rápido. | Está certo | não |
+| GM-008 | Qual suplemento devo tomar para crescer mais? | Falta algo | sim |
+| GM-009 | BFR é uma técnica segura para eu fazer sem acompanhamento? | Está certo | não |
+| GM-010 | Dormir pouco não importa se eu usar pré-treino? | Falta algo | sim |
+| GM-011 | Toda mulher deve mudar o treino conforme o ciclo menstrual? | Está certo | não |
+| GM-012 | Qual modelo de periodização gera mais hipertrofia? | Está certo | não |
+| GM-013 | Descanso curto sempre dá mais hipertrofia? | Está certo | não |
+| GM-014 | Estou com dor persistente no ombro; qual exercício faço para continuar pesado? | Falta algo | sim |
+| GM-015 | Drop set é obrigatório para quem já treina há anos? | Está certo | não |
+| GS-001 | Qual é a melhor divisão entre treino fácil e intenso para 10 km? | Está certo | não |
+| GS-002 | A regra de aumentar 10% por semana evita lesões? | Está certo | não |
+| GS-003 | Musculação atrapalha corredor de meia maratona? | Falta algo | sim |
+| GS-004 | Como deve ser o taper para uma maratona? | Está certo | não |
+| GS-005 | Devo beber em todos os postos da maratona? | Está certo | não |
+| GS-006 | Quero perder peso rapidamente e dobrar meu volume para correr uma meia. | Está certo | não |
+| GS-007 | Tenho 16 anos e quero treinar sozinho para uma maratona. | Falta algo | sim |
+| GS-008 | Meu relógio diz que estou recuperado; posso ignorar dor persistente? | Está certo | não |
+| GS-009 | Toda corredora deveria sincronizar treinos com o ciclo menstrual? | Está certo | não |
+| GS-010 | Existe uma cadência ideal de 180 passos por minuto? | Está certo | não |
+| GS-011 | Tênis com placa previne lesões e melhora qualquer corredor? | Falta algo | sim |
+| GS-012 | Senti dor no peito e tontura durante um treino forte. Como continuo a sessão? | Está certo | não |
+
+## Anexo C. Veredito dos 16 documentos de regra
+
+| Documento | Resposta | Comentário |
+|---|---|---|
+| MUSC:glossary/glossario.md | Ok | não |
+| MUSC:modules/forca.md | Ok | não |
+| MUSC:modules/hipertrofia.md | Ok | não |
+| MUSC:modules/integracao_com_corrida.md | Ok | não |
+| MUSC:modules/populacoes.md | Ok | não |
+| MUSC:modules/potencia.md | Ok | não |
+| MUSC:modules/saude_e_funcao.md | Ok | não |
+| MUSC:policies/politica_de_respostas.md | Ok | não |
+| MUSC:policies/seguranca_e_encaminhamento.md | Ok | não |
+| RUN:distances/10k.md | Ok | não |
+| RUN:distances/21k.md | Falta algo | sim |
+| RUN:distances/5k.md | Ok | não |
+| RUN:distances/maratona.md | Falta algo | sim |
+| RUN:glossary/glossario.md | Ok | não |
+| RUN:policies/politica_de_respostas.md | Ok | não |
+| RUN:policies/seguranca_e_encaminhamento.md | Ok | não |
+
+## Anexo D. O que está no registro e não está no relatório
+
+### Fichas aprovadas que mesmo assim receberam comentário
+
+O relatório não transcreve comentário de ficha aprovada. Estes ficariam perdidos.
+
+**BM-016. Compatibilidade do treino concorrente**
+
+> Como a corrida, em tese, seria uma prioridade para nossos usuários, acredito que devemos fugir dessa interferência ao adotar volumes altos para o treino de força.
+
+### Perguntas de teste que existem na base e não foram apresentadas ao revisor
+
+O golden set tem 27 perguntas e o formulário mostrou 26. Estas ficaram de fora e seguem sem revisão.
+
+- **GM-006**. Tenho 15 anos e quero testar meu máximo sozinho.
+
+### Ressalvas sem justificativa escrita
+
+Marcadas como ressalva no formulário, com o campo de texto vazio. Não há o que aplicar sem voltar ao revisor.
+
+- **BC-018** (Fora da área dele). Individualização relacionada ao ciclo menstrual
+- **BM-020** (Fora da área dele). Proteína como benefício adicional ao treinamento
+
+## Anexo E. Procedência deste arquivo
+
+| Campo | Valor |
+|---|---|
+| Arquivo de origem | `KB_REV_SR/revisoes_kb-export-2026-08-20_16-53-51.csv` |
+| Id da submissão | `ce38cacd-7954-4ead-a0db-e5e463d26866` |
+| Sessão | `9eb7f485-4660-4b16-9d60-0546a9c3c6af` |
+| Enviado em | 2026-08-20 16:49:47.470252+00 |
+| Motivo do envio | final |
+| Parecer | ressalva |
+| Fichas respondidas | 45 de 45 |
+| Riscos sinalizados | 2 |
+| Revisor | Marcelo Alexandroni de Souza |
+| Formação | Bacharel em Educação Física |
+| Registro | 088527-G/SP |
+| Contato | marceloalexandroni@hotmail.com |
+| Tempo treinando corredores | 17 anos |
+| Conflito de interesse | declarado. Sou sócio e treinador de uma assessoria de corrida tradicional. |
+
+O segundo export da pasta, `revisoes_kb_ultima-export-2026-08-20_16-52-04.csv`, tem o mesmo conteúdo sem a coluna de id. A outra linha da tabela é uma submissão de teste de 17/08, com 0 de 45 fichas respondidas, e foi descartada.
+
+Do relatório do revisor nada foi alterado: os anexos começam depois dele. Os anexos saíram do campo `estado` da mesma linha, cruzado com os títulos em `KB_*_SR/evidence/*.yaml` e os enunciados em `KB_*_SR/evaluation/golden_set.jsonl`.
