@@ -1,0 +1,51 @@
+<title>Revisão Técnica Start Running</title>
+
+<style>/*__CSS__*/</style>
+
+<header class="topbar">
+  <span class="mark">
+    <b>Start Running</b>
+    <span>Revisão técnica do conteúdo do app</span>
+  </span>
+  <span class="spacer"></span>
+  <span class="save-state" id="save-state" data-state="saved">
+    <span class="save-dot" aria-hidden="true"></span>
+    <span id="save-label">salvo</span>
+  </span>
+  <button class="btn btn-ghost btn-sm" id="btn-guardar" hidden>Guardar em arquivo</button>
+  <button class="btn btn-ghost btn-sm" id="btn-retomar">Retomar de um arquivo</button>
+  <button class="btn btn-ghost btn-sm" id="btn-theme">Tema</button>
+</header>
+
+<nav aria-label="Etapas da revisão">
+  <ol class="trail" id="trail"></ol>
+</nav>
+
+<div class="panel" id="restore-panel" hidden>
+  <h3>Retomar de um arquivo</h3>
+  <p class="f-hint">
+    Escolha o arquivo <strong>copia-de-seguranca.json</strong> que você guardou. Ele repõe
+    suas respostas do jeito que estavam. O que estiver preenchido agora neste navegador
+    será substituído.
+  </p>
+  <div class="filerow">
+    <input type="file" id="restore-file" accept=".json,application/json">
+    <button class="btn btn-primary btn-sm" id="restore-go" disabled>Substituir e continuar</button>
+    <button class="btn btn-ghost btn-sm" id="restore-cancel">Fechar</button>
+  </div>
+  <span class="savemsg" id="restore-msg"></span>
+</div>
+
+<main>
+  <section class="page" id="pg-inicio"></section>
+  <section class="page" id="pg-voce" hidden></section>
+  <section class="page" id="pg-corrida" hidden></section>
+  <section class="page" id="pg-musculacao" hidden></section>
+  <section class="page" id="pg-regras" hidden></section>
+  <section class="page" id="pg-perguntas" hidden></section>
+  <section class="page" id="pg-fechamento" hidden></section>
+  <section class="page page-wide" id="pg-entrega" hidden></section>
+</main>
+
+<script type="application/json" id="kb-data">/*__DATA__*/</script>
+<script>/*__JS__*/</script>
