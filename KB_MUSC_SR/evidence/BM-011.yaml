@@ -8,10 +8,10 @@ outcomes: [strength, performance]
 evidence_level: A
 confidence: moderate
 applicability: direct
-practical_application: Colocar primeiro o exercício mais importante ou tecnicamente exigente.
-limitations: [Impacto sobre hipertrofia é menos claro.]
+practical_application: Colocar primeiro o exercício mais importante ou tecnicamente exigente. Na prática, isso costuma significar abrir a sessão com os multiarticulares e deixar os monoarticulares para o final.
+limitations:
+  - Impacto sobre hipertrofia é menos claro.
 source_ids: [SRC-M-0002]
 status: active
-last_reviewed: 2026-07-18
+last_reviewed: 2026-08-20
 review_due: 2027-01-18
-

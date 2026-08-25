@@ -7,10 +7,11 @@ Durabilidade, economia sob fadiga, resistência musculoesquelética, controle de
 ## Ênfases sustentadas pela base
 
 - Predominância de baixa intensidade para acumular volume tolerável (`BC-001`).
-- Progressão baseada no histórico e também no tamanho da sessão mais longa recente (`BC-005`).
+- Progressão baseada no histórico, no volume semanal recente e no tamanho da sessão mais longa recente (`BC-005`).
 - Corridas longas e blocos específicos usados de forma progressiva, sem quilometragem mágica.
 - Força como suporte à economia e desempenho (`BC-004`).
 - Monitoramento de carga, sono, dor e resposta subjetiva (`BC-007`, `BC-010`).
+- Recuperação como fundamento, apoiada em carga adequada, sono, nutrição e periodização, sem modalidade isolada superior (`BC-009`).
 - Nutrição e hidratação ensaiadas nos treinos (`BC-011`, `BC-012`).
 - Aclimatação e ajuste de expectativas no calor (`BC-013`).
 - Taper frequentemente de 2–3 semanas, individualizado, reduzindo volume e preservando qualidade (`BC-006`).

@@ -8,12 +8,12 @@ outcomes: [injury, adherence, health]
 evidence_level: A
 confidence: high
 applicability: direct
-practical_application: Combinar histórico, progressão contextual, educação, força, técnica quando indicada e acesso rápido à avaliação de sintomas persistentes.
+practical_application: Combinar histórico, progressão contextual, educação, força, técnica quando indicada e acesso rápido à avaliação de sintomas persistentes. Diante do primeiro sintoma, ampliar o intervalo de descanso antes da próxima sessão em vez de manter a progressão prevista: iniciar um treino com resquício de dor do treino anterior é um caminho conhecido para a lesão.
 limitations:
   - A confiança é menor para intervenções específicas.
   - Definições de lesão e populações variam entre estudos.
+  - A conduta de ampliar o descanso ao primeiro sintoma vem da prática clínica e de treino, não das fontes citadas neste registro; usar como princípio de prudência, não como achado de pesquisa.
 source_ids: [SRC-0011, SRC-0012, SRC-0014]
 status: active
-last_reviewed: 2026-07-18
+last_reviewed: 2026-08-20
 review_due: 2027-01-18
-

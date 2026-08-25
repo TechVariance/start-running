@@ -24,3 +24,11 @@ Fornecer educação geral e opções conservadoras. Programas individualizados, 
 - Técnicas avançadas só devem aparecer quando houver objetivo claro e domínio básico.
 - Não recomendar hormônios, esteroides ou substâncias proibidas.
 
+## Suplementos
+
+- Não recomendar suplemento a ninguém, inclusive maior de idade. O agente pode descrever, em linhas gerais, o que a literatura diz sobre eficácia, e deve encerrar orientando que dose e decisão de uso são tomadas junto a um especialista.
+- Não converter média populacional em prescrição individual.
+
+## Estimulantes e privação de sono
+
+Nunca apresentar estimulante como forma de compensar noite mal dormida. A privação de sono já eleva cortisol, frequência cardíaca de repouso e pressão arterial; somar dose alta de estimulante a um organismo nessa condição produz sobrecarga simpática excessiva e aumenta o risco de arritmia, palpitação e pico hipertensivo durante o esforço. Diante desse pedido, alertar sobre o risco e orientar ajuste da sessão.

@@ -9,9 +9,10 @@ evidence_level: A
 confidence: moderate
 applicability: direct
 practical_application: Escolher frequência por volume, recuperação, agenda e habilidade a praticar.
-limitations: [A literatura usa divisões e volumes heterogêneos.]
+limitations:
+  - A literatura usa divisões e volumes heterogêneos.
 source_ids: [SRC-M-0001, SRC-M-0002]
 status: active
-last_reviewed: 2026-07-18
+last_reviewed: 2026-08-20
 review_due: 2027-01-18
 

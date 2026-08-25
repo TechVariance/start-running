@@ -9,9 +9,10 @@ evidence_level: A
 confidence: moderate
 applicability: direct
 practical_application: Usar aquecimento geral curto quando útil e séries específicas antes de cargas desafiadoras.
-limitations: [Necessidades de mobilidade são individuais e específicas à tarefa.]
+limitations:
+  - Necessidades de mobilidade são individuais e específicas à tarefa.
 source_ids: [SRC-M-0011]
 status: active
-last_reviewed: 2026-07-18
+last_reviewed: 2026-08-20
 review_due: 2027-01-18
 

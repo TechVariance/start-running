@@ -9,9 +9,10 @@ evidence_level: A
 confidence: high
 applicability: direct
 practical_application: Usar um programa progressivo e aderente; complexidade não é pré-requisito para benefício.
-limitations: [Magnitude varia por objetivo, experiência e população.]
+limitations:
+  - Magnitude varia por objetivo, experiência e população.
 source_ids: [SRC-M-0001, SRC-M-0002]
 status: active
-last_reviewed: 2026-07-18
+last_reviewed: 2026-08-20
 review_due: 2027-01-18
 

@@ -8,10 +8,11 @@ outcomes: [muscle_mass, strength, fatigue]
 evidence_level: A
 confidence: high
 applicability: direct
-practical_application: Manter repetições em reserva na maior parte do programa e usar falha somente de modo contextual.
-limitations: [A distância ótima da falha ainda é difícil de medir.]
+practical_application: Manter repetições em reserva ao longo de todo o programa. Para o público deste app, que treina força como suporte à corrida e em geral sem supervisão presencial, não propor treino até a falha, nem como recurso contextual.
+limitations:
+  - A distância ótima da falha ainda é difícil de medir.
+  - A ressalva contra o uso contextual é uma decisão de escopo do produto, apoiada no perfil do usuário e na ausência de supervisão, não uma conclusão das fontes citadas.
 source_ids: [SRC-M-0008]
 status: active
-last_reviewed: 2026-07-18
+last_reviewed: 2026-08-20
 review_due: 2027-01-18
-

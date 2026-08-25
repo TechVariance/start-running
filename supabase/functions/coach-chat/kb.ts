@@ -4,7 +4,7 @@
 // Fonte canônica: /KB_RUN_SR no repositório (v1.1.0-rag). Se o conteúdo da KB
 // mudar lá, replique aqui manualmente.
 
-export const KB_VERSION = "KB_RUN_SR v1.1.0-rag (corrida 5K/10K/21K/42K)";
+export const KB_VERSION = "KB_RUN_SR v1.2.0-rag (corrida 5K/10K/21K/42K)";
 
 export const KB_SAFETY_POLICY = `POLÍTICA DE SEGURANÇA E ENCAMINHAMENTO (prioridade máxima — nunca contrarie isto)
 O agente não diagnostica, não libera retorno após lesão e não substitui avaliação clínica. Não incentive treino por meio de dor persistente nem apresente desconforto como requisito de progresso.
@@ -16,11 +16,11 @@ Interrompa a recomendação esportiva e oriente avaliação profissional apropri
 - Retorno após cirurgia, fratura, condição cardiometabólica relevante ou gestação sem liberação profissional.
 Em situação potencialmente urgente, oriente interrupção do exercício e busca de atendimento local imediato.
 
-Menores de 18 anos: só educação geral e opções conservadoras. Prescrição individualizada exige responsável e profissional habilitado. Não forneça metas de emagrecimento, contagem calórica, restrição alimentar ou incentivo a volumes/intensidades excessivos.
+Menores de 18 anos: só educação geral e opções conservadoras. Prescrição individualizada exige responsável e profissional habilitado. A maior parte das maratonas exige idade mínima de 18 anos para inscrição: ao responder a menor sobre maratona, informe essa restrição antes de qualquer consideração de treino. Não forneça metas de emagrecimento, contagem calórica, restrição alimentar ou incentivo a volumes/intensidades excessivos.
 
 Nutrição, hidratação e suplementos: não prescreva restrição energética; não indique dose individual de suplemento/substância sem avaliação; não recomende ingestão excessiva de líquidos ("beber o máximo possível" é orientação insegura); estratégias para 21K/42K devem ser testadas progressivamente em treino.
 
-Progressão: não apresente a regra dos 10% como garantia de segurança. Considere carga por sessão, volume, intensidade, terreno, sono, histórico de lesão e resposta subjetiva. Evite mudar várias variáveis grandes ao mesmo tempo.`;
+Progressão: não apresente a regra dos 10% como garantia de segurança. Considere carga por sessão, volume, intensidade, terreno, sono, histórico de lesão e resposta subjetiva. Evite mudar várias variáveis grandes ao mesmo tempo. Diante do primeiro sintoma, amplie o intervalo de descanso antes da próxima sessão em vez de manter a progressão prevista: começar um treino com resquício de dor do treino anterior é caminho conhecido para lesão.`;
 
 export const KB_RESPONSE_POLICY = `POLÍTICA DE RESPOSTAS (segue em prioridade logo após a de segurança)
 Processo obrigatório antes de responder algo técnico sobre corrida:
@@ -87,8 +87,8 @@ Fontes: SRC-0003, SRC-0005
 ### BC-004 — Treinamento de força para economia e desempenho
 Nível A · Confiança alta · Aplicabilidade direta · Distâncias: 5K,10K,21K,42K,geral · Perfis: recreational,trained,elite
 Afirmação: Treino de força com cargas altas, pliometria ou métodos combinados tende a melhorar a economia de corrida e pode melhorar desempenho em corredores de média/longa distância.
-Aplicação prática: Integrar força progressiva ao ciclo, compatibilizando com sessões-chave e capacidade técnica do corredor.
-Limitações: confiança maior para economia do que para prevenção de lesão; exercícios/cargas não devem ser copiados sem avaliação técnica.
+Aplicação prática: Integrar força progressiva ao ciclo, compatibilizando com sessões-chave e capacidade técnica. Carga alta e pliometria pressupõem experiência prévia em treino de força e não são ponto de partida para iniciante: comece por exercícios de menor margem de erro (leg press, hack, agachamento guiado) e busque qualidade pela orientação de execução, concêntrica rápida e excêntrica controlada, em vez de antecipar carga ou velocidade.
+Limitações: confiança maior para economia do que para prevenção de lesão; exercícios/cargas não devem ser copiados sem avaliação técnica; a evidência vem de corredores já adaptados à força, e apresentar carga alta ou pliometria a iniciante antecipa exposição sem base técnica.
 Fontes: SRC-0006, SRC-0007
 
 ### BC-005 — Progressão de carga sem regra semanal universal
@@ -108,8 +108,8 @@ Fontes: SRC-0008
 ### BC-007 — Monitoramento combinado de carga externa e interna
 Nível B · Confiança moderada · Aplicabilidade direta · Distâncias: 5K,10K,21K,42K,geral · Perfis: beginner,recreational,trained,elite
 Afirmação: Distância/duração/velocidade descrevem o trabalho executado; RPE e respostas fisiológicas ajudam a estimar o custo individual desse trabalho.
-Aplicação prática: Registrar por sessão duração/distância, tipo, RPE global, dor, sono e ambiente; interpretar tendência, não um valor isolado.
-Limitações: métricas diferentes não são diretamente intercambiáveis; resposta individual e qualidade do sensor alteram a interpretação.
+Aplicação prática: Registrar por sessão duração/distância, tipo, RPE global, dor, sono e ambiente; interpretar tendência, não um valor isolado. Ler a carga externa sempre relativa à condição atual do corredor, por exemplo como fração de um limiar estimado, nunca em valor absoluto.
+Limitações: métricas diferentes não são diretamente intercambiáveis; resposta individual e qualidade do sensor alteram a interpretação; carga externa absoluta não informa custo, porque a mesma velocidade tem demanda diferente conforme a condição atual.
 Fontes: SRC-0009
 
 ### BC-008 — Wearables como apoio e não como decisão clínica
@@ -129,14 +129,14 @@ Fontes: SRC-0018, SRC-0019
 ### BC-010 — Sono como componente central da recuperação
 Nível A · Confiança moderada · Aplicabilidade direta · Distâncias: 5K,10K,21K,42K,geral · Perfis: recreational,trained,elite,masters
 Afirmação: Sono insuficiente pode comprometer recuperação; atletas podem precisar de mais sono conforme carga/déficit acumulado; extensão de sono e cochilos são estratégias promissoras.
-Aplicação prática: Monitorar regularidade, duração, qualidade percebida e sonolência; ajustar carga diante de déficit persistente.
-Limitações: necessidade individual varia; qualidade dos estudos de intervenção é desigual.
+Aplicação prática: Monitorar regularidade, duração, qualidade percebida e sonolência; ajustar carga diante de déficit persistente. O público é amador, com rotina de trabalho e família que limita o controle do sono: informe higiene do sono e fatores de qualidade (rotina, nutrição, álcool) e adapte a sessão ao que a pessoa consegue cumprir, sem transformar o déficit em cobrança.
+Limitações: necessidade individual varia; qualidade dos estudos de intervenção é desigual; reforçar repetidamente o déficit para quem já vive sob rotina extenuante tende a afastar o usuário.
 Fontes: SRC-0019
 
 ### BC-011 — Carboidrato em esforços prolongados
 Nível A · Confiança alta · Aplicabilidade direta · Distâncias: 10K,21K,42K,geral · Perfis: recreational,trained,elite
 Afirmação: A disponibilidade de carboidrato influencia sustentar esforço intenso/prolongado; ingestão durante esforços longos pode melhorar desempenho quando individualizada e tolerada.
-Aplicação prática: Para esforços suficientemente longos, testar antecipadamente produto, dose, concentração, timing e líquidos; nunca estrear estratégia na prova.
+Aplicação prática: Para esforços suficientemente longos, testar antecipadamente produto, dose, concentração, timing e líquidos; nunca estrear estratégia na prova. Nos longos em zonas 1 e 2 a necessidade energética aguda é menos evidente, mas é justamente neles que se treina a capacidade de absorção e a tolerância gastrointestinal.
 Limitações: necessidade varia com duração, intensidade e estoque energético; tolerância gastrointestinal limita médias populacionais.
 Fontes: SRC-0015
 
@@ -150,15 +150,15 @@ Fontes: SRC-0016
 ### BC-013 — Aclimatação para treinamento e competição no calor
 Nível A · Confiança alta · Aplicabilidade direta · Distâncias: 5K,10K,21K,42K,geral · Perfis: recreational,trained,elite
 Afirmação: Exposições repetidas e controladas ao calor antes da competição melhoram respostas termorregulatórias e são a principal preparação fisiológica para competir em ambiente quente.
-Aplicação prática: Preparar-se progressivamente em ambiente semelhante, ajustar ritmo e manter plano de segurança, evitando exposição extrema sem supervisão.
-Limitações: protocolo ideal depende da carga térmica e do estado do atleta; resposta e retenção das adaptações variam.
+Aplicação prática: A orientação precisa ser estruturada e conservadora, porque o corredor amador não julga sozinho a carga térmica adequada e tende a superestimar o desafio. Prefira um ajuste pequeno e verificável sobre a rotina que ele já tem, por exemplo começar o treino uma hora mais tarde do que o habitual para pegar condição um pouco mais quente; ajustar ritmo e manter plano de segurança.
+Limitações: protocolo ideal depende da carga térmica e do estado do atleta; resposta e retenção das adaptações variam; nunca sugira que o corredor escolha sozinho a condição de exposição, porque buscar calor e umidade acima do esperado na prova, como treinar a 30 graus para uma maratona de 24 a 25 graus, expõe a risco que o benefício não justifica.
 Fontes: SRC-0017
 
 ### BC-014 — Prevenção multifatorial de lesões relacionadas à corrida
 Nível A · Confiança alta · Aplicabilidade direta · Distâncias: 5K,10K,21K,42K,geral · Perfis: beginner,recreational,trained,return_to_run
 Afirmação: Lesões de corrida resultam da interação entre histórico, exposição, capacidade e fatores biomecânicos; nenhum exercício isolado demonstrou prevenção universal.
-Aplicação prática: Combinar histórico, progressão contextual, educação, força, técnica quando indicada e acesso rápido à avaliação de sintomas persistentes.
-Limitações: confiança menor para intervenções específicas; definições de lesão e populações variam entre estudos.
+Aplicação prática: Combinar histórico, progressão contextual, educação, força, técnica quando indicada e acesso rápido à avaliação de sintomas persistentes. Diante do primeiro sintoma, ampliar o intervalo de descanso antes da próxima sessão em vez de manter a progressão prevista.
+Limitações: confiança menor para intervenções específicas; definições de lesão e populações variam entre estudos; a conduta de ampliar descanso ao primeiro sintoma vem da prática de treino, não das fontes deste registro.
 Fontes: SRC-0011, SRC-0012, SRC-0014
 
 ### BC-015 — Cadência e passada sem número universal
@@ -171,7 +171,7 @@ Fontes: SRC-0014
 ### BC-016 — Alongamento e aquecimento para corrida
 Nível A · Confiança moderada · Aplicabilidade parcial · Distâncias: 5K,10K,21K,42K,geral · Perfis: beginner,recreational,trained
 Afirmação: Alongamento não substitui aquecimento nem previne universalmente lesões; efeitos agudos dependem de tipo, duração, momento e tarefa subsequente.
-Aplicação prática: Antes de esforços rápidos, priorizar aquecimento dinâmico e específico; usar mobilidade/alongamento conforme necessidade individual.
+Aplicação prática: Antes de esforços rápidos, priorizar aquecimento dinâmico e específico; usar mobilidade/alongamento conforme necessidade individual. Sempre que o tema aparecer, afirme a importância do aquecimento em vez de apenas negar o alongamento, porque é isso que responde à crença de que alongar previne lesão: alguns minutos de caminhada bastam antes de uma corrida leve, e corrida leve antes de sessões mais intensas.
 Limitações: evidência de prevenção de lesão em corredores é limitada; protocolos de alongamento diferem muito entre estudos.
 Fontes: SRC-0003
 
@@ -192,16 +192,16 @@ Fontes: SRC-0020
 ### BC-019 — Treinamento e recuperação em corredores masters
 Nível B · Confiança moderada · Aplicabilidade parcial · Distâncias: 5K,10K,21K,42K,geral · Perfis: masters,recreational,trained
 Afirmação: Corredores masters treinados podem preservar boa economia de corrida, embora recuperação, capacidade aeróbia e risco individual ganhem importância com a idade.
-Aplicação prática: Manter estímulos aeróbios e de força, individualizando recuperação, progressão e avaliação clínica.
-Limitações: grande heterogeneidade entre indivíduos; parte da evidência é observacional.
+Aplicação prática: Manter estímulos aeróbios e de força, individualizando recuperação, progressão e avaliação clínica. Tratar o treino de força como componente obrigatório e com volume suficiente para retardar a perda de capacidade, não como complemento opcional; ampliar e respeitar o intervalo entre sessões.
+Limitações: grande heterogeneidade entre indivíduos; parte da evidência é observacional; a ingestão proteica tende a cair com a idade e interage com esse quadro, mas dose e conduta individual são tema de avaliação nutricional e não estão cobertas aqui.
 Fontes: SRC-0021
 
 ### BC-020 — Tecnologia avançada de calçados e economia de corrida
 Nível A · Confiança alta · Aplicabilidade direta · Distâncias: 5K,10K,21K,42K,geral · Perfis: recreational,trained,elite
 Afirmação: Calçados com placas e espumas avançadas reduzem o custo metabólico em média, mas a resposta é individual e o benefício não prova prevenção de lesões.
-Aplicação prática: Testar conforto e resposta antes da prova, respeitar regras esportivas e evitar mudança abrupta de equipamento.
-Limitações: magnitude varia entre corredores e velocidades; evidência de prevenção de lesão é insuficiente.
-Fontes: SRC-0023`;
+Aplicação prática: Testar conforto e resposta antes da prova, respeitar regras esportivas e evitar mudança abrupta de equipamento. Orientar o uso com cautela em vez de desencorajar ou promover: alternar calçados com e sem placa entre os treinos é a conduta prudente enquanto os dados de longo prazo não fecham.
+Limitações: magnitude varia entre corredores e velocidades; evidência de prevenção de lesão é insuficiente e os estudos de longo prazo não são conclusivos; há sinal preliminar na direção oposta, com um estudo transversal em corredores de elite observando aumento de variáveis biomecânicas associadas a lesão óssea de estresse ao correr com placa, mudanças pequenas e efeito cumulativo apenas hipotetizado (SRC-0027), gerador de hipótese e não demonstração de aumento de lesão.
+Fontes: SRC-0023, SRC-0027`;
 
 export const KB_DISTANCE_MODULES: Record<"5k" | "10k" | "21k" | "maratona", string> = {
   "5k": `MÓDULO — 5 KM
@@ -218,13 +218,13 @@ Evidências prioritárias: BC-001, BC-002, BC-003, BC-004, BC-005, BC-006, BC-00
 
   "21k": `MÓDULO — MEIA MARATONA
 Demanda predominante: limiar, economia, resistência, durabilidade inicial, controle de ritmo e relevância crescente de abastecimento conforme o tempo individual de prova.
-Ênfases sustentadas pela base: volume fácil predominante e progressão contextual (BC-001, BC-005); blocos prolongados controlados, próximos ao objetivo fisiológico da sessão (BC-003); longos progressivos só quando compatíveis com experiência e recuperação; força para economia e robustez, sem alegar prevenção garantida de lesão (BC-004); prática prévia de carboidrato e hidratação quando a duração justificar (BC-011, BC-012); preparação ambiental para calor (BC-013); taper individualizado (BC-006).
+Ênfases sustentadas pela base: volume fácil predominante e progressão contextual (BC-001, BC-005); blocos prolongados controlados, próximos ao objetivo fisiológico da sessão (BC-003); longos progressivos só quando compatíveis com experiência e recuperação; força para economia e robustez, sem alegar prevenção garantida de lesão (BC-004); prática prévia de carboidrato e hidratação quando a duração justificar (BC-011, BC-012); preparação ambiental para calor (BC-013); taper individualizado, frequentemente de 1 a 2 semanas e mais curto que o da maratona (BC-006).
 Restrições: não usar uma duração de longo, dose de carboidrato ou volume semanal como regra universal; diferenciar atleta que completa a prova rápido daquele exposto por várias horas.
 Evidências prioritárias: BC-001, BC-003, BC-004, BC-005, BC-006, BC-011, BC-012, BC-013.`,
 
   "maratona": `MÓDULO — MARATONA
 Demanda predominante: durabilidade, economia sob fadiga, resistência musculoesquelética, controle de ritmo, disponibilidade energética, hidratação individual e gestão ambiental.
-Ênfases sustentadas pela base: predominância de baixa intensidade para acumular volume tolerável (BC-001); progressão baseada no histórico e no tamanho da sessão mais longa recente (BC-005); corridas longas e blocos específicos usados progressivamente, sem quilometragem mágica; força como suporte à economia e desempenho (BC-004); monitoramento de carga, sono, dor e resposta subjetiva (BC-007, BC-010); nutrição e hidratação ensaiadas nos treinos (BC-011, BC-012); aclimatação e ajuste de expectativas no calor (BC-013); taper frequentemente de 2–3 semanas, individualizado (BC-006).
+Ênfases sustentadas pela base: predominância de baixa intensidade para acumular volume tolerável (BC-001); progressão baseada no histórico, no volume semanal recente e no tamanho da sessão mais longa recente (BC-005); corridas longas e blocos específicos usados progressivamente, sem quilometragem mágica; força como suporte à economia e desempenho (BC-004); monitoramento de carga, sono, dor e resposta subjetiva (BC-007, BC-010); recuperação como fundamento, apoiada em carga adequada, sono, nutrição e periodização, sem modalidade isolada superior (BC-009); nutrição e hidratação ensaiadas nos treinos (BC-011, BC-012); aclimatação e ajuste de expectativas no calor (BC-013); taper frequentemente de 2–3 semanas, individualizado (BC-006).
 Restrições: não prescrever maratona a partir de poucas informações — exigir histórico de corrida, volume e maior treino recentes, tolerância musculoesquelética, disponibilidade semanal, data da prova e histórico clínico relevante; nunca recomendar "beber o máximo possível", restrição energética ou estratégia inédita no dia da prova.
 Evidências prioritárias: BC-001, BC-004, BC-005, BC-006, BC-007, BC-009, BC-010, BC-011, BC-012, BC-013, BC-014, BC-017.`,
 };
@@ -256,7 +256,8 @@ SRC-0022 — The Effect of Wearable-Based Real-Time Feedback on Running Injuries
 SRC-0023 — Metabolic effects of carbon-plated running shoes (2026) — https://pmc.ncbi.nlm.nih.gov/articles/PMC12827780/
 SRC-0024 — Long Distance Running and Knee Osteoarthritis: A Prospective Study (2008) — https://pmc.ncbi.nlm.nih.gov/articles/PMC2556152/
 SRC-0025 — Healthy Runner Project: 7-year nutrition education intervention (2023) — https://pmc.ncbi.nlm.nih.gov/articles/PMC10174024/
-SRC-0026 — Preventing bone stress injuries in runners with optimal workload (2021) — https://pmc.ncbi.nlm.nih.gov/articles/PMC8316280/`;
+SRC-0026 — Preventing bone stress injuries in runners with optimal workload (2021) — https://pmc.ncbi.nlm.nih.gov/articles/PMC8316280/
+SRC-0027 — Biomechanics associated with bone stress injuries while using advanced footwear technology in elite distance runners (2026) — https://doi.org/10.1002/pmrj.70153`;
 
 export function pickDistanceModule(raceDistanceM: number | null | undefined): string | null {
   if (!raceDistanceM) return null;

@@ -3,17 +3,17 @@ title: Treinamento e recuperação em corredores masters
 claim: Corredores masters treinados podem preservar boa economia de corrida, embora recuperação, capacidade aeróbia e risco individual ganhem importância com a idade.
 distances: [5K, 10K, 21K, 42K, general]
 profiles: [masters, recreational, trained]
-topics: [aging, masters, recovery, running_economy]
+topics: [aging, masters, recovery, running_economy, strength_training]
 outcomes: [running_economy, performance, health]
 evidence_level: B
 confidence: moderate
 applicability: partial
-practical_application: Manter estímulos aeróbios e de força, individualizando recuperação, progressão e avaliação clínica.
+practical_application: Manter estímulos aeróbios e de força, individualizando recuperação, progressão e avaliação clínica. Tratar o treino de força como componente obrigatório e com volume suficiente para retardar a perda de capacidade, não como complemento opcional. Ampliar e respeitar o intervalo entre sessões.
 limitations:
   - Grande heterogeneidade entre indivíduos.
   - Parte da evidência é observacional.
+  - A ingestão proteica tende a cair com a idade e interage com esse quadro, mas dose e conduta individual são tema de avaliação nutricional e não estão cobertas por este registro.
 source_ids: [SRC-0021]
 status: active
-last_reviewed: 2026-07-18
+last_reviewed: 2026-08-20
 review_due: 2027-01-18
-

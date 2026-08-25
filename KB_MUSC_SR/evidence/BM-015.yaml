@@ -8,10 +8,11 @@ outcomes: [strength, muscle_mass, session_duration]
 evidence_level: A
 confidence: moderate
 applicability: partial
-practical_application: Priorizar técnica, progressão, volume recuperável e adesão antes de adicionar complexidade.
-limitations: [Protocolos e equiparação de volume variam.]
+practical_application: Priorizar técnica, progressão, volume recuperável e adesão antes de adicionar complexidade. Reservar essas técnicas a quem já tem experiência de treino de força.
+limitations:
+  - Protocolos e equiparação de volume variam.
+  - São técnicas próprias de programas voltados à hipertrofia e têm pouco lugar em um programa de força como suporte à corrida.
 source_ids: [SRC-M-0015]
 status: active
-last_reviewed: 2026-07-18
+last_reviewed: 2026-08-20
 review_due: 2027-01-18
-

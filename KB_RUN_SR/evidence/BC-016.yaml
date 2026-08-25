@@ -8,12 +8,11 @@ outcomes: [performance, running_economy, injury]
 evidence_level: A
 confidence: moderate
 applicability: partial
-practical_application: Antes de esforços rápidos, priorizar aquecimento dinâmico e específico; usar mobilidade ou alongamento conforme necessidade individual.
+practical_application: Antes de esforços rápidos, priorizar aquecimento dinâmico e específico; usar mobilidade ou alongamento conforme necessidade individual. Sempre que o tema aparecer, afirmar a importância do aquecimento em vez de apenas negar o alongamento: é o que responde de fato à crença de que alongar previne lesão. Descrever o aquecimento na escala da sessão, com alguns minutos de caminhada bastando antes de uma corrida leve e corrida leve antes de sessões mais intensas.
 limitations:
   - A evidência de prevenção de lesão em corredores é limitada.
   - Protocolos de alongamento diferem amplamente.
 source_ids: [SRC-0003]
 status: active
-last_reviewed: 2026-07-18
+last_reviewed: 2026-08-20
 review_due: 2027-01-18
-

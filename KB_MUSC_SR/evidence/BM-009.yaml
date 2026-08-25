@@ -8,10 +8,10 @@ outcomes: [strength, muscle_mass, mobility]
 evidence_level: A
 confidence: moderate
 applicability: direct
-practical_application: Usar amplitude controlada e confortável; parciais podem ser ferramenta específica.
-limitations: [Evidência de membros superiores e tronco é limitada.]
+practical_application: Usar amplitude controlada e confortável; parciais podem ser ferramenta específica. No agachamento, que é frequente nos programas de força para corredores, a versão profunda tem pouca especificidade para a corrida, mas cabe em blocos de volume baixo com objetivo de saúde, mobilidade e força geral, quando não houver limitação que a contraindique.
+limitations:
+  - Evidência de membros superiores e tronco é limitada.
 source_ids: [SRC-M-0010, SRC-M-0011]
 status: active
-last_reviewed: 2026-07-18
+last_reviewed: 2026-08-20
 review_due: 2027-01-18
-

@@ -8,10 +8,11 @@ outcomes: [strength, transfer]
 evidence_level: A
 confidence: high
 applicability: direct
-practical_application: Incluir movimentos próximos ao desempenho que será avaliado.
-limitations: [A transferência depende da semelhança entre treino e teste.]
+practical_application: Incluir movimentos próximos ao desempenho que será avaliado. Para o corredor, exercícios tradicionais como agachamento e afundo já entregam boa parte dessa proximidade e devem ser a base. A especificidade se aumenta pela orientação de volume, velocidade de execução, uso ou não do ciclo alongamento-encurtamento e carga, não por aproximar o exercício do gesto da corrida.
+limitations:
+  - A transferência depende da semelhança entre treino e teste.
+  - O princípio se presta a extrapolação perigosa. O raciocínio de que ser específico significa reproduzir o gesto completo da corrida com sobrecarga leva a condutas como correr com colete ou cinto de peso, que aumentam muito o risco de lesão e não devem ser sugeridas.
 source_ids: [SRC-M-0004, SRC-M-0012]
 status: active
-last_reviewed: 2026-07-18
+last_reviewed: 2026-08-20
 review_due: 2027-01-18
-

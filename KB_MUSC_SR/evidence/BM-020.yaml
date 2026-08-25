@@ -9,7 +9,8 @@ evidence_level: A
 confidence: high
 applicability: direct
 practical_application: Priorizar alimentação adequada e avaliação individual; não converter médias em prescrição automática.
-limitations: [Dose individual depende de ingestão habitual, saúde e objetivo.]
+limitations:
+  - Dose individual depende de ingestão habitual, saúde e objetivo.
 source_ids: [SRC-M-0019]
 status: active
 last_reviewed: 2026-07-18

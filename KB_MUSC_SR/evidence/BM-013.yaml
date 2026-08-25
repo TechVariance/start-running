@@ -9,9 +9,10 @@ evidence_level: A
 confidence: moderate
 applicability: direct
 practical_application: Usar variação para organizar progressão, prática e fadiga, sem tratar o modelo como requisito mágico.
-limitations: [Há menos dados em pessoas altamente treinadas.]
+limitations:
+  - Há menos dados em pessoas altamente treinadas.
 source_ids: [SRC-M-0013]
 status: active
-last_reviewed: 2026-07-18
+last_reviewed: 2026-08-20
 review_due: 2027-01-18
 

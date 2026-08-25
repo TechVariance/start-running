@@ -5,7 +5,7 @@
 // Fonte canônica: /KB_MUSC_SR no repositório (v1.0.0-rag). Se o conteúdo da KB
 // mudar lá, replique aqui manualmente.
 
-export const KB_MUSC_VERSION = "KB_MUSC_SR v1.0.0-rag (musculação: força, hipertrofia, potência, saúde e função)";
+export const KB_MUSC_VERSION = "KB_MUSC_SR v1.1.0-rag (musculação: força, hipertrofia, potência, saúde e função)";
 
 export const KB_MUSC_SAFETY_POLICY = `POLÍTICA DE SEGURANÇA E ENCAMINHAMENTO (prioridade máxima — nunca contrarie isto)
 O agente não diagnostica, não libera retorno após lesão e não substitui médico, fisioterapeuta, nutricionista ou profissional de educação física. Dor persistente não é indicador de eficácia e não deve ser apresentada como requisito de progresso.
@@ -19,7 +19,11 @@ Em situação potencialmente urgente, oriente interrupção da atividade e busca
 
 Menores de 18 anos: só educação geral e opções conservadoras. Programas individualizados, testes máximos e movimentos técnicos exigem responsável e profissional qualificado. Não ofereça emagrecimento, restrição alimentar, contagem calórica, suplemento, substância para desempenho ou treinamento autônomo avançado.
 
-Práticas especiais: falha muscular não deve ser padrão obrigatório de treino. Restrição de fluxo sanguíneo (BFR) exige triagem e supervisão profissional. Técnicas avançadas só devem aparecer quando houver objetivo claro e domínio técnico básico. Nunca recomende hormônios, esteroides ou substâncias proibidas.`;
+Práticas especiais: falha muscular não deve ser padrão obrigatório de treino. Restrição de fluxo sanguíneo (BFR) exige triagem e supervisão profissional, está fora do universo de uso deste app e nunca deve ser proposta de forma ativa. Técnicas avançadas só devem aparecer quando houver objetivo claro e domínio técnico básico. Nunca recomende hormônios, esteroides ou substâncias proibidas.
+
+Suplementos: não recomende suplemento a ninguém, inclusive maior de idade. Você pode descrever em linhas gerais o que a literatura diz sobre eficácia, e deve encerrar orientando que dose e decisão de uso são tomadas junto a um especialista. Nunca converta média populacional em prescrição individual.
+
+Estimulantes e privação de sono: nunca apresente estimulante como forma de compensar noite mal dormida. A privação de sono já eleva cortisol, frequência cardíaca de repouso e pressão arterial, e somar dose alta de estimulante a um organismo nessa condição produz sobrecarga simpática excessiva, aumentando risco de arritmia, palpitação e pico hipertensivo durante o esforço. Diante desse pedido, alerte sobre o risco e oriente ajuste da sessão.`;
 
 export const KB_MUSC_RESPONSE_POLICY = `POLÍTICA DE RESPOSTAS (segue em prioridade logo após a de segurança)
 Processo obrigatório antes de responder algo técnico sobre treinamento resistido:
@@ -70,8 +74,8 @@ Fontes: SRC-M-0001, SRC-M-0002
 ### BM-002 — Especificidade dos ganhos de força
 Nível A · Confiança alta · Aplicabilidade direta · Objetivos: strength,power,running_support · Perfis: recreational,trained,athlete
 Afirmação: Ganhos de força são maiores nas tarefas, amplitudes, equipamentos e padrões praticados; a transferência não é completa.
-Aplicação prática: Incluir movimentos próximos ao desempenho que será avaliado.
-Limitações: A transferência depende da semelhança entre treino e teste.
+Aplicação prática: Incluir movimentos próximos ao desempenho que será avaliado. Para o corredor, exercícios tradicionais como agachamento e afundo já entregam boa parte dessa proximidade e devem ser a base; a especificidade se aumenta por volume, velocidade de execução, uso ou não do ciclo alongamento-encurtamento e carga, não por aproximar o exercício do gesto da corrida.
+Limitações: A transferência depende da semelhança entre treino e teste. O princípio se presta a extrapolação perigosa: o raciocínio de que ser específico significa reproduzir o gesto da corrida com sobrecarga leva a condutas como correr com colete ou cinto de peso, que aumentam muito o risco de lesão e nunca devem ser sugeridas.
 Fontes: SRC-M-0004, SRC-M-0012
 
 ### BM-003 — Cargas altas e força máxima
@@ -91,8 +95,8 @@ Fontes: SRC-M-0001, SRC-M-0006
 ### BM-005 — Dose-resposta do volume com retornos decrescentes
 Nível A · Confiança alta · Aplicabilidade direta · Objetivos: strength,hypertrophy,function · Perfis: beginner,recreational,trained
 Afirmação: Múltiplas séries geralmente superam uma série e maior volume pode ampliar ganhos, mas os retornos diminuem e a tolerância é individual.
-Aplicação prática: Começar com dose recuperável e aumentar somente quando desempenho e recuperação justificarem.
-Limitações: Não existe ponto ótimo universal por grupo muscular.
+Aplicação prática: Começar com dose recuperável e aumentar somente quando desempenho e recuperação justificarem. Para quem também corre, o volume de força é a variável que acopla os dois treinos: progredir volume gradualmente e reduzir o volume de força nos blocos de maior volume de corrida.
+Limitações: Não existe ponto ótimo universal por grupo muscular. Mesmo com carga baixa, volume alto gera estímulo de hipertrofia, e dependendo do momento da periodização da corrida esse estímulo alonga a recuperação e pode colocar a sessão de corrida num momento de maior fragilidade muscular.
 Fontes: SRC-M-0001, SRC-M-0003, SRC-M-0007
 
 ### BM-006 — Frequência como distribuição de volume e prática
@@ -105,43 +109,43 @@ Fontes: SRC-M-0001, SRC-M-0002
 ### BM-007 — Falha muscular não obrigatória
 Nível A · Confiança alta · Aplicabilidade direta · Objetivos: strength,hypertrophy,power,running_support · Perfis: beginner,recreational,trained
 Afirmação: Treinar até falha momentânea não é superior de forma consistente para hipertrofia e aumenta fadiga aguda.
-Aplicação prática: Manter repetições em reserva na maior parte do programa e usar falha somente de modo contextual.
-Limitações: A distância ótima da falha ainda é difícil de medir.
+Aplicação prática: Manter repetições em reserva ao longo de todo o programa. Para o público deste app, que treina força como suporte à corrida e em geral sem supervisão presencial, não proponha treino até a falha, nem como recurso contextual.
+Limitações: A distância ótima da falha ainda é difícil de medir. A ressalva contra o uso contextual é decisão de escopo do produto, apoiada no perfil do usuário e na ausência de supervisão, não conclusão das fontes citadas.
 Fontes: SRC-M-0008
 
 ### BM-008 — Descanso entre séries e qualidade do trabalho
 Nível A · Confiança moderada · Aplicabilidade direta · Objetivos: strength,hypertrophy,power · Perfis: recreational,trained
 Afirmação: Diferentes descansos produzem hipertrofia, mas intervalos muito curtos podem reduzir repetições e carga; descansos maiores têm pequena vantagem média.
-Aplicação prática: Descansar o suficiente para preservar técnica e objetivo da próxima série.
-Limitações: A evidência não define um único intervalo ótimo.
+Aplicação prática: Descansar o suficiente para preservar técnica e objetivo da próxima série. Para o corredor, adotar descanso mais largo, acima de um minuto e meio, para manter a qualidade técnica do movimento e deixar o componente neuromuscular em condição de gerar força rápida e coordenada.
+Limitações: A evidência não define um único intervalo ótimo. O piso de um minuto e meio é conduta prática dirigida ao corredor, não valor derivado das fontes citadas.
 Fontes: SRC-M-0009
 
 ### BM-009 — Amplitude de movimento contextual
 Nível A · Confiança moderada · Aplicabilidade direta · Objetivos: strength,hypertrophy,function · Perfis: beginner,recreational,trained
 Afirmação: Amplitude completa é padrão inicial defensável, mas adaptações são específicas ao músculo, região e amplitude treinada.
-Aplicação prática: Usar amplitude controlada e confortável; parciais podem ser ferramenta específica.
+Aplicação prática: Usar amplitude controlada e confortável; parciais podem ser ferramenta específica. No agachamento, frequente nos programas de força para corredores, a versão profunda tem pouca especificidade para a corrida, mas cabe em blocos de volume baixo com objetivo de saúde, mobilidade e força geral, quando não houver limitação que a contraindique.
 Limitações: Evidência de membros superiores e tronco é limitada.
 Fontes: SRC-M-0010, SRC-M-0011
 
 ### BM-010 — Eficácia de máquinas e pesos livres
 Nível A · Confiança alta · Aplicabilidade direta · Objetivos: health,strength,hypertrophy,function · Perfis: beginner,recreational,trained,older_adult
 Afirmação: Máquinas e pesos livres podem produzir força e hipertrofia; cada modalidade melhora mais testes semelhantes ao treinamento.
-Aplicação prática: Escolher por objetivo, preferência, acesso, estabilidade, habilidade e segurança.
+Aplicação prática: Escolher por objetivo, preferência, acesso, estabilidade, habilidade e segurança. Para quem tem pouca experiência em treino de força, preferir máquinas e prever evolução para pesos livres conforme a experiência aumenta, pela solicitação da musculatura sinergista e pela maior transferência ao movimento; um programa que combina os dois tipos é a conduta usual.
 Limitações: Há menos estudos de hipertrofia que de força.
 Fontes: SRC-M-0012
 
 ### BM-011 — Ordem definida pela prioridade da sessão
 Nível A · Confiança moderada · Aplicabilidade direta · Objetivos: strength,hypertrophy,power · Perfis: recreational,trained
 Afirmação: Exercícios realizados cedo tendem a receber melhor desempenho e podem gerar maiores ganhos de força específicos.
-Aplicação prática: Colocar primeiro o exercício mais importante ou tecnicamente exigente.
+Aplicação prática: Colocar primeiro o exercício mais importante ou tecnicamente exigente, o que na prática costuma significar abrir a sessão com os multiarticulares e deixar os monoarticulares para o final.
 Limitações: Impacto sobre hipertrofia é menos claro.
 Fontes: SRC-M-0002
 
 ### BM-012 — Intenção de velocidade para potência
-Nível A · Confiança moderada · Aplicabilidade direta · Objetivos: power,strength,running_support · Perfis: trained,athlete
+Nível A · Confiança moderada · Aplicabilidade parcial · Objetivos: power,strength,running_support · Perfis: trained,athlete
 Afirmação: Potência depende de produzir força rapidamente; intenção de velocidade com controle é mais útil que um tempo de repetição universal.
-Aplicação prática: Ajustar ou encerrar séries quando velocidade e técnica se degradarem além do objetivo.
-Limitações: Medição de velocidade nem sempre está disponível ou validada.
+Aplicação prática: Sem acelerômetro, não peça que o praticante ajuste a série pela degradação da velocidade, porque essa leitura exige experiência que ele em geral não tem. O caminho praticável é prescrever séries curtas, de cinco a seis repetições, com máxima intenção de velocidade e descanso adequado entre elas.
+Limitações: Medição de velocidade nem sempre está disponível ou validada. Equipamento de medição é caro e de pouco acesso para o público deste app, o que inviabiliza a autoregulação por velocidade como conduta padrão.
 Fontes: SRC-M-0001
 
 ### BM-013 — Periodização como ferramenta organizacional
@@ -154,21 +158,21 @@ Fontes: SRC-M-0013
 ### BM-014 — Autoregulação do treinamento
 Nível A · Confiança moderada · Aplicabilidade direta · Objetivos: strength,hypertrophy,power · Perfis: recreational,trained,athlete
 Afirmação: APRE, RPE, RIR e velocidade podem ajustar o treino ao estado do praticante, mas dependem de aprendizagem e medição consistente.
-Aplicação prática: Combinar meta planejada com resposta real da sessão e manter registros consistentes.
-Limitações: Comparações entre métodos são heterogêneas.
+Aplicação prática: Combinar meta planejada com resposta real da sessão e manter registros consistentes. Para o iniciante, o uso mais defensável não é pedir que ele autoregule dentro da sessão, e sim acumular os registros e usar o cruzamento deles para planejar as sessões seguintes.
+Limitações: Comparações entre métodos são heterogêneas. A qualidade da autoregulação depende fortemente da experiência do praticante, o que limita o método justamente em quem mais precisaria de ajuste.
 Fontes: SRC-M-0014
 
 ### BM-015 — Técnicas avançadas como opções não obrigatórias
 Nível A · Confiança moderada · Aplicabilidade parcial · Objetivos: strength,hypertrophy · Perfis: trained
 Afirmação: Drop sets, rest-pause, supersets e outras técnicas podem economizar tempo ou variar estímulo, sem superioridade universal.
-Aplicação prática: Priorizar técnica, progressão, volume recuperável e adesão antes de adicionar complexidade.
-Limitações: Protocolos e equiparação de volume variam.
+Aplicação prática: Priorizar técnica, progressão, volume recuperável e adesão antes de adicionar complexidade; reservar essas técnicas a quem já tem experiência de treino de força.
+Limitações: Protocolos e equiparação de volume variam. São técnicas próprias de programas voltados à hipertrofia e têm pouco lugar em um programa de força como suporte à corrida.
 Fontes: SRC-M-0015
 
 ### BM-016 — Compatibilidade do treino concorrente
 Nível A · Confiança moderada · Aplicabilidade direta · Objetivos: strength,hypertrophy,running_support · Perfis: recreational,trained,runner
 Afirmação: Resistência e endurance são geralmente compatíveis, com pequena interferência possível em fibras, força ou potência quando o volume e a proximidade dos estímulos são altos.
-Aplicação prática: Definir prioridade, gerenciar volume e separar sessões exigentes quando desempenho máximo for essencial.
+Aplicação prática: Definir prioridade, gerenciar volume e separar sessões exigentes quando desempenho máximo for essencial. Neste app a corrida é a prioridade declarada do usuário, então a conduta padrão é evitar a faixa de interferência não adotando volumes altos no treino de força, em vez de tentar compensá-la depois.
 Limitações: Interferência em fibras não implica necessariamente diferença no músculo inteiro.
 Fontes: SRC-M-0016
 
@@ -189,8 +193,8 @@ Fontes: SRC-M-0011
 ### BM-019 — Sono e desempenho de força
 Nível A · Confiança moderada · Aplicabilidade direta · Objetivos: health,strength,hypertrophy,power,function · Perfis: recreational,trained,athlete
 Afirmação: Perda de sono pode reduzir algumas medidas de força, potência e resistência muscular, embora a resposta varie entre tarefas e indivíduos.
-Aplicação prática: Com sono insuficiente, priorizar técnica e ajustar carga ou volume em vez de buscar recordes.
-Limitações: Número de estudos e amostras ainda é limitado.
+Aplicação prática: Diante de sono ruim, ficar no aviso, priorizando técnica e ajustando carga ou volume em vez de buscar recordes. A variação entre indivíduos é grande demais para justificar conduta mais prescritiva que isso.
+Limitações: Número de estudos e amostras ainda é limitado. A resposta individual varia muito, o que desaconselha transformar o achado em regra de ajuste automático de carga.
 Fontes: SRC-M-0018
 
 ### BM-020 — Proteína como benefício adicional ao treinamento
@@ -203,8 +207,8 @@ Fontes: SRC-M-0019
 ### BM-021 — Benefícios em adultos mais velhos
 Nível A · Confiança alta · Aplicabilidade direta · Objetivos: health,strength,hypertrophy,function · Perfis: older_adult,sarcopenia
 Afirmação: Adultos mais velhos podem melhorar força, função e massa muscular com treinamento resistido adaptado à capacidade e ao estado de saúde.
-Aplicação prática: Individualizar técnica, equilíbrio, carga e supervisão sem excluir estímulo desafiador somente pela idade.
-Limitações: Condições clínicas e fragilidade alteram aplicabilidade.
+Aplicação prática: Individualizar técnica, equilíbrio, carga e supervisão sem excluir estímulo desafiador somente pela idade. Neste público a preferência por máquinas costuma fazer mais sentido. Ações com velocidade na fase concêntrica são importantes para velocidade e ativação neuromuscular, mas a orientação precisa ser reescrita de forma inequívoca para essa faixa, em vez de repetir a fórmula de máxima intenção de velocidade.
+Limitações: Condições clínicas e fragilidade alteram aplicabilidade. A expressão máxima intenção de velocidade é ambígua para este público e não deve ser usada sem reformulação.
 Fontes: SRC-M-0020, SRC-M-0021
 
 ### BM-022 — Adaptações em mulheres sem regra hormonal universal
@@ -217,15 +221,15 @@ Fontes: SRC-M-0022, SRC-M-0023
 ### BM-023 — Treinamento resistido supervisionado para jovens
 Nível A · Confiança alta · Aplicabilidade direta · Objetivos: health,strength,function · Perfis: youth,adolescent
 Afirmação: Crianças e adolescentes podem ganhar força com baixa taxa de eventos adversos quando o programa é adequado ao desenvolvimento, supervisionado e orientado por técnica.
-Aplicação prática: Fornecer educação geral e exigir responsável e profissional qualificado para programas individualizados ou testes máximos.
+Aplicação prática: Fornecer educação geral e exigir responsável e profissional qualificado para programas individualizados ou testes máximos. Quando o tema aparecer, deixe claro que volume e intensidade precisam começar baixos e que o foco inicial é técnica.
 Limitações: Maturidade, equipamento e qualidade da supervisão modificam segurança.
 Fontes: SRC-M-0024
 
 ### BM-024 — Restrição de fluxo sanguíneo sob supervisão
 Nível A · Confiança moderada · Aplicabilidade parcial · Objetivos: strength,hypertrophy,function · Perfis: adult,clinical_context
 Afirmação: BFR com cargas baixas pode gerar adaptações, mas aplicação e segurança dependem de pressão, manguito, triagem e supervisão; não é método autônomo padrão.
-Aplicação prática: Reservar BFR para contexto supervisionado por profissional competente.
-Limitações: Protocolos, pressões e populações são heterogêneos.
+Aplicação prática: Reservar BFR para contexto supervisionado por profissional competente. Este registro existe para responder com segurança a quem pergunta, não para propor o método: BFR está fora do escopo de uso deste app e nunca deve ser sugerido de forma ativa.
+Limitações: Protocolos, pressões e populações são heterogêneos. Método fora do universo de aplicação deste app, que atende corredores amadores treinando sem supervisão presencial.
 Fontes: SRC-M-0025, SRC-M-0026
 
 ### BM-025 — Benefícios amplos de saúde

@@ -9,9 +9,10 @@ evidence_level: A
 confidence: moderate
 applicability: direct
 practical_application: Colocar primeiro o componente prioritário e separar sessões quando possível.
-limitations: [Efeito mais claro para força dinâmica de membros inferiores.]
+limitations:
+  - Efeito mais claro para força dinâmica de membros inferiores.
 source_ids: [SRC-M-0017]
 status: active
-last_reviewed: 2026-07-18
+last_reviewed: 2026-08-20
 review_due: 2027-01-18
 

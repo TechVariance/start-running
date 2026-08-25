@@ -8,10 +8,10 @@ outcomes: [strength, muscle_mass, endurance]
 evidence_level: A
 confidence: moderate
 applicability: direct
-practical_application: Definir prioridade, gerenciar volume e separar sessões exigentes quando desempenho máximo for essencial.
-limitations: [Interferência em fibras não implica necessariamente diferença no músculo inteiro.]
+practical_application: Definir prioridade, gerenciar volume e separar sessões exigentes quando desempenho máximo for essencial. Neste app a corrida é a prioridade declarada do usuário, então a conduta padrão é evitar a faixa de interferência não adotando volumes altos no treino de força, em vez de tentar compensá-la depois.
+limitations:
+  - Interferência em fibras não implica necessariamente diferença no músculo inteiro.
 source_ids: [SRC-M-0016]
 status: active
-last_reviewed: 2026-07-18
+last_reviewed: 2026-08-20
 review_due: 2027-01-18
-

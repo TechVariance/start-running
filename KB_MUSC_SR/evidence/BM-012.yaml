@@ -7,11 +7,12 @@ topics: [velocity, power]
 outcomes: [power, movement_velocity]
 evidence_level: A
 confidence: moderate
-applicability: direct
-practical_application: Ajustar ou encerrar séries quando velocidade e técnica se degradarem além do objetivo.
-limitations: [Medição de velocidade nem sempre está disponível ou validada.]
+applicability: partial
+practical_application: Sem acelerômetro, não pedir que o praticante ajuste a série pela degradação da velocidade, porque essa leitura exige experiência que ele em geral não tem. O caminho praticável é prescrever séries curtas, de cinco a seis repetições, com máxima intenção de velocidade e descanso adequado entre elas.
+limitations:
+  - Medição de velocidade nem sempre está disponível ou validada.
+  - Equipamento de medição de velocidade é caro e de pouco acesso para o público deste app, o que inviabiliza a autoregulação por velocidade como conduta padrão.
 source_ids: [SRC-M-0001]
 status: active
-last_reviewed: 2026-07-18
+last_reviewed: 2026-08-20
 review_due: 2027-01-18
-

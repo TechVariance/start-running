@@ -8,12 +8,12 @@ outcomes: [recovery, cognition, performance]
 evidence_level: A
 confidence: moderate
 applicability: direct
-practical_application: Monitorar regularidade, duração, qualidade percebida e sonolência; ajustar carga diante de déficit persistente.
+practical_application: Monitorar regularidade, duração, qualidade percebida e sonolência; ajustar carga diante de déficit persistente. O público é amador, com rotina de trabalho e família que limita o controle do sono, então tratar a informação como insumo para adaptar o planejamento à realidade da pessoa. Apresentar higiene do sono e os fatores que afetam a qualidade (rotina, nutrição, álcool) sem transformar o déficit em cobrança.
 limitations:
   - Necessidade individual varia.
   - A qualidade dos estudos de intervenção é desigual.
+  - Reforçar repetidamente o déficit de sono para quem já vive sob rotina extenuante tende a afastar o usuário; a orientação informa e ajusta a sessão, não cobra.
 source_ids: [SRC-0019]
 status: active
-last_reviewed: 2026-07-18
+last_reviewed: 2026-08-20
 review_due: 2027-01-18
-

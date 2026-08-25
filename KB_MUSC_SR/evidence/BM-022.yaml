@@ -9,9 +9,10 @@ evidence_level: A
 confidence: high
 applicability: direct
 practical_application: Individualizar por resposta, sintomas, objetivo e histórico, sem estereótipos.
-limitations: [Outros métodos contraceptivos e fases hormonais têm dados limitados.]
+limitations:
+  - Outros métodos contraceptivos e fases hormonais têm dados limitados.
 source_ids: [SRC-M-0022, SRC-M-0023]
 status: active
-last_reviewed: 2026-07-18
+last_reviewed: 2026-08-20
 review_due: 2027-01-18
 

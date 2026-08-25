@@ -1,19 +1,27 @@
 {
   "knowledge_base": "KB_RUN_SR",
-  "version": "1.1.0-rag",
+  "version": "1.2.0-rag",
   "language": "pt-BR",
   "created_at": "2026-07-18",
   "source_master_version": "1.0",
   "source_master_sha256": "f4288874081f6b1d794eee7d7377ba56f03bb3226df74c28127c135c4308a25f",
+  "source_master_status": "anterior à revisão de 2026-08-20; não reflete os ajustes aplicados em evidence/, policies/ e distances/",
   "scope": ["5K", "10K", "21K", "42K"],
   "primary_population": "adultos recreacionais e competitivos não profissionais",
   "evidence_records": 20,
-  "source_records": 26,
-  "golden_set_cases": 12,
+  "source_records": 27,
+  "golden_set_cases": 17,
   "canonical_source": "source_master/KB_RUN_SR.md",
   "evidence_schema": "schemas/evidence.schema.json",
   "retrieval_policy": "retrieval/chunking_e_recuperacao.md",
+  "last_expert_review": {
+    "date": "2026-08-20",
+    "reviewer_registration": "CREF 088527-G/SP",
+    "conflict_of_interest": "declarado",
+    "verdict": "aprovado com ressalvas",
+    "record": "KB_REV_SR/relatorio-revisao-2026-08-20.md",
+    "records_not_covered": ["BC-018"]
+  },
   "status": "ready_for_prototype_rag",
   "next_review_due": "2027-01-18"
 }
-

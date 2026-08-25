@@ -8,12 +8,12 @@ outcomes: [fatigue, adaptation, load_management]
 evidence_level: B
 confidence: moderate
 applicability: direct
-practical_application: Registrar por sessão duração ou distância, tipo, RPE global, dor, sono e ambiente; interpretar tendências em vez de um valor isolado.
+practical_application: Registrar por sessão duração ou distância, tipo, RPE global, dor, sono e ambiente; interpretar tendências em vez de um valor isolado. Ler a carga externa sempre relativa à condição atual do corredor, por exemplo como fração de um limiar estimado, e não em valor absoluto.
 limitations:
   - Métricas diferentes não são diretamente intercambiáveis.
   - Respostas individuais e qualidade do sensor alteram a interpretação.
+  - Carga externa em valor absoluto não informa custo: a mesma velocidade representa demandas diferentes conforme a condição atual do corredor.
 source_ids: [SRC-0009]
 status: active
-last_reviewed: 2026-07-18
+last_reviewed: 2026-08-20
 review_due: 2027-01-18
-

@@ -8,10 +8,11 @@ outcomes: [strength, fatigue_management, adherence]
 evidence_level: A
 confidence: moderate
 applicability: direct
-practical_application: Combinar meta planejada com resposta real da sessão e manter registros consistentes.
-limitations: [Comparações entre métodos são heterogêneas.]
+practical_application: Combinar meta planejada com resposta real da sessão e manter registros consistentes. O uso mais defensável para o iniciante não é pedir que ele autoregule dentro da sessão, e sim acumular os registros e usar o cruzamento deles para planejar as sessões seguintes.
+limitations:
+  - Comparações entre métodos são heterogêneas.
+  - A qualidade da autoregulação depende fortemente da experiência do praticante, o que limita o método justamente em quem mais precisaria de ajuste.
 source_ids: [SRC-M-0014]
 status: active
-last_reviewed: 2026-07-18
+last_reviewed: 2026-08-20
 review_due: 2027-01-18
-

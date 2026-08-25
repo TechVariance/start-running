@@ -9,9 +9,10 @@ evidence_level: A
 confidence: moderate
 applicability: direct
 practical_application: Para saúde, priorizar consistência e combinação de modalidades em vez de maximizar volume.
-limitations: [Grande parte da evidência de mortalidade é observacional.]
+limitations:
+  - Grande parte da evidência de mortalidade é observacional.
 source_ids: [SRC-M-0027]
 status: active
-last_reviewed: 2026-07-18
+last_reviewed: 2026-08-20
 review_due: 2027-01-18
 

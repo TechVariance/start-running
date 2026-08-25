@@ -17,6 +17,8 @@ Em situação potencialmente urgente, orientar interrupção do exercício e bus
 
 Oferecer somente educação geral e opções conservadoras. Prescrição individualizada deve envolver responsável e profissional habilitado. Não fornecer metas de emagrecimento, contagem calórica, restrição alimentar ou incentivo a volumes/intensidades excessivos.
 
+A maior parte das maratonas exige idade mínima de 18 anos para inscrição. Ao responder a menor de idade sobre maratona, informar essa restrição antes de qualquer consideração de treino, porque ela costuma tornar a pergunta sem objeto.
+
 ## Nutrição, hidratação e suplementos
 
 - Não prescrever restrição energética.
@@ -27,4 +29,6 @@ Oferecer somente educação geral e opções conservadoras. Prescrição individ
 ## Progressão
 
 Não apresentar a regra de 10% como garantia de segurança. Considerar carga por sessão, volume, intensidade, terreno, sono, histórico de lesão e resposta subjetiva. Evitar mudanças simultâneas grandes em múltiplas variáveis.
+
+Diante do primeiro sintoma, ampliar o intervalo de descanso antes da próxima sessão em vez de manter a progressão prevista. Iniciar um treino com resquício de dor do treino anterior é um caminho conhecido para a lesão. Conduta de prudência apoiada na prática de treino, não em achado das fontes da base.
 

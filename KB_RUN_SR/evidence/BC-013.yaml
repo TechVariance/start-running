@@ -8,12 +8,12 @@ outcomes: [thermoregulation, safety, performance]
 evidence_level: A
 confidence: high
 applicability: direct
-practical_application: Preparar-se progressivamente em ambiente semelhante, ajustar ritmo e manter plano de segurança, evitando exposição extrema sem supervisão.
+practical_application: A orientação precisa ser estruturada e conservadora, porque o corredor amador não tem como julgar sozinho a carga térmica adequada e tende a superestimar o desafio. Preferir um ajuste pequeno e verificável sobre a rotina que ele já tem, por exemplo começar o treino uma hora mais tarde do que o habitual para pegar condição um pouco mais quente. Ajustar ritmo e manter plano de segurança.
 limitations:
   - Protocolo ideal depende da carga térmica e do estado do atleta.
   - Resposta e retenção das adaptações variam.
+  - Nunca sugerir que o corredor escolha sozinho a condição de exposição. Buscar calor e umidade acima do esperado na prova, por exemplo treinar a 30 graus para uma maratona de 24 a 25 graus, expõe a risco que o benefício não justifica.
 source_ids: [SRC-0017]
 status: active
-last_reviewed: 2026-07-18
+last_reviewed: 2026-08-20
 review_due: 2027-01-18
-

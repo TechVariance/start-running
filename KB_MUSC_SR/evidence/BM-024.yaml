@@ -8,10 +8,11 @@ outcomes: [strength, power, safety]
 evidence_level: A
 confidence: moderate
 applicability: partial
-practical_application: Reservar BFR para contexto supervisionado por profissional competente.
-limitations: [Protocolos, pressões e populações são heterogêneos.]
+practical_application: Reservar BFR para contexto supervisionado por profissional competente. O registro existe para responder com segurança a quem pergunta, não para o app propor o método: BFR está fora do escopo de uso deste produto e nunca deve ser sugerido de forma ativa.
+limitations:
+  - Protocolos, pressões e populações são heterogêneos.
+  - Método fora do universo de aplicação deste app, que atende corredores amadores treinando sem supervisão presencial.
 source_ids: [SRC-M-0025, SRC-M-0026]
 status: active
-last_reviewed: 2026-07-18
+last_reviewed: 2026-08-20
 review_due: 2027-01-18
-

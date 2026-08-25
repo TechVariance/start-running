@@ -8,12 +8,13 @@ outcomes: [running_economy, performance, injury]
 evidence_level: A
 confidence: high
 applicability: direct
-practical_application: Testar conforto e resposta antes da prova, respeitar regras esportivas e evitar mudança abrupta de equipamento.
+practical_application: Testar conforto e resposta antes da prova, respeitar regras esportivas e evitar mudança abrupta de equipamento. Orientar o uso com cautela em vez de desencorajar ou promover: alternar calçados com e sem placa entre os treinos é a conduta prudente enquanto os dados de longo prazo não fecham.
 limitations:
   - A magnitude varia entre corredores e velocidades.
-  - Evidência de prevenção de lesão é insuficiente.
-source_ids: [SRC-0023]
+  - Evidência de prevenção de lesão é insuficiente, e os estudos de longo prazo ainda não são conclusivos.
+  - Há sinal na direção oposta, ainda preliminar. Um estudo transversal em corredores de elite observou aumento de variáveis biomecânicas associadas a lesão óssea de estresse ao correr com placa de carbono, com mudanças pequenas e efeito cumulativo apenas hipotetizado (SRC-0027). É gerador de hipótese, não demonstração de aumento de lesão, e a população é de elite.
+  - A hipótese de que o calçado com placa enfraquece a musculatura do pé e dos dedos por restringir movimento é raciocínio de prática, não achado das fontes citadas aqui.
+source_ids: [SRC-0023, SRC-0027]
 status: active
-last_reviewed: 2026-07-18
+last_reviewed: 2026-08-20
 review_due: 2027-01-18
-

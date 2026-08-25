@@ -3,17 +3,16 @@ title: Carboidrato em esforços prolongados
 claim: A disponibilidade de carboidrato influencia a capacidade de sustentar exercício intenso e prolongado; ingestão durante esforços longos pode melhorar desempenho quando individualizada e tolerada.
 distances: [10K, 21K, 42K, general]
 profiles: [recreational, trained, elite]
-topics: [nutrition, carbohydrate, race_strategy]
+topics: [nutrition, carbohydrate, race_strategy, gut_training]
 outcomes: [performance, gastrointestinal_tolerance, energy_availability]
 evidence_level: A
 confidence: high
 applicability: direct
-practical_application: Para esforços suficientemente longos, testar antecipadamente produto, dose, concentração, timing e líquidos; não estrear estratégia na prova.
+practical_application: Para esforços suficientemente longos, testar antecipadamente produto, dose, concentração, timing e líquidos; não estrear estratégia na prova. Nos treinos longos em baixa intensidade a necessidade energética aguda é menos evidente, porque zonas 1 e 2 mobilizam gordura como parte da fonte, mas é justamente neles que se treina a capacidade de absorção e a tolerância gastrointestinal.
 limitations:
   - Necessidade varia com duração, intensidade e estoque energético.
   - Tolerância gastrointestinal limita a transferência de médias populacionais.
 source_ids: [SRC-0015]
 status: active
-last_reviewed: 2026-07-18
+last_reviewed: 2026-08-20
 review_due: 2027-01-18
-

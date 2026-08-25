@@ -8,10 +8,10 @@ outcomes: [strength, physical_literacy, safety]
 evidence_level: A
 confidence: high
 applicability: direct
-practical_application: Fornecer educação geral e exigir responsável e profissional qualificado para programas individualizados ou testes máximos.
-limitations: [Maturidade, equipamento e qualidade da supervisão modificam segurança.]
+practical_application: Fornecer educação geral e exigir responsável e profissional qualificado para programas individualizados ou testes máximos. Quando o tema aparecer, deixar claro que volume e intensidade precisam começar baixos e que o foco inicial é técnica.
+limitations:
+  - Maturidade, equipamento e qualidade da supervisão modificam segurança.
 source_ids: [SRC-M-0024]
 status: active
-last_reviewed: 2026-07-18
+last_reviewed: 2026-08-20
 review_due: 2027-01-18
-

@@ -8,10 +8,10 @@ outcomes: [strength, muscle_mass, adherence]
 evidence_level: A
 confidence: high
 applicability: direct
-practical_application: Escolher por objetivo, preferência, acesso, estabilidade, habilidade e segurança.
-limitations: [Há menos estudos de hipertrofia que de força.]
+practical_application: Escolher por objetivo, preferência, acesso, estabilidade, habilidade e segurança. Para quem tem pouca experiência em treino de força, preferir máquinas e prever evolução para pesos livres conforme a experiência aumenta, pela solicitação da musculatura sinergista e pela maior transferência ao movimento. Um programa que combina os dois tipos é a conduta usual.
+limitations:
+  - Há menos estudos de hipertrofia que de força.
 source_ids: [SRC-M-0012]
 status: active
-last_reviewed: 2026-07-18
+last_reviewed: 2026-08-20
 review_due: 2027-01-18
-

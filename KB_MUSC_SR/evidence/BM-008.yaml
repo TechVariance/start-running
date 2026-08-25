@@ -8,10 +8,11 @@ outcomes: [muscle_mass, performance, fatigue]
 evidence_level: A
 confidence: moderate
 applicability: direct
-practical_application: Descansar o suficiente para preservar técnica e objetivo da próxima série.
-limitations: [A evidência não define um único intervalo ótimo.]
+practical_application: Descansar o suficiente para preservar técnica e objetivo da próxima série. Para o corredor, adotar descanso mais largo, acima de um minuto e meio, para manter a qualidade técnica do movimento e deixar o componente neuromuscular em condição de gerar força rápida e coordenada.
+limitations:
+  - A evidência não define um único intervalo ótimo.
+  - O piso de um minuto e meio é conduta prática dirigida ao corredor, não um valor derivado das fontes citadas.
 source_ids: [SRC-M-0009]
 status: active
-last_reviewed: 2026-07-18
+last_reviewed: 2026-08-20
 review_due: 2027-01-18
-

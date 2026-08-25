@@ -3,15 +3,16 @@ title: Dose-resposta do volume com retornos decrescentes
 claim: Múltiplas séries geralmente superam uma série e maior volume pode ampliar ganhos, mas os retornos diminuem e a tolerância é individual.
 goals: [strength, hypertrophy, function]
 profiles: [beginner, recreational, trained]
-topics: [volume, dose_response]
+topics: [volume, dose_response, concurrent_training]
 outcomes: [strength, muscle_mass, fatigue]
 evidence_level: A
 confidence: high
 applicability: direct
-practical_application: Começar com dose recuperável e aumentar somente quando desempenho e recuperação justificarem.
-limitations: [Não existe ponto ótimo universal por grupo muscular.]
+practical_application: Começar com dose recuperável e aumentar somente quando desempenho e recuperação justificarem. Para quem também corre, o volume de força é a variável de acoplamento entre os dois treinos. Progredir volume gradualmente e reduzir o volume de força nos blocos de maior volume de corrida.
+limitations:
+  - Não existe ponto ótimo universal por grupo muscular.
+  - Mesmo com carga baixa, volume alto gera estímulo de hipertrofia. Dependendo do momento da periodização da corrida, esse estímulo alonga o tempo de recuperação e pode colocar a sessão de corrida num momento de maior fragilidade muscular.
 source_ids: [SRC-M-0001, SRC-M-0003, SRC-M-0007]
 status: active
-last_reviewed: 2026-07-18
+last_reviewed: 2026-08-20
 review_due: 2027-01-18
-

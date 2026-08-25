@@ -8,12 +8,13 @@ outcomes: [running_economy, time_trial, performance]
 evidence_level: A
 confidence: high
 applicability: direct
-practical_application: Integrar força progressiva ao ciclo, compatibilizando-a com sessões-chave e capacidade técnica do corredor.
+practical_application: Integrar força progressiva ao ciclo, compatibilizando-a com sessões-chave e capacidade técnica do corredor. Carga alta e pliometria pressupõem experiência e adaptação prévias ao treino de força e não são o ponto de partida de quem está começando. Para o iniciante, escolher exercícios com menor margem de erro (leg press, hack, agachamento guiado) e obter qualidade de estímulo pela orientação de execução, por exemplo fase concêntrica rápida e excêntrica controlada, em vez de antecipar carga ou velocidade altas.
 limitations:
   - A confiança é maior para economia do que para prevenção de lesões.
   - Exercícios e cargas não devem ser copiados sem avaliação técnica.
+  - A evidência vem de corredores já adaptados ao treino de força; apresentar carga alta e pliometria a iniciantes antecipa exposição a velocidade e carga sem base técnica e é desnecessário nessa fase.
+  - Agachamento com barra livre e carga alta exige adaptação que o corredor iniciante em geral não tem.
 source_ids: [SRC-0006, SRC-0007]
 status: active
-last_reviewed: 2026-07-18
+last_reviewed: 2026-08-20
 review_due: 2027-01-18
-

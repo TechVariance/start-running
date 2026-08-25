@@ -8,10 +8,11 @@ outcomes: [strength, power, fatigue]
 evidence_level: A
 confidence: moderate
 applicability: direct
-practical_application: Com sono insuficiente, priorizar técnica e ajustar carga ou volume em vez de buscar recordes.
-limitations: [Número de estudos e amostras ainda é limitado.]
+practical_application: Diante de sono ruim, ficar no aviso, priorizando técnica e ajustando carga ou volume em vez de buscar recordes. A variação entre indivíduos é grande demais para justificar conduta mais prescritiva do que isso.
+limitations:
+  - Número de estudos e amostras ainda é limitado.
+  - A resposta individual varia muito, o que desaconselha transformar o achado em regra de ajuste automático de carga.
 source_ids: [SRC-M-0018]
 status: active
-last_reviewed: 2026-07-18
+last_reviewed: 2026-08-20
 review_due: 2027-01-18
-
